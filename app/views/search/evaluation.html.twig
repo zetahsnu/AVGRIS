@@ -1,0 +1,451 @@
+{% embed "base.html.twig" %}
+    {% block javascript %}
+        {{ parent() }}
+        <script src="{{ BASE_PATH }}/public/js/lib/jquery.noty.packaged.min.js"></script>
+    {% endblock %}
+    {% block css %}
+        {{ parent() }}
+        <link rel="stylesheet" href="{{ BASE_PATH }}/public/css/search/evaluation.css">
+        <link rel="stylesheet" href="{{ BASE_PATH }}/public/css/search/list.css">
+    {% endblock %}
+    {% block content %}
+        <section>
+            <h2>{{ title }} (Results <span id="min">{{ (offset - 1) * limitRow + 1 }}</span> - <span id="max">{{ ((offset - 1) * limitRow + data|length) }}</span> of about <span id="total">{{ total }}</span> records)<img id="guide" src="{{ BASE_PATH }}/public/images/guide.png" alt="a guide to the search" title="a guide to the search" style="display: none;"></h2>
+            <blockquote>
+                refers to the data results of screening accessions for their resistance to different pests (i.e. melon fly, cotton aphid, etc.) and diseases (i.e. Bhendi Yellow Vein Mosaic Virus,Tobacco Mosaic Virus, etc.).  It also includes nutritive value (i.e.Vitamin A, Vitamin C, Anti-oxidant Activity, etc).  The screening was conducted by scientists in various departments at AVRDC - The World Vegetable Center and other research institutes.
+            </blockquote>
+        </section>
+        <div id="target" >
+            <div id="filters_area">            
+                <div id="filters">
+                    <b>Show:</b>
+                    <select id="perLow">
+                        {% for i in 20..100 if (i % 20) == 0 %}
+                            {{ limitRow == i ? "<option value='#{i}' selected='selected'>#{i}</option>"|raw  : "<option value='#{i}'>#{i}</option>"|raw }}
+                        {% endfor %}
+                    </select>
+                    <b id="add_area">Filters:<a id="add_filters" title="search" class="button">SEARCH</a><a id="reset_filters" title="reset all" class="button">RESET ALL</a></b>
+                </div>
+            </div>
+            <div id="options">
+                <table>
+                    <thead>
+                        <tr>
+                            <th colspan="6">Filter Options</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>AVRDC Code (VINO)</td><td><input name="VINO" type="text" placeholder="e.g. VI000001, VI000002, ..."></td><td><a name="add_filters" title="add">ADD</a></td><td>Crop Accession Number (ACCNO)</td><td><input name="ACCNO" type="text" placeholder="e.g. A00001, B00001, ..."></td><td><a name="add_filters" title="add">ADD</a></td></tr>
+                        <tr><td>Temporary Number (TEMPNO)</td><td><input name="TEMPNO" type="text" placeholder="e.g. TA00001, TB00001, ..."></td><td><a name="add_filters" title="add">ADD</a></td><td>Pedigree / Cultivar Name</td><td><input name="PEDCUL" type="text"></td><td><a name="add_filters" title="add">ADD</a></td></tr>
+                        <tr><td>Donor identification number (DONO)</td><td><input name="DONO" type="text"></td><td><a name="add_filters" title="add">ADD</a></td><td>PI number (PINO)</td><td><input name="PINO" type="text"></td><td><a name="add_filters" title="add">ADD</a></td></tr>
+                        <tr><td>Genus</td><td>
+                                <select name="GENUS">
+                                    <option value=''>* Any *</option>
+                                    {% if columnsf.GENUS is defined  %}
+                                        {% for item in columnsf.GENUS|sort %}
+                                            <option value="{{item}}">{{item}}</option>
+                                        {% endfor %}
+                                    {% endif %}
+                                </select>
+                            </td><td><a name="add_filters" title="add">ADD</a></td><td>Species</td><td>
+                                <select name="SPECIES">
+                                </select>
+                            </td><td><a name="add_filters" title="add" style="display: none;">ADD</a></td></tr>
+                        <tr><td>Subtaxa</td><td>
+                                <select name="SUBTAXA">
+                                </select>
+                            </td><td><a name="add_filters" title="add" style="display: none;">ADD</a></td><td>Country</td><td>
+                                <select name="COUNTRY">
+                                    <option value=''>* Any *</option>
+                                    {% if columnsf.COUNTRY is defined  %}
+                                        {% for item in columnsf.COUNTRY|sort %}
+                                            <option value="{{item}}">{{item}}</option>
+                                        {% endfor %}
+                                    {% endif %}
+                                </select></td><td><a name="add_filters" title="add">ADD</a></td></tr>
+                        <tr><td>Text Search</td><td><input name="REMARKS" type="text"></td><td><a name="add_filters" title="add">ADD</a></td><td></td><td></td><td></td></tr>
+                    </tbody>
+                </table>
+                <div class="other_filters">
+                    <h3>For Nutritive Value</h3>
+                    <table class="special_filters">
+                        <tbody>
+                            <tr><td>Dry matter (%)</td><td>
+                                    <select name="DRYMAT">
+                                        <option value=">">></option>
+                                        <option value="=">=</option>
+                                        <option value="<"><</option>
+                                    </select><input name="DRYMAT" type="number"></td><td><a name="add_filters" title="add">ADD</a></td><td>Vitamin A (mg/100g)</td><td>
+                                    <select name="VITA">
+                                        <option value=">">></option>
+                                        <option value="=">=</option>
+                                        <option value="<"><</option>
+                                    </select><input name="VITA" type="number"></td><td><a name="add_filters" title="add">ADD</a></td></tr>
+                            <tr><td>Sugar (%)</td><td>
+                                    <select name="SUGAR">
+                                        <option value=">">></option>
+                                        <option value="=">=</option>
+                                        <option value="<"><</option>
+                                    </select><input name="SUGAR" type="number"></td><td><a name="add_filters" title="add">ADD</a></td><td>Vitamin C (mg/100g)</td><td>
+                                    <select name="VITC">
+                                        <option value=">">></option>
+                                        <option value="=">=</option>
+                                        <option value="<"><</option>
+                                    </select><input name="VITC" type="number"></td><td><a name="add_filters" title="add">ADD</a></td></tr>
+                            <tr><td>Color value (*100)</td><td>
+                                    <select name="COLORVAL">
+                                        <option value=">">></option>
+                                        <option value="=">=</option>
+                                        <option value="<"><</option>
+                                    </select><input name="COLORVAL" type="number"></td><td><a name="add_filters" title="add">ADD</a></td><td>Ascorbic acid (mg/100g)</td><td>
+                                    <select name="ASA">
+                                        <option value=">">></option>
+                                        <option value="=">=</option>
+                                        <option value="<"><</option>
+                                    </select><input name="ASA" type="number"></td><td><a name="add_filters" title="add">ADD</a></td></tr>
+                            <tr><td>Lipid (%)</td><td>
+                                    <select name="LIPID">
+                                        <option value=">">></option>
+                                        <option value="=">=</option>
+                                        <option value="<"><</option>
+                                    </select><input name="LIPID" type="number"></td><td><a name="add_filters" title="add">ADD</a></td><td>Alkalinity (pH)</td><td>
+                                    <select name="PH">
+                                        <option value=">">></option>
+                                        <option value="=">=</option>
+                                        <option value="<"><</option>
+                                    </select><input name="PH" type="number"></td><td><a name="add_filters" title="add">ADD</a></td></tr>
+                            <tr><td>Capsacin (mg/g)</td><td>
+                                    <select name="CAPSAI">
+                                        <option value=">">></option>
+                                        <option value="=">=</option>
+                                        <option value="<"><</option>
+                                    </select><input name="CAPSAI" type="number"></td><td><a name="add_filters" title="add">ADD</a></td><td>Soluble solids (Brix)</td><td>
+                                    <select name="SSOLIDS">
+                                        <option value=">">></option>
+                                        <option value="=">=</option>
+                                        <option value="<"><</option>
+                                    </select><input name="SSOLIDS" type="number"></td><td><a name="add_filters" title="add">ADD</a></td></tr>
+                            <tr><td>Beta carotene (mg/100g)</td><td>
+                                    <select name="CAROTENE">
+                                        <option value=">">></option>
+                                        <option value="=">=</option>
+                                        <option value="<"><</option>
+                                    </select><input name="CAROTENE" type="number"></td><td><a name="add_filters" title="add">ADD</a></td><td>Acidity (% Citric acid)</td><td>
+                                    <select name="ACIDITY">
+                                        <option value=">">></option>
+                                        <option value="=">=</option>
+                                        <option value="<"><</option>
+                                    </select><input name="ACIDITY" type="number"></td><td><a name="add_filters" title="add">ADD</a></td></tr>
+                            <tr><td>Fiber (%)</td><td>
+                                    <select name="FIBER">
+                                        <option value=">">></option>
+                                        <option value="=">=</option>
+                                        <option value="<"><</option>
+                                    </select><input name="FIBER" type="number"></td><td><a name="add_filters" title="add">ADD</a></td><td>Total solids</td><td>
+                                    <select name="TSOLIDS">
+                                        <option value=">">></option>
+                                        <option value="=">=</option>
+                                        <option value="<"><</option>
+                                    </select><input name="TSOLIDS" type="number"></td><td><a name="add_filters" title="add">ADD</a></td></tr>
+                            <tr><td>Total oil content (%)</td><td>
+                                    <select name="OIL">
+                                        <option value=">">></option>
+                                        <option value="=">=</option>
+                                        <option value="<"><</option>
+                                    </select><input name="OIL" type="number"></td><td><a name="add_filters" title="add">ADD</a></td><td>Protein content (%)</td><td>
+                                    <select name="PROTEIN">
+                                        <option value=">">></option>
+                                        <option value="=">=</option>
+                                        <option value="<"><</option>
+                                    </select><input name="PROTEIN" type="number"></td><td><a name="add_filters" title="add">ADD</a></td></tr>
+                            <tr><td>Starch content (%)</td><td>
+                                    <select name="STARCH">
+                                        <option value=">">></option>
+                                        <option value="=">=</option>
+                                        <option value="<"><</option>
+                                    </select><input name="STARCH" type="number"></td><td><a name="add_filters" title="add">ADD</a></td><td>Anti-oxidant activity (%) (by Modified Thiocyanate Method)</td><td>
+                                    <select name="MT">
+                                        <option value=">">></option>
+                                        <option value="=">=</option>
+                                        <option value="<"><</option>
+                                    </select><input name="MT" type="number"></td><td><a name="add_filters" title="add">ADD</a></td></tr>
+                            <tr><td>Anti-oxidant activity (%) (by DPPH Method)</td><td>
+                                    <select name="DPPH">
+                                        <option value=">">></option>
+                                        <option value="=">=</option>
+                                        <option value="<"><</option>
+                                    </select><input name="DPPH" type="number"></td><td><a name="add_filters" title="add">ADD</a></td><td>Total phenolic (mg/100g) (by Folin-Denis Method)</td><td>
+                                    <select name="TP">
+                                        <option value=">">></option>
+                                        <option value="=">=</option>
+                                        <option value="<"><</option>
+                                    </select><input name="TP" type="number"></td><td><a name="add_filters" title="add">ADD</a></td></tr>
+                        </tbody>
+                    </table>
+                    <h3>For Abiotic Stress Tolerance</h3>
+                    <table>
+                        <tbody>
+                            <tr><td>Heat tolerance</td><td>
+                                    <select name="HEAT">
+                                        <option value=''>* Any *</option>
+                                        {% if columnsf.HEAT is defined  %}
+                                            {% for item in columnsf.HEAT|sort %}
+                                                <option value="{{item}}">{{item}}</option>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </select></td><td><a name="add_filters" title="add">ADD</a></td><td>Cold tolerance</td><td>
+                                    <select name="COLD">
+                                        <option value=''>* Any *</option>
+                                        {% if columnsf.COLD is defined  %}
+                                            {% for item in columnsf.COLD|sort %}
+                                                <option value="{{item}}">{{item}}</option>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </select></td><td><a name="add_filters" title="add">ADD</a></td></tr>
+                            <tr><td>Drought tolerance</td><td>
+                                    <select name="DROUGHT">
+                                        <option value=''>* Any *</option>
+                                        {% if columnsf.DROUGHT is defined  %}
+                                            {% for item in columnsf.DROUGHT|sort %}
+                                                <option value="{{item}}">{{item}}</option>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </select></td><td><a name="add_filters" title="add">ADD</a></td><td>Flooding  tolerance</td><td>
+                                    <select name="FLOOD">
+                                        <option value=''>* Any *</option>
+                                        {% if columnsf.FLOOD is defined  %}
+                                            {% for item in columnsf.FLOOD|sort %}
+                                                <option value="{{item}}">{{item}}</option>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </select></td><td><a name="add_filters" title="add">ADD</a></td></tr>
+                            <tr><td>Salinity tolerance</td><td>
+                                    <select name="SALINITY">
+                                        <option value=''>* Any *</option>
+                                        {% if columnsf.SALINITY is defined  %}
+                                            {% for item in columnsf.SALINITY|sort %}
+                                                <option value="{{item}}">{{item}}</option>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </select></td><td><a name="add_filters" title="add">ADD</a></td><td></td><td></td><td></td></tr>
+                        </tbody>
+                    </table>
+                    <h3>For Insect Pest Resistance</h3>
+                    <table>
+                        <tbody>
+                            <tr><td>Dacus cucurbita (melon fly)</td><td>
+                                    <select name="DACCUR">
+                                        <option value=''>* Any *</option>
+                                        {% if columnsf.DACCUR is defined  %}
+                                            {% for item in columnsf.DACCUR|sort %}
+                                                <option value="{{item}}">{{item}}</option>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </select></td><td><a name="add_filters" title="add">ADD</a></td><td>Callosobruchus chinensis (bruchid beetle)</td><td>
+                                    <select name="BRUCHID">
+                                        <option value=''>* Any *</option>
+                                        {% if columnsf.BRUCHID is defined  %}
+                                            {% for item in columnsf.BRUCHID|sort %}
+                                                <option value="{{item}}">{{item}}</option>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </select></td><td><a name="add_filters" title="add">ADD</a></td></tr>
+                            <tr><td>Cotton aphid</td><td>
+                                    <select name="RES_COTAPD">
+                                        <option value=''>* Any *</option>
+                                        {% if columnsf.RES_COTAPD is defined  %}
+                                            {% for item in columnsf.RES_COTAPD|sort %}
+                                                <option value="{{item}}">{{item}}</option>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </select></td><td><a name="add_filters" title="add">ADD</a></td><td>Cotton leaf hopper</td><td>
+                                    <select name="RES_COTLFHPER">
+                                        <option value=''>* Any *</option>
+                                        {% if columnsf.RES_COTLFHPER is defined  %}
+                                            {% for item in columnsf.RES_COTLFHPER|sort %}
+                                                <option value="{{item}}">{{item}}</option>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </select></td><td><a name="add_filters" title="add">ADD</a></td></tr>
+                        </tbody>
+                    </table>
+                    <h3>For Bacterial Resistance</h3>
+                    <table>
+                        <tbody>
+                            <tr><td>Curtobacterium flaccumfaciens pv. flaccumfaciens (Tan spot)</td><td>
+                                    <select name="RES_TANSPO">
+                                        <option value=''>* Any *</option>
+                                        {% if columnsf.RES_TANSPO is defined  %}
+                                            {% for item in columnsf.RES_TANSPO|sort %}
+                                                <option value="{{item}}">{{item}}</option>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </select></td><td><a name="add_filters" title="add">ADD</a></td><td>Pseudomonas savastanoi pv. phaseolicola (Halo blight)</td><td>
+                                    <select name="RES_HALOBL">
+                                        <option value=''>* Any *</option>
+                                        {% if columnsf.RES_HALOBL is defined  %}
+                                            {% for item in columnsf.RES_HALOBL|sort %}
+                                                <option value="{{item}}">{{item}}</option>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </select></td><td><a name="add_filters" title="add">ADD</a></td></tr>
+                            <tr><td>Tomato bacterial wilt</td><td>
+                                    <select name="TMBACWT">
+                                        <option value=''>* Any *</option>
+                                        {% if columnsf.TMBACWT is defined  %}
+                                            {% for item in columnsf.TMBACWT|sort %}
+                                                <option value="{{item}}">{{item}}</option>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </select></td><td><a name="add_filters" title="add">ADD</a></td><td>Eggplant bacterial wilt</td><td>
+                                    <select name="EGBACWT">
+                                        <option value=''>* Any *</option>
+                                        {% if columnsf.EGBACWT is defined  %}
+                                            {% for item in columnsf.EGBACWT|sort %}
+                                                <option value="{{item}}">{{item}}</option>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </select></td><td><a name="add_filters" title="add">ADD</a></td></tr>
+                        </tbody>
+                    </table>
+                    <h3>For Fungal Resistance</h3>
+                    <table>
+                        <tbody>
+                            <tr><td>Powdery mildew</td><td>
+                                    <select name="POWMILD">
+                                        <option value=''>* Any *</option>
+                                        {% if columnsf.POWMILD is defined  %}
+                                            {% for item in columnsf.POWMILD|sort %}
+                                                <option value="{{item}}">{{item}}</option>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </select></td><td><a name="add_filters" title="add">ADD</a></td><td>Tomato late blight</td><td>
+                                    <select name="TMLATEBL">
+                                        <option value=''>* Any *</option>
+                                        {% if columnsf.TMLATEBL is defined  %}
+                                            {% for item in columnsf.TMLATEBL|sort %}
+                                                <option value="{{item}}">{{item}}</option>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </select></td><td><a name="add_filters" title="add">ADD</a></td></tr>
+                            <tr><td>Pepper anthrancnose</td><td>
+                                    <select name="PPANTHR">
+                                        <option value=''>* Any *</option>
+                                        {% if columnsf.PPANTHR is defined  %}
+                                            {% for item in columnsf.PPANTHR|sort %}
+                                                <option value="{{item}}">{{item}}</option>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </select></td><td><a name="add_filters" title="add">ADD</a></td><td>Pepper phytophthora blight</td><td>
+                                    <select name="PPPHYTOBL">
+                                        <option value=''>* Any *</option>
+                                        {% if columnsf.PPPHYTOBL is defined  %}
+                                            {% for item in columnsf.PPPHYTOBL|sort %}
+                                                <option value="{{item}}">{{item}}</option>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </select></td><td><a name="add_filters" title="add">ADD</a></td></tr>
+                        </tbody>
+                    </table>
+                    <h3>For Virus Resistance</h3>
+                    <table>
+                        <tbody>
+                            <tr><td>Bhendi yellow vein mosaic virus</td><td>
+                                    <select name="BYVMV">
+                                        <option value=''>* Any *</option>
+                                        {% if columnsf.BYVMV is defined  %}
+                                            {% for item in columnsf.BYVMV|sort %}
+                                                <option value="{{item}}">{{item}}</option>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </select></td><td><a name="add_filters" title="add">ADD</a></td><td>Chilli veinal mottle virus</td><td>
+                                    <select name="CVMV">
+                                        <option value=''>* Any *</option>
+                                        {% if columnsf.CVMV is defined  %}
+                                            {% for item in columnsf.CVMV|sort %}
+                                                <option value="{{item}}">{{item}}</option>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </select></td><td><a name="add_filters" title="add">ADD</a></td></tr>
+                            <tr><td>Cucumber mosaic virus (5th)</td><td>
+                                    <select name="CMV5">
+                                        <option value=''>* Any *</option>
+                                        {% if columnsf.CMV5 is defined  %}
+                                            {% for item in columnsf.CMV5|sort %}
+                                                <option value="{{item}}">{{item}}</option>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </select></td><td><a name="add_filters" title="add">ADD</a></td><td>Cucumber mosaic virus (COTYL)</td><td>
+                                    <select name="CMVCOT">
+                                        <option value=''>* Any *</option>
+                                        {% if columnsf.CMVCOT is defined  %}
+                                            {% for item in columnsf.CMVCOT|sort %}
+                                                <option value="{{item}}">{{item}}</option>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </select></td><td><a name="add_filters" title="add">ADD</a></td></tr>
+                            <tr><td>Pepper mild mottle virus</td><td>
+                                    <select name="PMMV">
+                                        <option value=''>* Any *</option>
+                                        {% if columnsf.PMMV is defined  %}
+                                            {% for item in columnsf.PMMV|sort %}
+                                                <option value="{{item}}">{{item}}</option>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </select></td><td><a name="add_filters" title="add">ADD</a></td><td>Potato virus Y</td><td>
+                                    <select name="PVY">
+                                        <option value=''>* Any *</option>
+                                        {% if columnsf.PVY is defined  %}
+                                            {% for item in columnsf.PVY|sort %}
+                                                <option value="{{item}}">{{item}}</option>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </select></td><td><a name="add_filters" title="add">ADD</a></td></tr>
+                            <tr><td>Tobacco mosaic virus</td><td>
+                                    <select name="TMV">
+                                        <option value=''>* Any *</option>
+                                        {% if columnsf.TMV is defined  %}
+                                            {% for item in columnsf.TMV|sort %}
+                                                <option value="{{item}}">{{item}}</option>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </select></td><td><a name="add_filters" title="add">ADD</a></td><td>Tomato mosaic virus</td><td>
+                                    <select name="TOMV">
+                                        <option value=''>* Any *</option>
+                                        {% if columnsf.TOMV is defined  %}
+                                            {% for item in columnsf.TOMV|sort %}
+                                                <option value="{{item}}">{{item}}</option>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </select></td><td><a name="add_filters" title="add">ADD</a></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>            
+            <table id="dataView">
+                <caption class="pageList">
+                    <div id="stick">
+                        <div class="pagination">
+                            <a href="#" class="first" data-action="first">&laquo;</a>
+                            <a href="#" class="previous" data-action="previous">&lsaquo;</a>
+                            <input type="text" readonly="readonly" data-max-page="{{ (total / limitRow)|round(0, 'ceil') == 0 ? 1 : (total / limitRow)|round(0, 'ceil') }}" />
+                            <a href="#" class="next" data-action="next">&rsaquo;</a>
+                            <a href="#" class="last" data-action="last">&raquo;</a>
+                        </div>
+                    </div>
+                </caption>
+                <thead id="dataorder">
+                    <tr><th title="AVRDC Code" data-type="VINO">VINO</th><th title="Crop Accession Number" data-type="ACCNO">ACCNO</th><th title="Temporary Number" data-type="TEMPNO">TEMPNO</th><th title="Family" data-type="FAMILY">Family</th><th title="Genus" data-type="GENUS">Genus</th><th title="Species" data-type="SPECIES">Species</th><th title="Subtaxa" data-type="SUBTAXA">Subtaxa</th><th title="Pedigree / Cultivar Name" data-type="PEDCUL">Pedigree / Cultivar Name</th><th title="Country" data-type="COUNTRY">Country</th><th title="Operation">Operation</th></tr>
+                </thead>
+                <tbody id="databody">
+                    {% embed "search/evaluation_part.html.twig" %}
+                    {% endembed %}
+                </tbody>
+            </table>
+        </div>
+        <script src="{{ BASE_PATH }}/public/js/lib/jquery.jqpagination.min.js"></script>
+        <script src="{{ BASE_PATH }}/public/js/lib/loading-overlay.min.js"></script>
+        <script src="{{ BASE_PATH }}/public/js/lib/jquery.floatThead.min.js"></script>
+        <script src="{{ BASE_PATH }}/public/js/search/list.js"></script>
+    {% endblock %}
+{% endembed %}

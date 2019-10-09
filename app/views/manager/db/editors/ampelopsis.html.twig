@@ -1,0 +1,126 @@
+<div id='editorMain'>
+    <div data-type='VINO'><div>Vegetable introduction number:</div><div><input id="disVINO" type="text" placeholder="VINO" disabled /><input id="inputVINO" type="text"><button id="searchVINO" class="button" data-status="search" title="Search VINO From Passport"></button></div></div>
+    <div data-type='VARIANT'><div>Variant:</div><div><input type="text" placeholder="VARIANT" /></div></div>
+    <div data-type='ACCNO'><div>Crop accession number:</div><div><input id="ACCNO" type="text" placeholder="ACCNO" disabled /></div></div>
+    <div data-type='SPECIES'><div>Species:</div><div><input id="SPECIES" type="text" placeholder="SPECIES" disabled /></div></div>
+    <div data-type='DUPLIC'><div>Duplicate note:</div><div><input id="DUPLIC" type="text" placeholder="DUPLIC" disabled /></div></div>
+    <div data-type='SUBTAXA'><div>Subtaxa:</div><div><input id="SUBTAXA" type="text" placeholder="SUBTAXA" disabled /></div></div>
+    <div data-type='TEMPNO'><div>Temporary number:</div><div><input id="TEMPNO" type="text" placeholder="TEMPNO" disabled /></div></div>
+    <div data-type='YRSN'><div>Char. year & season:</div><div><input type="text" placeholder="YRSN" /></div></div>
+</div>
+<div id='editorOther' class="tabs tabs-style-line csh4">
+    <nav>
+        <ul>
+            <li><a href="#section-line-1"><span>SEEDLING DATA</span></a></li>
+            <li><a href="#section-line-2"><span>VEGETATIVE DATA</span></a></li>
+            <li><a href="#section-line-3"><span>INFLORESCENCE DATA</span></a></li>
+            <li><a href="#section-line-4"><span>FRUIT DATA</span></a></li>
+            <li><a href="#section-line-5"><span>SEED DATA</span></a></li>
+                {% if SESSION.user.JURISDICTION == 0 %}
+                <li><a href="#section-line-6"><span>Photo</span></a></li>
+                {% endif %}
+        </ul>
+    </nav>
+    <div class="content-wrap">
+        <section id="section-line-1">
+            <div data-type='GERMPD'><div>Germination period:</div><div><input type="number" step="1" min="0" placeholder="GERMPD" /></div></div>
+            <div data-type='HYPCOL'><div>Hypocotyl color:</div><div>
+                    <select>
+                        <option value="">* HYPCOL *</option>
+                        {% for item in related.HYPCOL %}
+                            <option value="{{ item.REFNO }}">{{ item.HYPCOL }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='COTLFCOL'><div>Cotyledon leaf color:</div><div>
+                    <select>
+                        <option value="">* COTLFCOL *</option>
+                        {% for item in related.COTLFCOL %}
+                            <option value="{{ item.REFNO }}">{{ item.COTLFCOL }}</option>
+                        {% endfor %}
+                    </select></div></div>
+        </section>
+        <section id="section-line-2">
+            <div data-type='MVINLEN'><div>Main vine length (cm):</div><div><input type="number" step="0.01" min="0" placeholder="MVINLEN" /></div></div>
+            <div data-type='LFLEN'><div>Leaf length (cm):</div><div><input type="number" step="0.01" min="0" placeholder="LFLEN" /></div></div>
+            <div data-type='LFWID'><div>Leaf width (cm):</div><div><input type="number" step="0.01" min="0" placeholder="LFWID" /></div></div>
+            <div data-type='LFCOL'><div>Leaf color:</div><div>
+                    <select>
+                        <option value="">* LFCOL *</option>
+                        {% for item in related.LFCOL %}
+                            <option value="{{ item.REFNO }}">{{ item.LFCOL }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='NOLATSHT'><div>Number of lateral shoots:</div><div><input type="number" step="0.01" min="0" placeholder="NOLATSHT" /></div></div>
+            <div data-type='LFMGN'><div>Leaf margin:</div><div>
+                    <select>
+                        <option value="">* LFMGN *</option>
+                        {% for item in related.LFMGN %}
+                            <option value="{{ item.REFNO }}">{{ item.LFMGN }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='LFBLTP'><div>Leaf blade tip:</div><div>
+                    <select>
+                        <option value="">* LFBLTP *</option>
+                        {% for item in related.LFBLTP %}
+                            <option value="{{ item.REFNO }}">{{ item.LFBLTP }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='PRLFVIN'><div>Prominence of leaf vein:</div><div>
+                    <select>
+                        <option value="">* PRLFVIN *</option>
+                        {% for item in related.PRLFVIN %}
+                            <option value="{{ item.REFNO }}">{{ item.PRLFVIN }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='STCOL'><div>Stem color:</div><div>
+                    <select>
+                        <option value="">* STCOL *</option>
+                        {% for item in related.STCOL %}
+                            <option value="{{ item.REFNO }}">{{ item.STCOL }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='STDIA'><div>Stem diameter (mm):</div><div><input type="number" step="0.01" min="0" placeholder="STDIA" /></div></div>
+            <div data-type='INTLEN'><div>Internode length (cm):</div><div><input type="number" step="0.01" min="0" placeholder="INTLEN" /></div></div>
+        </section>
+        <section id="section-line-3">
+            <div data-type='DAYSFLO'><div>Days to flowering:</div><div><input type="number" step="1" min="0" placeholder="DAYSFLO" /></div></div>
+            <div data-type='FLOCOL'><div>Flower color:</div><div>
+                    <select>
+                        <option value="">* FLOCOL *</option>
+                        {% for item in related.FLOCOL %}
+                            <option value="{{ item.REFNO }}">{{ item.FLOCOL }}</option>
+                        {% endfor %}
+                    </select></div></div>
+        </section>
+        <section id="section-line-4">
+            <div data-type='DAYFFMAT'><div>Days to first fruit maturity:</div><div><input type="number" step="1" min="0" placeholder="DAYFFMAT" /></div></div>
+            <div data-type='FRCOL'><div>Fruit color:</div><div>
+                    <select>
+                        <option value="">* FRCOL *</option>
+                        {% for item in related.FRCOL %}
+                            <option value="{{ item.REFNO }}">{{ item.FRCOL }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='FRLEN'><div>Fruit length (cm):</div><div><input type="number" step="0.01" min="0" placeholder="FRLEN" /></div></div>
+            <div data-type='FRWID'><div>Fruit width (cm):</div><div><input type="number" step="0.01" min="0" placeholder="FRWID" /></div></div>
+            <div data-type='NOFRPCL'><div>Number of fruits per cluster:</div><div><input type="number" step="0.01" min="0" placeholder="NOFRPCL" /></div></div>
+            <div data-type='NOSDPFR'><div>Number of seeds per fruit:</div><div><input type="number" step="0.01" min="0" placeholder="NOSDPFR" /></div></div>
+        </section>
+        <section id="section-line-5">
+            <div data-type='SDCOL'><div>Seed color:</div><div>
+                    <select>
+                        <option value="">* SDCOL *</option>
+                        {% for item in related.SDCOL %}
+                            <option value="{{ item.REFNO }}">{{ item.SDCOL }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='SDWT'><div>1000 seeds weight (gm):</div><div><input type="number" step="0.01" min="0" placeholder="SDWT" /></div></div>
+        </section>
+        {% if SESSION.user.JURISDICTION == 0 %}
+            <section id="section-line-6">
+                {% embed "/manager/db/editors/picture/picture.html.twig" %}
+                {% endembed %}
+            </section>
+        {% endif %}
+    </div><!-- /content -->
+</div><!-- /tabs -->

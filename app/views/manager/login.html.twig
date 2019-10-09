@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+    <head>
+        {% block meta %}
+            <meta charset="utf-8" />
+        {% endblock %}
+        <title>{% block title %}AVGRIS{% endblock %}</title>
+        <link rel="shortcut icon" href="{{ BASE_PATH }}/public/images/favicon.ico">
+        {% block css %}
+            <link rel="stylesheet" href="{{ BASE_PATH }}/public/css/manager/login.css">
+        {% endblock %}
+        {% block javascript %}
+            <script src="{{ BASE_PATH }}/public/js/lib/jquery-1.11.3.min.js"></script>
+            <script src="{{ BASE_PATH }}/public/js/lib/jquery.noty.packaged.min.js"></script>
+            <script src="{{ BASE_PATH }}/public/js/config/config.js"></script>
+            <script src="{{ BASE_PATH }}/public/js/manager/login.js"></script>
+        {% endblock %}
+    </head>
+    <body>
+        <div id="wrapper">
+            <div class="user-icon"></div>
+            <div class="pass-icon"></div>
+            <div name="login-form" class="login-form">
+                <div class="header">
+                    <h1>Login Form<span id="ajaxload"><img src="{{ BASE_PATH }}/public/images/ajax-loader.gif"></span></h1>
+                    <span>Fill out the form below to login to control panel.</span>
+                </div>
+                <div class="content">
+                    <input name="username" type="text" class="input username" onfocus="this.value = ''" placeholder="Username" autocomplete="off" />
+                    <input name="password" type="password" class="input password" onfocus="this.value = ''" placeholder="Password" autocomplete="off" />
+                </div>
+                <div class="footer">
+                    <input type="button" name="submit" value="Login" class="button" />
+                    <input type="button" name="cancel" value="Cancel" class="cancel" />
+                </div>
+            </div>
+        </div>
+        <div class="gradient"></div>
+    </body>
+</html>

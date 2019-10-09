@@ -1,0 +1,11 @@
+<tr>
+{% if SESSION.user.JURISDICTION == 0 or SESSION.user.JURISDICTION == 2 %}
+<th><span class="pin" title="pin"></span><div class="cell"><span><input id="check_all" type="checkbox" /></span></div></th>
+{% endif %}
+{% if related_subtable is defined %}
+<th><span class="pin" title="pin"></span><div class="cell"><span>DETAIL</span></div></th>
+{% endif %}
+{% for column in columns %}
+<th><span class="pin" title="pin"></span><div class="cell"><span data-type='{{ column }}'>{{ column }}</span></div></th>
+{% endfor %}
+</tr>

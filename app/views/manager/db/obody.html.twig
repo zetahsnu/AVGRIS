@@ -1,0 +1,56 @@
+{% if data is defined %}
+{% if view is not defined %}
+{% for item in data if data|length > 0 %}
+<tr data-pk="{{item['SISN']}}">
+<td><input type="checkbox" /></td>
+{% for column in scolumns %}
+<td title="{{ item[column]|raw }}" style="width: calc((90% - {{ (scolumns|length + 1) * 10 }}px) / {{scolumns|length}})">
+{% if column != 'CROP' %}
+<input type="{{ titles[column]['type'] }}" value="{{ item[column]|raw }}" placeholder="{{ column }}" />
+{% else %}
+<select>
+<option value="">* CROP *</option>
+{% for sitem in subtable_related.CROP %}
+<option value="{{ sitem.CROP|raw }}" 
+{% if sitem.CROP == item[column] %}
+selected
+{% endif %}>{{ sitem.CROP }}</option>
+{% endfor %}
+</select>
+{% endif %}
+</td>
+{% endfor %}
+</tr>
+{% else %}
+<div>No records returned</div>
+{% endfor %}
+{% else %}
+{% for item in data if data|length > 0 %}
+<div class="css_tr"><div class="css_td">{{ loop.index }}</div>
+{% for column in scolumns %}
+<div class="css_td">{{ item[column]|raw }}</div>
+{% endfor %}
+</div>
+{% else %}
+<div class="css_tr"><div class="css_td">No records returned</div></div>
+{% endfor %}
+{% endif %}
+{% else %}
+<tr class="add">
+<td><input type="checkbox" /></td>
+{% for column in scolumns %}
+<td style="width: calc((90% - {{ (scolumns|length + 1) * 10 }}px) / {{scolumns|length}})">
+{% if column != 'CROP' %}
+<input type="{{ titles[column]['type'] }}" placeholder="{{ column }}" />
+{% else %}
+<select>
+<option value="">* CROP *</option>
+{% for sitem in subtable_related.CROP %}
+<option value="{{ sitem.CROP }}">{{ sitem.CROP }}</option>
+{% endfor %}
+</select>
+{% endif %}
+</td>
+{% endfor %}
+</tr>
+{% endif %}

@@ -1,0 +1,138 @@
+<div id='editorMain'>
+    <div data-type='VINO'><div>Vegetable introduction number:</div><div><input id="disVINO" type="text" placeholder="VINO" disabled /><input id="inputVINO" type="text"><button id="searchVINO" class="button" data-status="search" title="Search VINO From Passport"></button></div></div>
+    <div data-type='VARIANT'><div>Variant:</div><div><input type="text" placeholder="VARIANT" /></div></div>
+    <div data-type='ACCNO'><div>Crop accession number:</div><div><input id="ACCNO" type="text" placeholder="ACCNO" disabled /></div></div>
+    <div data-type='SPECIES'><div>Species:</div><div><input id="SPECIES" type="text" placeholder="SPECIES" disabled /></div></div>
+    <div data-type='DUPLIC'><div>Duplicate note:</div><div><input id="DUPLIC" type="text" placeholder="DUPLIC" disabled /></div></div>
+    <div data-type='SUBTAXA'><div>Subtaxa:</div><div><input id="SUBTAXA" type="text" placeholder="SUBTAXA" disabled /></div></div>
+    <div data-type='TEMPNO'><div>Temporary number:</div><div><input id="TEMPNO" type="text" placeholder="TEMPNO" disabled /></div></div>
+    <div data-type='YRSN'><div>Char. year & season:</div><div><input type="text" placeholder="YRSN" /></div></div>
+</div>
+<div id='editorOther' class="tabs tabs-style-line csh4">
+    <nav>
+        <ul>
+            <li><a href="#section-line-1"><span>SEEDLING DATA</span></a></li>
+            <li><a href="#section-line-2"><span>VEGETATIVE DATA</span></a></li>
+            <li><a href="#section-line-3"><span>INFLORESCENCE DATA</span></a></li>
+            <li><a href="#section-line-4"><span>SEED DATA</span></a></li>
+                {% if SESSION.user.JURISDICTION == 0 %}
+                <li><a href="#section-line-5"><span>Photo</span></a></li>
+                {% endif %}
+        </ul>
+    </nav>
+    <div class="content-wrap">
+        <section id="section-line-1">
+            <div data-type='GERMPD'><div>Germination period:</div><div><input type="number" step="1" min="0" placeholder="GERMPD" /></div></div>
+            <div data-type='HYPCOL'><div>Hypocotyl color:</div><div>
+                    <select>
+                        <option value="">* HYPCOL *</option>
+                        {% for item in related.HYPCOL %}
+                            <option value="{{ item.REFNO }}">{{ item.HYPCOL }}</option>
+                        {% endfor %}
+                    </select></div></div>
+        </section>
+        <section id="section-line-2">
+            <div data-type='PLHT'><div>Plant height (cm) (at flowering stage):</div><div><input type="number" step="0.01" min="0" placeholder="PLHT" /></div></div>
+            <div data-type='STPIG'><div>Stem pigmentation:</div><div>
+                    <select>
+                        <option value="">* STPIG *</option>
+                        {% for item in related.STPIG %}
+                            <option value="{{ item.REFNO }}">{{ item.STPIG }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='LFLEN'><div>Leaf length (cm) (on 6<sup>th</sup> or 8<sup>th</sup> leaf):</div><div><input type="number" step="0.01" min="0" placeholder="LFLEN" /></div></div>
+            <div data-type='LFWID'><div>Leaf width (cm) (on 6<sup>th</sup> or 8<sup>th</sup> leaf):</div><div><input type="number" step="0.01" min="0" placeholder="LFWID" /></div></div>
+            <div data-type='LFPUB'><div>Leaf pubescence:</div><div>
+                    <select>
+                        <option value="">* LFPUB *</option>
+                        {% for item in related.LFPUB %}
+                            <option value="{{ item.REFNO }}">{{ item.LFPUB }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='LFSHP'><div>Leaf shape:</div><div>
+                    <select>
+                        <option value="">* LFSHP *</option>
+                        {% for item in related.LFSHP %}
+                            <option value="{{ item.REFNO }}">{{ item.LFSHP }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='LFMGN'><div>Leaf margin:</div><div>
+                    <select>
+                        <option value="">* LFMGN *</option>
+                        {% for item in related.LFMGN %}
+                            <option value="{{ item.REFNO }}">{{ item.LFMGN }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='PRLFVN'><div>Prominence of leaf veins:</div><div>
+                    <select>
+                        <option value="">* PRLFVN *</option>
+                        {% for item in related.PRLFVN %}
+                            <option value="{{ item.REFNO }}">{{ item.PRLFVN }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='PETPIG'><div>Petiole pigmentation:</div><div>
+                    <select>
+                        <option value="">* PETPIG *</option>
+                        {% for item in related.PETPIG %}
+                            <option value="{{ item.REFNO }}">{{ item.PETPIG }}</option>
+                        {% endfor %}
+                    </select></div></div>
+        </section>
+        <section id="section-line-3">
+            <div data-type='DAYSFLO'><div>Days to flowering:</div><div><input type="number" step="1" min="0" placeholder="DAYSFLO" /></div></div>
+            <div data-type='TISTKLEN'><div>Terminal inflorescence stalk length (cm):</div><div><input type="number" step="0.01" min="0" placeholder="TISTKLEN" /></div></div>
+            <div data-type='TIINLLEN'><div>Terminal inflorescence laterals length (cm):</div><div><input type="number" step="0.01" min="0" placeholder="TIINLLEN" /></div></div>
+            <div data-type='TINFSHP'><div>Terminal inflorescence shape:</div><div>
+                    <select>
+                        <option value="">* TINFSHP *</option>
+                        {% for item in related.TINFSHP %}
+                            <option value="{{ item.REFNO }}">{{ item.TINFSHP }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='INFDINDX'><div>Inflorescence density index:</div><div>
+                    <select>
+                        <option value="">* INFDINDX *</option>
+                        {% for item in related.INFDINDX %}
+                            <option value="{{ item.REFNO }}">{{ item.INFDINDX }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='INFCOL'><div>Inflorescence color:</div><div>
+                    <select>
+                        <option value="">* INFCOL *</option>
+                        {% for item in related.INFCOL %}
+                            <option value="{{ item.REFNO }}">{{ item.INFCOL }}</option>
+                        {% endfor %}
+                    </select></div></div>
+        </section>
+        <section id="section-line-4">
+            <div data-type='SDCOL'><div>Seed color:</div><div>
+                    <select>
+                        <option value="">* SDCOL *</option>
+                        {% for item in related.SDCOL %}
+                            <option value="{{ item.REFNO }}">{{ item.SDCOL }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='SDCTTYP'><div>Seed coat type:</div><div>
+                    <select>
+                        <option value="">* SDCTTYP *</option>
+                        {% for item in related.SDCTTYP %}
+                            <option value="{{ item.REFNO }}">{{ item.SDCTTYP }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='SDSHP'><div>Seed shape:</div><div>
+                    <select>
+                        <option value="">* SDSHP *</option>
+                        {% for item in related.SDSHP %}
+                            <option value="{{ item.REFNO }}">{{ item.SDSHP }}</option>
+                        {% endfor %}
+                    </select></div></div>         
+            <div data-type='SDWT'><div>1000 seeds weight (gm):</div><div><input type="number" step="0.01" min="0" placeholder="SDWT" /></div></div>
+        </section>
+        {% if SESSION.user.JURISDICTION == 0 %}
+            <section id="section-line-5">
+                {% embed "/manager/db/editors/picture/picture.html.twig" %}
+                {% endembed %}
+            </section>
+        {% endif %}
+    </div><!-- /content -->
+</div><!-- /tabs -->

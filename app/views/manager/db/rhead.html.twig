@@ -1,0 +1,5 @@
+<tr><th>Operation</th>
+{% for column in rcolumns %}
+<th data-stype="{{ column }}" style="width: calc((90% - {{ (rcolumns|length + 1) * 8 }}px) / {{rcolumns|length}})">{{ column }}</th>
+{% endfor %}
+</tr>

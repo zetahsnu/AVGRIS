@@ -1,0 +1,22 @@
+{% embed "base.html.twig" %}
+    {% block css %}
+        {{ parent() }}
+        <link rel="stylesheet" href="{{ BASE_PATH }}/public/css/error.css">
+    {% endblock %}
+    {% block content %}
+        <section>
+            <h1>{{ title }}</h1>
+            <p>
+                {% for error in errors %}
+                    {{ error }}<br>
+                {% endfor %}
+                This will turn into Home Page in 3 secconds.
+            </p>
+        </section>
+        <script>
+            setTimeout(function () {
+                window.location.href = config.base_url;
+            }, 3000);
+        </script>
+    {% endblock %}
+{% endembed %}

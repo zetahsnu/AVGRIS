@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAGY,6BAAgB,GACZ,aAAa,EAAE,cAAc",
+"sources": ["../../scss/view/evaluation.scss"],
+"names": [],
+"file": "evaluation.css"
+}

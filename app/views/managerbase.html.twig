@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+    <head>
+        {% block meta %}
+            <meta charset="utf-8" />
+        {% endblock %}
+        <title>{% block title %}AVGRIS{% endblock %}</title>
+        <link rel="shortcut icon" href="{{ BASE_PATH }}/public/images/favicon.ico">
+        {% block css %}
+            <link rel="stylesheet" href="{{ BASE_PATH }}/public/js/lib/perfect-scrollbar/css/perfect-scrollbar.min.css">
+            <link rel="stylesheet" href="{{ BASE_PATH }}/public/css/managerbase.css">
+        {% endblock %}
+        {% block javascript %}
+            <script src="https://www.google.com/jsapi"></script>
+            <script src="{{ BASE_PATH }}/public/js/lib/jquery-1.11.3.min.js"></script>
+            <script src="{{ BASE_PATH }}/public/js/lib/perfect-scrollbar/perfect-scrollbar.jquery.min.js"></script>
+            <script src="{{ BASE_PATH }}/public/js/lib/jquery.noty.packaged.min.js"></script>
+            <script src="{{ BASE_PATH }}/public/js/config/config.js"></script>            
+        {% endblock %}
+    </head>
+    <body>
+        <div id="pageContainer">
+            <button class="hamburger_menu" id="open_menu"></button>
+            <button class="button" id="logout">Logout</button>
+            <div class="menu_wrap">
+                <nav id="topMenu">
+                    <a href ="{{ BASE_PATH }}" alt="AVGRIS" title="AVGRIS"><img id="logoImg" src="{{ BASE_PATH }}/public/images/logo_46.png"></a>
+                    &nbsp{{ SESSION.user.USERNAME }}&nbsp
+                </nav>
+                <div id="bottomMenu">
+                    <nav id="mainMenu">
+                        <ul class="level_one">
+                            <li><a href='javascript:' class='active' data-request="index" title="Dashboard"><img src="{{ BASE_PATH }}/public/images/manager/dashboard.svg">&nbsp;Dashboard</a></li>
+                            <li><a href='javascript:' title="Database"><img src="{{ BASE_PATH }}/public/images/manager/database.svg">&nbsp;DataBase ({% set total = 0 %}{% for category in tables %}{% set total = total + category|length %}{% endfor %}{{ total }})<span class='collspan'>&#43;</span></a>
+                                <ul class='level_two'>
+                                    {% if tables['Passport data'] is defined and tables['Passport data']|length > 0 %}
+                                        <div class='group'>Passport data</div>
+                                        {% for pas in tables['Passport data'] %}
+                                            <li><a href='javascript:' data-request="{{ pas }}" title="{{ pas|capitalize }}">{{ pas|capitalize }}<span class="total">{{ totals['Passport data'][pas] }}</span></a></li>
+                                                {%endfor%}
+                                            {% endif %}
+                                            {% if tables['Characterization data'] is defined and tables['Characterization data']|length > 0 %}
+                                        <div class='group'>Characterization data</div>
+                                        {% for char in tables['Characterization data'] %}
+                                            <li><a href='javascript:' data-request="{{ char }}" title="{{ char|capitalize }}">{{ char|capitalize }}<span class="total">{{ totals['Characterization data'][char] }}</span></a></li>
+                                                {%endfor%}
+                                            {% endif %}
+                                            {% if tables['Evaluation data'] is defined and tables['Evaluation data']|length > 0 %}
+                                        <div class='group'>Evaluation data</div>
+                                        {% for eva in tables['Evaluation data'] %}
+                                            <li><a href='javascript:' data-request="{{ eva }}" title="{{ eva|capitalize }}">{{ eva|capitalize }}<span class="total">{{ totals['Evaluation data'][eva] }}</span></a></li>
+                                                {%endfor%}
+                                            {% endif %}
+                                            {% if tables['Seed inventory'] is defined and tables['Seed inventory']|length > 0 %}
+                                        <div class='group'>Seed inventory</div>
+                                        {% for sinv in tables['Seed inventory'] %}
+                                            <li><a href='javascript:' data-request="{{ sinv }}" title="{{ sinv|capitalize }}">{{ sinv|capitalize }}<span class="total">{{ totals['Seed inventory'][sinv] }}</span></a></li>
+                                                {%endfor%}
+                                            {% endif %}
+                                            {% if tables['Seed distribution'] is defined and tables['Seed distribution']|length > 0 %}
+                                        <div class='group'>Seed distribution</div>
+                                        {% for sdis in tables['Seed distribution'] %}
+                                            <li><a href='javascript:' data-request="{{ sdis }}" title="{{ sdis|capitalize }}">{{ sdis|capitalize }}<span class="total">{{ totals['Seed distribution'][sdis] }}</span></a></li>
+                                                {%endfor%}
+                                            {% endif %}
+                                </ul>
+                            </li>
+                            {% if SESSION.user.JURISDICTION == 0 %}
+                                <li><a href='javascript:' title="People"><img src="{{ BASE_PATH }}/public/images/manager/people.svg">&nbsp;People<span class='collspan'>&#43;</span></a>
+                                    <ul class='level_two'>
+                                        <li><a href='javascript:' data-request="assign" title="Assign">Assign</a></li>
+                                        <li><a href='javascript:' data-request="resetP" title="Reset Password">Reset Password</a></li>
+                                    </ul>
+                                </li>
+                            {% endif %}
+                            <li><a href='javascript:' title="Profile"><img src="{{ BASE_PATH }}/public/images/manager/profile.svg">&nbsp;Profile<span class='collspan'>&#43;</span></a>
+                                <ul class='level_two'>
+                                    <li><a href='javascript:' data-request="changeP" title="Change Password">Change Password</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div id="mainContent">
+                {% block content %}                    
+                {% endblock %}
+            </div>
+        </div>
+        <script src="{{ BASE_PATH }}/public/js/managerbase.js"></script>
+    </body>
+</html>

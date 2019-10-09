@@ -1,0 +1,250 @@
+{% embed "base.html.twig" %}
+    {% block javascript %}
+        {{ parent() }}
+        <script src="{{ BASE_PATH }}/public/js/search/view/back.js"></script>
+    {% endblock %}
+    {% block css %}
+        {{ parent() }}
+        <link rel="stylesheet" href="{{ BASE_PATH }}/public/css/view/default.css">
+    {% endblock %}
+    {% block content %}
+        {% embed "/view/part/title.html.twig" %}
+        {% endembed %}
+        {% embed "/view/part/header.html.twig" %}
+        {% endembed %}
+        <section class="ac-container">
+            <div>
+                <input id="ac-1" name="accordion-1" type="checkbox" />
+                <label for="ac-1">VEGETATIVE DATA</label>
+                <article>
+                    <div class="css_table">
+                        <div class="css_tr">
+                            <div class="css_td">Emerging cotyledon color</div>
+                            <div class="css_td">{{ data.ECOTCOL }}</div>
+                        </div>                        
+                        <div class="css_tr">
+                            <div class="css_td">Hypocotyl color</div>
+                            <div class="css_td">{{ data.HYPCOL }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Main stem pigmentation<br>(at 4- 6 weeks after planting)</div>
+                            <div class="css_td">{{ data.MSTPIG }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Clear markings along veins of fully developed primary leaves</div>
+                            <div class="css_td">{{ data.CMARK }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Vein color of fully developed primary leaves<br>(on inner face)</div>
+                            <div class="css_td">{{ data.VCOL }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Leaf anthocyanin</div>
+                            <div class="css_td">{{ data.LFANT }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Leaf color intensity<br>(4- 6 weeks after planting)</div>
+                            <div class="css_td">{{ data.LFCOLIN }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Leaf hairiness<br>(density; on inner surface of first fully expanded leaves from tip)</div>
+                            <div class="css_td">{{ data.LFHAIRY }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Ramification index<br>(if determinate type - 6 weeks after planting)</div>
+                            <div class="css_td">{{ data.RAMDET }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Branch orientation<br>(if determinate type)</div>
+                            <div class="css_td">{{ data.BORIENT }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Ramification index<br>(if indeterminate type - 6 weeks after planting)</div>
+                            <div class="css_td">{{ data.RAMINDET }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Length from hypocotyl base to fully expanded</div>
+                            <div class="css_td">{{ data.LENHYPB }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Plant height<br>(if determinate type; in cm, on 10 random, mature plants, from cotyledon scar to tip of plant)</div>
+                            <div class="css_td">{{ data.PLHT }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Leaf persistence<br>(when 90% of pods are ripe)</div>
+                            <div class="css_td">{{ data.LFPERS }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Growth habit</div>
+                            <div class="css_td">{{ data.GHBT }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Leaflet length<br>(measured on the terminal leaflet of third trifoliate leaf from pulvinus to leaf tip)</div>
+                            <div class="css_td">{{ data.LFLEN }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Leaflet shape<br>(measured on the terminal leaflet of third trifoliate leaf according to the ratio of length (l) to width (w).)</div>
+                            <div class="css_td">{{ data.LFSHP }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Days to maturity<br>(from emergence to stage when 90% of pods are ripe)</div>
+                            <div class="css_td">{{ data.DAYSMAT }}</div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <div>
+                <input id="ac-2" name="accordion-1" type="checkbox" />
+                <label for="ac-2">INFLORESCENCE & FRUIT DATA</label>
+                <article>
+                    <div class="css_table">
+                        <div class="css_tr">
+                            <div class="css_td">Number of nodes on main stem before first raceme<br>(Average from 10 random plants:  if determinate type, from cotyledon scar to last leaf; if indeterminate type, from cotyledon scar to first flowering node.)</div>
+                            <div class="css_td">{{ data.NDEMSTEM }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Days to flowering<br>(from emergence to stage when 50% of plants have begun to flower)</div>
+                            <div class="css_td">{{ data.DAYSFLO }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Flower bud size<br>(just before opening)</div>
+                            <div class="css_td">{{ data.FLBSZE }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Color of flower keel<br>(color of tip)</div>
+                            <div class="css_td">{{ data.COLFKEEL }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Color of flower standard<br>(upper part of inner side)</div>
+                            <div class="css_td">{{ data.COLFSTAN }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Color of flower wings</div>
+                            <div class="css_td">{{ data.COLFWING }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Hairiness of standard<br>(outer face of freshly opened flower)</div>
+                            <div class="css_td">{{ data.HAIRY }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Wing opening<br>(freshly opened flower)</div>
+                            <div class="css_td">{{ data.WINGOP }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Number of nodes per raceme<br>(One raceme from each of 10 plants at pod filling period; if determinate type, one terminal raceme; if indeterminate type, one lateral raceme - 6th from apex.)</div>
+                            <div class="css_td">{{ data.NDEPRAC }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Raceme length<br>(In cm, one raceme from each of 10 plants at pod filling period; if determinate type, one terminal raceme; if indeterminate type, one lateral raceme - 6th from apex.)</div>
+                            <div class="css_td">{{ data.RACLEN }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Raceme position<br>(at fully expanded green pod stage)</div>
+                            <div class="css_td">{{ data.RACPOS }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Duration of flowering</div>
+                            <div class="css_td">{{ data.DURFLO }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Pod curvature<br>(of fully expanded immature pod)</div>
+                            <div class="css_td">{{ data.PCUR }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Pod pubescence<br>(on fully expanded immature pods)</div>
+                            <div class="css_td">{{ data.PPUB }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Pod beak shape<br>(on fully expanded immature pods)</div>
+                            <div class="css_td">{{ data.PBKSHP }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Position of pod bearing racemes</div>
+                            <div class="css_td">{{ data.POSP }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Orientation of pod bearing racemes (at maturity)</div>
+                            <div class="css_td">{{ data.ORIENTP }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Pod dehiscence (at maturity)</div>
+                            <div class="css_td">{{ data.PDEH }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Days to first mature pod</div>
+                            <div class="css_td">{{ data.DAYSFMATP }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Pod color<br>(of mature pods)</div>
+                            <div class="css_td">{{ data.PDCOL }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Pod length<br>(In cm, average of 10 randomly chosen mature pods. If pods are curved, measure the longest straight line from base to tip of pods.)</div>
+                            <div class="css_td">{{ data.PDLEN }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Pod width<br>(In cm, of the largest width from 10 randomly chosen, mature pods)</div>
+                            <div class="css_td">{{ data.PDWID }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Number of locules per pod<br>(ovule attachment on 10 randomly chosen pods)</div>
+                            <div class="css_td">{{ data.NOLOCPP }}</div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <div>
+                <input id="ac-3" name="accordion-1" type="checkbox" />
+                <label for="ac-3">SEED DATA</label>
+                <article>
+                    <div class="css_table">
+                        <div class="css_tr">
+                            <div class="css_td">Number of seeds per pod<br>(average from 10 randomly chosen ripe pods)</div>
+                            <div class="css_td">{{ data.NOSDSPP }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Seed germination within pods (radicle emergence)</div>
+                            <div class="css_td">{{ data.SDGERM }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Splitting of seed testa</div>
+                            <div class="css_td">{{ data.SPLIT }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Texture of seed testa<br>(transverse ridges may exist radiating from the hilum to the opposite edge of seed)</div>
+                            <div class="css_td">{{ data.TXSDT }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Cotyledon color<br>(of ripe seeds)</div>
+                            <div class="css_td">{{ data.COTCOLRS }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Background color<br>(the lightest color)</div>
+                            <div class="css_td">{{ data.BCOL }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Pattern color<br>(Eye always included: if bicolored pattern consider only the lightest color of the pattern.)</div>
+                            <div class="css_td">{{ data.PATCOL }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Shape of seed<br>(Seed taken from middle of pod)</div>
+                            <div class="css_td">{{ data.SHPSD }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Seed length<br>(In mm, average of 10 ripe seeds chosen at random)</div>
+                            <div class="css_td">{{ data.SDLEN }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Seed width<br>(In mm, average of 10 ripe seeds chosen at random)</div>
+                            <div class="css_td">{{ data.SDWID }}</div>
+                        </div>
+                         <div class="css_tr">
+                             <div class="css_td">100 seeds weight (mg)</div>
+                            <div class="css_td">{{ data.SDWT }}</div>
+                        </div>
+                    </div>
+                </article>
+            </div>            
+        </section>
+    {% endblock %}
+{% endembed %}

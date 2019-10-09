@@ -1,0 +1,13 @@
+<section class="changeP">
+    <h1>{{ title }}</h1>
+    <div class="changeP_area">
+        <span class="ajaxload"><img src="{{ BASE_PATH }}/public/images/ajax-loader.gif"></span>
+        <div>
+            <span class="inputtext"><input id="oldpassword" type="password" placeholder="Enter Old Password" class="slide-up" /><label for="oldpassword">Old Password</label></span><br>
+            <span class="inputtext"><input id="newpassword" type="password" placeholder="Enter New Password" class="slide-up" /><label for="newpassword">New Password</label></span><br>
+            <span class="inputtext"><input id="cnewpassword" type="password" placeholder="Confirm New Password" class="slide-up" /><label for="cnewpassword">Confirm Password</label></span>
+            <button id="changeP" class="button">Change</button>
+        </div>
+    </div>
+</section>
+<script src="{{ BASE_PATH }}/public/js/manager/profile/changeP.js"></script>

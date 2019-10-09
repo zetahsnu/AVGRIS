@@ -1,0 +1,8 @@
+section p.point { font-weight: bolder; }
+section p.warn { color: red; font-weight: bolder; }
+section p.warn::first-letter { font-size: 100%; color: red; }
+section aside { font-weight: bolder; color: blue; }
+section ul { list-style: circle; margin-left: 40px; }
+section ul li { font-size: 1em; line-height: 22px; }
+
+/*# sourceMappingURL=terms.css.map */

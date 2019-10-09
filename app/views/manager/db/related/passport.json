@@ -1,0 +1,15 @@
+{
+    "related": [
+        "collso",
+        "samso",
+        "status",
+        "core",
+        "dissta"
+    ],
+    "other_related": [
+        "country_code"
+    ],
+    "list": [
+        "passport_family_genus"
+    ]
+}

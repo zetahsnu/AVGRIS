@@ -1,0 +1,154 @@
+{% embed "base.html.twig" %}
+    {% block javascript %}
+        {{ parent() }}
+        <script src="{{ BASE_PATH }}/public/js/search/view/back.js"></script>
+    {% endblock %}
+    {% block css %}
+        {{ parent() }}
+        <link rel="stylesheet" href="{{ BASE_PATH }}/public/css/view/default.css">
+    {% endblock %}
+    {% block content %}
+        {% embed "/view/part/title.html.twig" %}
+        {% endembed %}
+        {% embed "/view/part/header.html.twig" %}
+        {% endembed %}
+        <section class="ac-container">
+            <div>
+                <input id="ac-1" name="accordion-1" type="checkbox" />
+                <label for="ac-1">VEGETATIVE DATA</label>
+                <article>
+                    <div class="css_table">
+                        <div class="css_tr">
+                            <div class="css_td">Foliage color</div>
+                            <div class="css_td">{{ data.FOLCOL }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Leaf length (cm)</div>
+                            <div class="css_td">{{ data.LFLEN }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Leaf erectness</div>
+                            <div class="css_td">{{ data.LFERECT }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Cross section of leaf</div>
+                            <div class="css_td">{{ data.CRSSLF }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Present of leaf wax</div>
+                            <div class="css_td">{{ data.PRLFWX }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Life span</div>
+                            <div class="css_td">{{ data.LIFESP }}</div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <div>
+                <input id="ac-2" name="accordion-1" type="checkbox" />
+                <label for="ac-2">INFLORESCENCE DATA</label>
+                <article>
+                    <div class="css_table">
+                        <div class="css_tr">
+                            <div class="css_td">Ability to flower</div>
+                            <div class="css_td">{{ data.FL_ABLTY }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">General fertility</div>
+                            <div class="css_td">{{ data.GENFER }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Flower number in umbel</div>
+                            <div class="css_td">{{ data.FLNO_UM }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Flower color</div>
+                            <div class="css_td">{{ data.FLCOL }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Anther color</div>
+                            <div class="css_td">{{ data.ANTCOL }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Mode of reproduction</div>
+                            <div class="css_td">{{ data.MODREP }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Seed coat color</div>
+                            <div class="css_td">{{ data.SCCOL }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Scape length (cm)</div>
+                            <div class="css_td">{{ data.SCLEN }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Internal structure of mature scape</div>
+                            <div class="css_td">{{ data.INTSTRC }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Flowering date<br>(50% flowering)</div>
+                            <div class="css_td">{{ data.FLWDATE }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Date of maturity<br>(50% have fallen tops)</div>
+                            <div class="css_td">{{ data.MATDATE }}</div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <div>
+                <input id="ac-3" name="accordion-1" type="checkbox" />
+                <label for="ac-3">BULB DATA</label>
+                <article>
+                    <div class="css_table">
+                        <div class="css_tr">
+                            <div class="css_td">Shape of full-grown bulbs</div>
+                            <div class="css_td">{{ data.SHP_FGB }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Bulb skin color</div>
+                            <div class="css_td">{{ data.BLB_SKCOL }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Presence of bulblets</div>
+                            <div class="css_td">{{ data.PR_BULBTS }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Presence of bulbils (topsets)</div>
+                            <div class="css_td">{{ data.PR_BULBLS }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Nature of storage organ</div>
+                            <div class="css_td">{{ data.NAT_STOR }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Bulb skin thickness</div>
+                            <div class="css_td">{{ data.BLB_STHCK }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Bulb fresh color</div>
+                            <div class="css_td">{{ data.BLB_FRCOL }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Bulb heart</div>
+                            <div class="css_td">{{ data.BLB_HRT }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Bulb length (cm)</div>
+                            <div class="css_td">{{ data.BLB_LEN }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Bulb diameter (cm)</div>
+                            <div class="css_td">{{ data.BLB_DIA }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Bulb weight (gm)</div>
+                            <div class="css_td">{{ data.BLB_WGT }}</div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+    {% endblock %}
+{% endembed %}

@@ -1,0 +1,150 @@
+{% embed "base.html.twig" %}
+    {% block javascript %}
+        {{ parent() }}
+        <script src="{{ BASE_PATH }}/public/js/search/view/back.js"></script>
+    {% endblock %}
+    {% block css %}
+        {{ parent() }}
+        <link rel="stylesheet" href="{{ BASE_PATH }}/public/css/view/default.css">
+    {% endblock %}
+    {% block content %}
+        {% embed "/view/part/title.html.twig" %}
+        {% endembed %}
+        {% embed "/view/part/header.html.twig" %}
+        {% endembed %}
+        <section class="ac-container">
+            <div>
+                <input id="ac-1" name="accordion-1" type="checkbox" />
+                <label for="ac-1">SEEDLING DATA</label>
+                <article>
+                    <div class="css_table">
+                        <div class="css_tr">
+                            <div class="css_td">Hypocotyl color</div>
+                            <div class="css_td">{{ data.HCOL }}</div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <div>
+                <input id="ac-2" name="accordion-1" type="checkbox" />
+                <label for="ac-2">VEGETATIVE DATA</label>
+                <article>
+                    <div class="css_table">
+                        <div class="css_tr">
+                            <div class="css_td">Stem determination</div>
+                            <div class="css_td">{{ data.STDET }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Number of leaflets</div>
+                            <div class="css_td">{{ data.NOLEAF }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Leaflet size<br>(recorded with length (cm) x width (cm))</div>
+                            <div class="css_td">{{ data.LFSIZE }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Leaflet shape</div>
+                            <div class="css_td">{{ data.LFSHP }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Pubescence density</div>
+                            <div class="css_td">{{ data.PUBDEN }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Pubescence color</div>
+                            <div class="css_td">{{ data.PUBCOL }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Pubescence type</div>
+                            <div class="css_td">{{ data.PUBTYP }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Plant height at R1<br>(actual measurement in cm as mean of 20 randomly selected plants)</div>
+                            <div class="css_td">{{ data.PLHTR1 }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Plant height at R8<br>(actual measurement in cm as mean of 20 randomly selected plants)</div>
+                            <div class="css_td">{{ data.PLHTR8 }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Number of primary branches (when at least 2 nodes) per plant at maturity<br>(mean of 20 randomly selected plants)</div>
+                            <div class="css_td">{{ data.NOPBRN }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Lodging score</div>
+                            <div class="css_td">{{ data.LODGE }}</div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <div>
+                <input id="ac-3" name="accordion-1" type="checkbox" />
+                <label for="ac-3">INFLORESCENCE DATA</label>
+                <article>
+                    <div class="css_table">
+                        <div class="css_tr">
+                            <div class="css_td">Days to flowering (R1)</div>
+                            <div class="css_td">{{ data.DAYSFLO }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Corolla color</div>
+                            <div class="css_td">{{ data.CORCOL }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Mature pod color</div>
+                            <div class="css_td">{{ data.MATURE }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Number of pods per plant<br>(mean of 20 randomly selected plants)</div>
+                            <div class="css_td">{{ data.NOPODS }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Number of seeds per pod<br>(mean of 20 randomly selected pods)</div>
+                            <div class="css_td">{{ data.SDNO }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Shattering score<br>(estimated percent of pod splitting and seed shattering at a comparable time after maturity)</div>
+                            <div class="css_td">{{ data.SHAT }}</div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <div>
+                <input id="ac-4" name="accordion-1" type="checkbox" />
+                <label for="ac-4">SEED DATA</label>
+                <article>
+                    <div class="css_table">
+                        <div class="css_tr">
+                            <div class="css_td">Hard seeds (actual percent)</div>
+                            <div class="css_td">{{ data.HRDSD }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Seed color</div>
+                            <div class="css_td">{{ data.SDCOL }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Seed coat pattern</div>
+                            <div class="css_td">{{ data.SDCOAT }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Hilum color</div>
+                            <div class="css_td">{{ data.HILUM }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Seed coat surface luster</div>
+                            <div class="css_td">{{ data.SDCSL }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">100 seeds weight (gm)</div>
+                            <div class="css_td">{{ data.SDWT }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Cotyledon color</div>
+                            <div class="css_td">{{ data.COTCOL }}</div>
+                        </div>
+                    </div>
+                </article>
+            </div>            
+        </section>
+    {% endblock %}
+{% endembed %}

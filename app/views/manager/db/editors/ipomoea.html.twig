@@ -1,0 +1,255 @@
+<div id='editorMain'>
+    <div data-type='VINO'><div>Vegetable introduction number:</div><div><input id="disVINO" type="text" placeholder="VINO" disabled /><input id="inputVINO" type="text"><button id="searchVINO" class="button" data-status="search" title="Search VINO From Passport"></button></div></div>
+    <div data-type='VARIANT'><div>Variant:</div><div><input type="text" placeholder="VARIANT" /></div></div>
+    <div data-type='ACCNO'><div>Crop accession number:</div><div><input id="ACCNO" type="text" placeholder="ACCNO" disabled /></div></div>
+    <div data-type='SPECIES'><div>Species:</div><div><input id="SPECIES" type="text" placeholder="SPECIES" disabled /></div></div>
+    <div data-type='DUPLIC'><div>Duplicate note:</div><div><input id="DUPLIC" type="text" placeholder="DUPLIC" disabled /></div></div>
+    <div data-type='SUBTAXA'><div>Subtaxa:</div><div><input id="SUBTAXA" type="text" placeholder="SUBTAXA" disabled /></div></div>
+    <div data-type='TEMPNO'><div>Temporary number:</div><div><input id="TEMPNO" type="text" placeholder="TEMPNO" disabled /></div></div>
+    <div data-type='YRSN'><div>Char. year & season:</div><div><input type="text" placeholder="YRSN" /></div></div>
+</div>
+<div id='editorOther' class="tabs tabs-style-line csh4">
+    <nav>
+        <ul>
+            <li><a href="#section-line-1"><span>SEEDLING DATA</span></a></li>
+            <li><a href="#section-line-2"><span>VEGETATIVE DATA</span></a></li>
+            <li><a href="#section-line-3"><span>INFLORESCENCE DATA</span></a></li>
+            <li><a href="#section-line-4"><span>FRUIT & SEED DATA</span></a></li>
+            <li><a href="#section-line-5"><span>other</span></a></li>
+                {% if SESSION.user.JURISDICTION == 0 %}
+                <li><a href="#section-line-6"><span>Photo</span></a></li>
+                {% endif %}
+        </ul>
+    </nav>
+    <div class="content-wrap">
+        <section id="section-line-1">
+            <div data-type='SDGAB'><div>Germination ability:</div><div>
+                    <select>
+                        <option value="">* SDGAB *</option>
+                        {% for item in related.SDGAB %}
+                            <option value="{{ item.REFNO }}">{{ item.SDGAB }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='COTCOL'><div>Cotyledon color:</div><div>
+                    <select>
+                        <option value="">* COTCOL *</option>
+                        {% for item in related.COTCOL %}
+                            <option value="{{ item.REFNO }}">{{ item.COTCOL }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='COTSHP'><div>Cotyledon shape:</div><div>
+                    <select>
+                        <option value="">* COTSHP *</option>
+                        {% for item in related.COTSHP %}
+                            <option value="{{ item.REFNO }}">{{ item.COTSHP }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='HYPCOL'><div>Hypocotyl color:</div><div>
+                    <select>
+                        <option value="">* HYPCOL *</option>
+                        {% for item in related.HYPCOL %}
+                            <option value="{{ item.REFNO }}">{{ item.HYPCOL }}</option>
+                        {% endfor %}
+                    </select></div></div>
+        </section>
+        <section id="section-line-2">
+            <div data-type='PLATT'><div>Plant attitude:</div><div>
+                    <select>
+                        <option value="">* PLATT *</option>
+                        {% for item in related.PLATT %}
+                            <option value="{{ item.REFNO }}">{{ item.PLATT }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='PLEAR'><div>Plant earliness:</div><div>
+                    <select>
+                        <option value="">* PLEAR *</option>
+                        {% for item in related.PLEAR %}
+                            <option value="{{ item.REFNO }}">{{ item.PLEAR }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='TILLER'><div>Tillers:</div><div>
+                    <select>
+                        <option value="">* TILLER *</option>
+                        {% for item in related.TILLER %}
+                            <option value="{{ item.REFNO }}">{{ item.TILLER }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='STCOL'><div>Stem color:</div><div>
+                    <select>
+                        <option value="">* STCOL *</option>
+                        {% for item in related.STCOL %}
+                            <option value="{{ item.REFNO }}">{{ item.STCOL }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='STWAT'><div>Stem wart:</div><div>
+                    <select>
+                        <option value="">* STWAT *</option>
+                        {% for item in related.STWAT %}
+                            <option value="{{ item.REFNO }}">{{ item.STWAT }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='STSHP'><div>Stem shape:</div><div>
+                    <select>
+                        <option value="">* STSHP *</option>
+                        {% for item in related.STSHP %}
+                            <option value="{{ item.REFNO }}">{{ item.STSHP }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='STLEN'><div>Stem length of internodes (cm):</div><div><input type="number" step="0.01" min="0" placeholder="STLEN" /></div></div>
+            <div data-type='ADRTNO'><div>Adventitious root on node:</div><div>
+                    <select>
+                        <option value="">* ADRTNO *</option>
+                        {% for item in related.ADRTNO %}
+                            <option value="{{ item.REFNO }}">{{ item.ADRTNO }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='LFLEN'><div>Leaf length (cm):</div><div><input type="number" step="0.01" min="0" placeholder="LFLEN" /></div></div>
+            <div data-type='LFWID'><div>Leaf width (cm):</div><div><input type="number" step="0.01" min="0" placeholder="LFWID" /></div></div>
+            <div data-type='LFCOL'><div>Leaf color:</div><div>
+                    <select>
+                        <option value="">* LFCOL *</option>
+                        {% for item in related.LFCOL %}
+                            <option value="{{ item.REFNO }}">{{ item.LFCOL }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='LFSHP'><div>Leaf shape:</div><div>
+                    <select>
+                        <option value="">* LFSHP *</option>
+                        {% for item in related.LFSHP %}
+                            <option value="{{ item.REFNO }}">{{ item.LFSHP }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='PETLEN'><div>Petiole length (cm):</div><div><input type="number" step="0.01" min="0" placeholder="PETLEN" /></div></div>
+        </section>
+        <section id="section-line-3">
+            <div data-type='FLOEAR'><div>Flower earliness:</div><div>
+                    <select>
+                        <option value="">* FLOEAR *</option>
+                        {% for item in related.FLOEAR %}
+                            <option value="{{ item.REFNO }}">{{ item.FLOEAR }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='FLCOL'><div>Flower color:</div><div>
+                    <select>
+                        <option value="">* FLCOL *</option>
+                        {% for item in related.FLCOL %}
+                            <option value="{{ item.REFNO }}">{{ item.FLCOL }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='FLLEN'><div>Flower length (cm):</div><div><input type="number" step="0.01" min="0" placeholder="FLLEN" /></div></div>
+            <div data-type='FLWID'><div>Flower width (cm):</div><div><input type="number" step="0.01" min="0" placeholder="FLWID" /></div></div>
+            <div data-type='PETTYP'><div>Petal type:</div><div>
+                    <select>
+                        <option value="">* PETTYP *</option>
+                        {% for item in related.PETTYP %}
+                            <option value="{{ item.REFNO }}">{{ item.PETTYP }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='SEPCOL'><div>Sepal color:</div><div>
+                    <select>
+                        <option value="">* SEPCOL *</option>
+                        {% for item in related.SEPCOL %}
+                            <option value="{{ item.REFNO }}">{{ item.SEPCOL }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='SEPLEN'><div>Sepal length (cm):</div><div><input type="number" step="0.01" min="0" placeholder="SEPLEN" /></div></div>
+            <div data-type='SEPPUB'><div>Sepal pubescence:</div><div>
+                    <select>
+                        <option value="">* SEPPUB *</option>
+                        {% for item in related.SEPPUB %}
+                            <option value="{{ item.REFNO }}">{{ item.SEPPUB }}</option>
+                        {% endfor %}
+                    </select></div></div>
+        </section>  
+        <section id="section-line-4">
+            <div data-type='FRSIZE'><div>Fruit size (cm):</div><div><input type="number" step="0.01" min="0" placeholder="FRSIZE" /></div></div>
+            <div data-type='FRSET'><div>Fruit set:</div><div>
+                    <select>
+                        <option value="">* FRSET *</option>
+                        {% for item in related.FRSET %}
+                            <option value="{{ item.REFNO }}">{{ item.FRSET }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='SDNOPC'><div>Number of seeds per capsule:</div><div><input type="number" step="0.01" min="0" placeholder="SDNOPC" /></div></div>
+            <div data-type='SDCOL'><div>Seed color:</div><div>
+                    <select>
+                        <option value="">* SDCOL *</option>
+                        {% for item in related.SDCOL %}
+                            <option value="{{ item.REFNO }}">{{ item.SDCOL }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='SDWT'><div>1000 seeds weight (gm):</div><div><input type="number" step="0.01" min="0" placeholder="SDWT" /></div></div>
+        </section>
+        <section id="section-line-5">
+            <div data-type='ADHOT'><div>Adaptabilty for hot season:</div><div>
+                    <select>
+                        <option value="">* ADHOT *</option>
+                        {% for item in related.ADHOT %}
+                            <option value="{{ item.REFNO }}">{{ item.ADHOT }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='ADCOLD'><div>Adaptability for cold season:</div><div>
+                    <select>
+                        <option value="">* ADCOLD *</option>
+                        {% for item in related.ADCOLD %}
+                            <option value="{{ item.REFNO }}">{{ item.ADCOLD }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='YIELDABI'><div>Yielding ability:</div><div>
+                    <select>
+                        <option value="">* YIELDABI *</option>
+                        {% for item in related.YIELDABI %}
+                            <option value="{{ item.REFNO }}">{{ item.YIELDABI }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='DORMAN'><div>Dormancy:</div><div>
+                    <select>
+                        <option value="">* DORMAN *</option>
+                        {% for item in related.DORMAN %}
+                            <option value="{{ item.REFNO }}">{{ item.DORMAN }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='STOABI'><div>Storage ability:</div><div>
+                    <select>
+                        <option value="">* STOABI *</option>
+                        {% for item in related.STOABI %}
+                            <option value="{{ item.REFNO }}">{{ item.STOABI }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='FUNCCHAR'><div>Functional characteristics:</div><div>
+                    <select>
+                        <option value="">* FUNCCHAR *</option>
+                        {% for item in related.FUNCCHAR %}
+                            <option value="{{ item.REFNO }}">{{ item.FUNCCHAR }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='EDIPART'><div>Edible parts:</div><div>
+                    <select>
+                        <option value="">* EDIPART *</option>
+                        {% for item in related.EDIPART %}
+                            <option value="{{ item.REFNO }}">{{ item.EDIPART }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='EDICOND'><div>Edible condition:</div><div>
+                    <select>
+                        <option value="">* EDICOND *</option>
+                        {% for item in related.EDICOND %}
+                            <option value="{{ item.REFNO }}">{{ item.EDICOND }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='EDIQUA'><div>Edible quality:</div><div>
+                    <select>
+                        <option value="">* EDIQUA *</option>
+                        {% for item in related.EDIQUA %}
+                            <option value="{{ item.REFNO }}">{{ item.EDIQUA }}</option>
+                        {% endfor %}
+                    </select></div></div>
+        </section>
+        {% if SESSION.user.JURISDICTION == 0 %}
+            <section id="section-line-6">
+                {% embed "/manager/db/editors/picture/picture.html.twig" %}
+                {% endembed %}
+            </section>
+        {% endif %}
+    </div><!-- /content -->
+</div><!-- /tabs -->

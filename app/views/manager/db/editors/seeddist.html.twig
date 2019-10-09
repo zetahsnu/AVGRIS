@@ -1,0 +1,95 @@
+<div id='editorMain'>
+    <div data-type='IDNO'><div>GRSU registration no.:</div><div><input type="text" placeholder="IDNO"  /></div></div>
+    <div data-type='SENDER'><div>Sender:</div><div><input type="text" placeholder="SENDER" /></div></div>
+    <div data-type='RECVER'><div>Receiver:</div><div><input type="text" placeholder="RECVER"  /></div></div>
+    <div data-type='TITLE'><div>Title:</div><div><input type="text" placeholder="TITLE"  /></div></div>
+    <div data-type='DEPT'><div>Department:</div><div><input type="text" placeholder="DEPT"  /></div></div>
+    <div data-type='INSTITUTE'><div>Institute:</div><div><input type="text" placeholder="INSTITUTE"  /></div></div>
+    <div data-type='COUNTRY'><div>Country:</div><div>
+            <select>
+                <option value="">* COUNTRY *</option>
+                {% for item in other_related.COUNTRY_CODE %}
+                    <option value="{{ item.NAME  }}">{{ item.NAME  }}</option>
+                {% endfor %}
+            </select>
+        </div></div>
+    <div data-type='EMAIL'><div>Email address:</div><div><input type="text" placeholder="EMAIL" /></div></div>
+    <div data-type='ADDRESS'><div>Address:</div><div><input type="text" placeholder="ADDRESS"  /></div></div>
+    <div data-type='CLASSIFICATION'><div>Classification of receiver:</div><div>
+            <select>
+                <option value="">* CLASSIFICATION *</option>
+                {% for item in related.CLASSIFICATION %}
+                    <option value="{{ item.REFNO }}">{{ item.CLASSIFICATION }}</option>
+                {% endfor %}
+            </select>
+        </div></div>
+</div>
+<div id='editorOther' class="tabs tabs-style-line csh5">
+    <nav>
+        <ul>
+            <li><a href="#section-line-1"><span>SHIPPING & MTA INFORMATION</span></a></li>
+            <li><a href="#section-line-2"><span>PAYMENT INFORMATION</span></a></li>
+            <li><a href="#section-line-3"><span>OTHER INFORMATION</span></a></li>
+        </ul>
+    </nav>
+    <div class="content-wrap">
+        <section id="section-line-1">
+            <div data-type='QUA_DATE'><div>Quarantine date:</div><div><input type="date" placeholder="QUA_DATE" /></div></div>
+            <div data-type='SMTA_CODE'><div>Code of SMTA:</div><div><input type="text" placeholder="SMTA_CODE" value="SMTA-00AD43-" /></div></div>
+            <div data-type='SHIP_DATE'><div>Shipping date:</div><div><input type="date" placeholder="SHIP_DATE" /></div></div>
+            <div data-type='SMTA_DATE'><div>SMTA date received:</div><div><input type="date" placeholder="SMTA_DATE" /></div></div>
+            <div data-type='NETWT'><div>Net weight:</div><div><input type="text" placeholder="NETWT" /></div></div>
+            <div data-type='MTA2_NO'><div>MTA2 receipt no.:</div><div><input type="text" placeholder="MTA2_NO" /></div></div>
+            <div data-type='GROSS'><div>Gross weight:</div><div><input type="text" placeholder="GROSS" /></div></div>
+            <div data-type='MTA2_DATE'><div>MTA2 date received:</div><div><input type="date" placeholder="MTA2_DATE" /></div></div>
+            <div data-type='REG_NO'><div>Shipping registration no.:</div><div><input type="text" placeholder="REG_NO" /></div></div>
+            <div data-type='MAT_ATTACH'><div>MTA attached:</div><div>
+                    <select>
+                        <option value="">* MAT_ATTACH *</option>
+                        {% for item in related.MAT_ATTACH %}
+                            <option value="{{ item.REFNO }}">{{ item.MAT_ATTACH }}</option>
+                        {% endfor %}
+                    </select>
+                </div></div>
+            <div data-type='POSTAGE'><div>Postage:</div><div><input type="number" step="0.01" min="0" placeholder="POSTAGE" /></div></div>
+        </section>
+        <section id="section-line-2">
+            <div data-type='CURRENCY'><div>Currency used:</div><div>
+                    <select>
+                        <option value="">* CURRENCY *</option>
+                        <option value="NT$">NT$</option>
+                        <option value="US$">US$</option>
+                    </select>
+                </div></div>
+            <div data-type='PAYMENT'><div>Total amount of seed processing charges received:</div><div><input type="number" step="0.01" min="0" placeholder="PAYMENT" /></div></div>
+            <div data-type='PAY_TERM'><div>Payment terms:</div><div>
+                    <select>
+                        <option value="">* PAY_TERM *</option>
+                        <option value="Internal transfer">Internal transfer</option>
+                        <option value="Cash">Cash</option>
+                        <option value="Bank transfer">Bank transfer</option>
+                        <option value="Check payment">Check payment</option>
+                        <option value="PayPal">PayPal</option>
+                    </select>
+                </div></div>
+            <div data-type='PAYTERM_INTE_PRONO' style="display: none"><div>Project no. of internal transfer:</div><div><input type="text" placeholder="PAYTERM_INTE_PRONO" /></div></div>
+            <div class='subTable' data-spk="IDNO"><button class='button loadSubtable'>Open Detail Panel</button>
+                <div class='subTableArea'>
+                    <table class='subTable'>
+                        <thead>
+                            {% embed "/manager/db/ohead.html.twig" %}
+                            {% endembed %}
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                    <button data-op='add' class='button add'>Add</button><button data-op='delete' class='button delete'>Delete</button>
+                </div>
+            </div>
+        </section>
+        <section id="section-line-3">
+            <div data-type='PURPOSE'><div>Purpose:</div><div><input type="text" placeholder="PURPOSE" /></div></div>
+            <div data-type='REMARK'><div>Remarks:</div><div><input type="text" placeholder="REMARK" /></div></div>
+        </section>
+    </div><!-- /content -->
+</div><!-- /tabs -->

@@ -1,0 +1,44 @@
+<div><span class="inputtext"><input id="IDNO" type="text" placeholder="IDNO" class="slide-up" /><label for="IDNO">IDNO</label></span><button name="add_filters" class="button" title="Add">&#43;</button></div>
+<div class="SHIP_DATE"><span><input id="SHIP_DATE" type="date" placeholder="SHIP_DATE" /><input id="SHIP_DATE_2" type="date" placeholder="SHIP_DATE" /></span><button name="add_filters" class="button" title="Add">&#43;</button></div>
+<div><span><select id="COUNTRY" title='COUNTRY'>
+            <option value=''>* Any COUNTRY *</option>
+            {% for item in country if item != '' %}
+                <option value="{{item}}">{{item}}</option>
+            {% endfor %}
+        </select></span><button name="add_filters" class="button" title="Add">&#43;</button></div>
+<div><span class="inputtext"><input id="SHIP_NO" type="text" placeholder="SHIP_NO" class="slide-up" /><label for="SHIP_NO">Crop shipping number</label></span><button name="add_filters" class="button" title="Add">&#43;</button></div>
+<div><span class="inputtext"><input id="INSTITUTE" type="text" placeholder="INSTITUTE" class="slide-up" /><label for="INSTITUTE">Institute</label></span><button name="add_filters" class="button" title="Add">&#43;</button></div>
+<div><span><select id="CROP" title='CROP'>
+            <option value=''>* Any CROP *</option>
+            {% for item in crop  if item != '' %}
+                <option value="{{item}}">{{item}}</option>
+            {% endfor %}
+        </select></span><button name="add_filters" class="button" title="Add">&#43;</button></div>
+<div><span><select id="CLASS" title='CLASS'>
+            <option value=''>* Any CLASS OF CROP *</option>
+            {% for item in class  if item != '' %}
+                <option value="{{item}}">{{class_name[loop.index0]}}</option>
+            {% endfor %}
+        </select></span><button name="add_filters" class="button" title="Add">&#43;</button></div>
+<div><span><select id="GENUS" title='GENUS'>
+            <option value=''>* Any GENUS *</option>
+            {% for item in genus if item != '' %}
+                <option value="{{item}}">{{item}}</option>
+            {% endfor %}
+        </select></span><button name="add_filters" class="button" title="Add">&#43;</button></div>
+<div><span><select id="SPECIES" title='SPECIES'>
+            <option value=''>* Any SPECIES *</option>
+        </select></span><button name="add_filters" class="button" title="Add" style="display: none;">&#43;</button></div>
+<div><span><select id="SUBTAXA" title='SUBTAXA'>
+            <option value=''>* Any SUBTAXA *</option>
+        </select></span><button name="add_filters" class="button" title="Add" style="display: none;">&#43;</button></div>
+<div><span class="inputtext"><input id="SMTA_CODE" type="text" placeholder="SMTA_CODE" class="slide-up" /><label for="SMTA_CODE">Code of SMTA</label></span><button name="add_filters" class="button" title="Add">&#43;</button></div>
+<div><span class="inputtext"><input id="MTA2_NO" type="text" placeholder="MTA2_NO" class="slide-up" /><label for="MTA2_NO">MTA2 receipt number</label></span><button name="add_filters" class="button" title="Add">&#43;</button></div>
+<div><span class="inputtext"><input id="SENDER" type="text" placeholder="SENDER" class="slide-up" /><label for="SENDER">Sender</label></span><button name="add_filters" class="button" title="Add">&#43;</button></div>
+<div><span class="inputtext"><input id="RECVER" type="text" placeholder="RECVER" class="slide-up" /><label for="RECVER">Receiver</label></span><button name="add_filters" class="button" title="Add">&#43;</button></div>
+<div><span><select id="CLASSIFICATION" title='CLASSIFICATION'>
+            <option value=''>* Any CLASSIFICATION *</option>
+            {% for item in classification  if item != '' %}
+                <option value="{{item}}">{{item}}</option>
+            {% endfor %}
+        </select></span><button name="add_filters" class="button" title="Add">&#43;</button></div>

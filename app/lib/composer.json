@@ -1,0 +1,19 @@
+{
+    "require": {
+        "twig/twig": "1.*",
+        "PHPOffice/PHPExcel": "1.8.*",
+        "mk-j/php_xlsxwriter": "0.*",
+        "google/apiclient": "1.0.*@beta"
+    },
+    "require-dev": {
+        "panique/pdo-debug": "0.2"
+    },
+    "autoload": {
+        "classmap": [
+            "../core/"
+        ],
+        "psr-0": {
+            "core": "../core/"
+        }
+    }
+}

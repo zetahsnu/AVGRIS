@@ -1,0 +1,56 @@
+<div><span class="inputtext"><input id="VINO" type="text" placeholder="e.g. VI000001, VI000002, ..." class="slide-up" /><label for="VINO">VINO</label></span><button name="add_filters" class="button" title="Add">&#43;</button></div>
+<div><span class="inputtext"><input id="ACCNO" type="text" placeholder="e.g. A00001, B00001, ..." class="slide-up" /><label for="ACCNO">ACCNO</label></span><button name="add_filters" class="button" title="Add">&#43;</button></div>
+<div><span class="inputtext"><input id="TEMPNO" type="text" placeholder="e.g. TA00001, TB00001, ..." class="slide-up" /><label for="TEMPNO">TEMPNO</label></span><button name="add_filters" class="button" title="Add">&#43;</button></div>
+<div><span class="inputtext"><input id="YRSN" type="text" class="slide-up" /><label for="YRSN">YRSN</label></span><button name="add_filters" class="button" title="Add">&#43;</button></div>
+<div><span class="inputtext"><input id="PEDCUL" type="text" placeholder="Pedigree / Cultivar Name" class="slide-up" /><label for="PEDCUL">Pedigree / Cultivar Name</label></span><button name="add_filters" class="button" title="Add">&#43;</button></div>
+<div><span><select id="SPECIES" title='SPECIES'>
+            <option value=''>* Any SPECIES *</option>
+            {% for item in species if item != '' %}
+                <option value="{{item}}">{{item}}</option>
+            {% endfor %}
+        </select></span><button name="add_filters" class="button" title="Add">&#43;</button></div>
+<div><span><select id="SUBTAXA" title='SUBTAXA'>
+            <option value=''>* Any SUBTAXA *</option>
+        </select></span><button name="add_filters" class="button" title="Add" style="display: none;">&#43;</button></div>
+<div><span><select id="COUNTRY" title='COUNTRY'>
+            <option value=''>* Any COUNTRY *</option>
+            {% for item in country if item != '' %}
+                <option value="{{item}}">{{item}}</option>
+            {% endfor %}
+        </select></span><button name="add_filters" class="button" title="Add">&#43;</button></div>
+
+{% if title == 'capsicum' %}
+    <div><span><select id="FRCOL_MAT" title='FRCOL_MAT' class="special">
+                <option value=''>* Any FRCOL_MAT *</option>
+                {% for item in related.FRCOL_MAT %}
+                    <option value="{{ item.REFNO }}">{{ item.FRCOL_MAT }}</option>
+                {% endfor %}
+            </select></span><button name="add_filters" class="button" title="Add">&#43;</button></div>
+    <div><span><select id="FRSHP" title='FRSHP' class="special"> 
+                <option value=''>* Any FRSHP *</option>
+                {% for item in related.FRSHP %}
+                    <option value="{{ item.REFNO }}">{{ item.FRSHP }}</option>
+                {% endfor %}
+            </select></span><button name="add_filters" class="button" title="Add">&#43;</button></div>
+    <div><span><select id="FRPUNG" title='FRPUNG' class="special">
+                <option value=''>* Any FRPUNG *</option>
+                {% for item in related.FRPUNG %}
+                    <option value="{{ item.REFNO }}">{{ item.FRPUNG }}</option>
+                {% endfor %}
+            </select></span><button name="add_filters" class="button" title="Add">&#43;</button></div>
+        {% endif %}
+
+{% if title == 'solanum_tomato' %}
+    <div><span><select id="EXCOLMF" title='EXCOLMF' class="special">
+                <option value=''>* Any EXCOLMF *</option>
+                {% for item in related.EXCOLMF %}
+                    <option value="{{ item.REFNO }}">{{ item.EXCOLMF }}</option>
+                {% endfor %}
+            </select></span><button name="add_filters" class="button" title="Add">&#43;</button></div>
+    <div><span><select id="PREDO" title='PREDO' class="special">
+                <option value=''>* Any PREDO *</option>
+                {% for item in related.PREDO %}
+                    <option value="{{ item.REFNO }}">{{ item.PREDO }}</option>
+                {% endfor %}
+            </select></span><button name="add_filters" class="button" title="Add">&#43;</button></div>
+{% endif %}

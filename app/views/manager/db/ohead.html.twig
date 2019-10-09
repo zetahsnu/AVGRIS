@@ -1,0 +1,13 @@
+{% if view is not defined %}
+<tr><th>Operation</th>
+{% for column in scolumns %}
+<th data-stype="{{ column }}" style="width: calc((90% - {{ (scolumns|length + 1) * 8 }}px) / {{scolumns|length}})">{{ titles[column]['title'] }}</th>
+{% endfor %}
+</tr>
+{% else %}
+<div class="css_tr"><div class="css_th">No.</div>
+{% for column in scolumns %}
+<div class="css_th">{{ titles[column]['title'] }}</div>
+{% endfor %}
+</div>
+{% endif %}

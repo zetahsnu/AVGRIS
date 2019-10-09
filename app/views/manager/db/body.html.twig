@@ -1,0 +1,15 @@
+{% for item in data if data|length > 0 %}
+<tr>
+{% if SESSION.user.JURISDICTION == 0 or SESSION.user.JURISDICTION == 2  %}
+<td class="checked"><div class="row"><input id="op_{{ loop.index }}" type="checkbox" /></div></td>
+{% endif %}
+{% if related_subtable is defined %}
+<td><div class="row"><button class="button view_detail">VIEW</button></div></td>
+{% endif %}
+{% for column in columns %}
+<td title="{{ item[column] }}"><div class="row">{{ item[column] }}</div></td>
+{% endfor %}
+</tr>
+{% else %}
+<tr><td colspan="{{ columns|length }}">No records returned</td></tr>
+{% endfor %}

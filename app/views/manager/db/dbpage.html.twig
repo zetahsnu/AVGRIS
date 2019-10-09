@@ -1,0 +1,32 @@
+{% embed "/manager/dbbase.html.twig" %}
+    {% block datahead %}
+        {% embed "/manager/db/head.html.twig" %}
+        {% endembed %}
+    {% endblock %}
+    {% block databody %}
+        {% embed "/manager/db/body.html.twig" %}
+        {% endembed %}
+    {% endblock %}
+    {% block filters %}
+        {% if category == 'Passport data' %}
+            {% embed "/manager/db/filters/pas.html.twig" %}
+            {% endembed %}
+        {% elseif category == 'Evaluation data' %}
+            {% embed "/manager/db/filters/eva.html.twig" %}
+            {% endembed %}
+        {% elseif category == 'Seed inventory' %}
+            {% embed "/manager/db/filters/sinv.html.twig" %}
+            {% endembed %}
+        {% elseif category == 'Seed distribution' %}
+            {% embed "/manager/db/filters/sdis.html.twig" %}
+            {% endembed %}
+        {% else %}
+            {% embed "/manager/db/filters/char.html.twig" %}
+            {% endembed %}
+        {% endif %}
+    {% endblock %}
+    {% block editors %}
+        {% embed "/manager/db/editors/" ~  title ~ ".html.twig" %}
+        {% endembed %}
+    {% endblock %}
+{% endembed %}

@@ -1,0 +1,314 @@
+{% embed "base.html.twig" %}
+    {% block javascript %}
+        {{ parent() }}
+        <script src="{{ BASE_PATH }}/public/js/search/view/back.js"></script>
+    {% endblock %}
+    {% block css %}
+        {{ parent() }}
+        <link rel="stylesheet" href="{{ BASE_PATH }}/public/css/view/default.css">
+    {% endblock %}
+    {% block content %}
+        {% embed "/view/part/title.html.twig" %}
+        {% endembed %}
+        {% embed "/view/part/header.html.twig" %}
+        {% endembed %}
+        <section class="ac-container">
+            <div>
+                <input id="ac-1" name="accordion-1" type="checkbox" />
+                <label for="ac-1">SEEDLING DATA</label>
+                <article>
+                    <div class="css_table">
+                        <div class="css_tr">
+                            <div class="css_td">Hypocotyl color<br>(terminal bud 1-2 mm)</div>
+                            <div class="css_td">{{ data.HCOL }}</div>
+                        </div>                        
+                        <div class="css_tr">
+                            <div class="css_td">Hypocotyl color intensity</div>
+                            <div class="css_td">{{ data.HCOLIN }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Cotyledonous leaf length (mm) (N=10)</div>
+                            <div class="css_td">{{ data.COLELE }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Cotyledonous leaf width (mm) (N=10)</div>
+                            <div class="css_td">{{ data.COLEWI }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Cotyledonous leaf shape</div>
+                            <div class="css_td">{{ data.COLFSHP }}</div>
+                        </div>                        
+                        <div class="css_tr">
+                            <div class="css_td">Cotyledonous leaf color</div>
+                            <div class="css_td">{{ data.COLFCOL }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Hypocotyl pubescence</div>
+                            <div class="css_td">{{ data.HYPUB }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Stem color (before transplanting)</div>
+                            <div class="css_td">{{ data.STCOL }}</div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <div>
+                <input id="ac-2" name="accordion-1" type="checkbox" />
+                <label for="ac-2">VEGETATIVE DATA</label>
+                <article>
+                    <div class="css_table">
+                        <div class="css_tr">
+                            <div class="css_td">Plant growth habit</div>
+                            <div class="css_td">{{ data.PGHAB }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Stem pubescence density</div>
+                            <div class="css_td">{{ data.STPUBDEN }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Stem pubescence type</div>
+                            <div class="css_td">{{ data.STPUBTYPE }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Leaf pubescence density</div>
+                            <div class="css_td">{{ data.LFPUBDEN }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Leaf pubescence type</div>
+                            <div class="css_td">{{ data.LFPUBTYPE }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Mature leaf length (cm)<br>(N=10; leaves from main stem)</div>
+                            <div class="css_td">{{ data.MLFLEN }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Mature leaf width (cm)<br>(N=10; leaves from main stem)</div>
+                            <div class="css_td">{{ data.MLFWID }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Leaf shape</div>
+                            <div class="css_td">{{ data.LFSHP }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Leaf color</div>
+                            <div class="css_td">{{ data.LFCOL }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Leaf pigmentation</div>
+                            <div class="css_td">{{ data.LFPIG }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Branching habit</div>
+                            <div class="css_td">{{ data.BRHBT }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Plant size</div>
+                            <div class="css_td">{{ data.PLSIZE }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Plant stature</div>
+                            <div class="css_td">{{ data.PLSTAT }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Height of 1st branch (cm)<br>(N=10; at mature stage)</div>
+                            <div class="css_td">{{ data.HTBRN }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Stem diameter 10 cm from ground (cm)<br>(N=10; at mature stage)</div>
+                            <div class="css_td">{{ data.STDM }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Nodal anthocyanin (whole plant)</div>
+                            <div class="css_td">{{ data.NOPED }}</div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <div>
+                <input id="ac-3" name="accordion-1" type="checkbox" />
+                <label for="ac-3">INFLORESCENCE DATA</label>
+                <article>
+                    <div class="css_table">
+                        <div class="css_tr">
+                            <div class="css_td">Days to flower<br>(no. of days from sowing until 50% of plants have the most flowers)</div>
+                            <div class="css_td">{{ data.DAYSFLO }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Number of pedicels per axil</div>
+                            <div class="css_td">{{ data.NOPED }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Pedicel position at anthesis</div>
+                            <div class="css_td">{{ data.PEDPOS }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Angle between flower and pedicel</div>
+                            <div class="css_td">{{ data.ANGLE }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Corolla color</div>
+                            <div class="css_td">{{ data.CORCOL }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Corolla length</div>
+                            <div class="css_td">{{ data.CORLENG }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Corolla spot</div>
+                            <div class="css_td">{{ data.CORSPOT }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Anther color<br>(immediately after flowering)</div>
+                            <div class="css_td">{{ data.ANTHER }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Filament color</div>
+                            <div class="css_td">{{ data.FILCOL }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Stigma position in relation to anthers at full anthesis</div>
+                            <div class="css_td">{{ data.STIGMA }}</div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <div>
+                <input id="ac-4" name="accordion-1" type="checkbox" />
+                <label for="ac-4">FRUIT DATA</label>
+                <article>
+                    <div class="css_table">
+                        <div class="css_tr">
+                            <div class="css_td">Calyx margin shape</div>
+                            <div class="css_td">{{ data.CALYX }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Annular constriction at junction of calyx and peduncle<br>(at mature green stage)</div>
+                            <div class="css_td">{{ data.ANNULAR }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Fruit position</div>
+                            <div class="css_td">{{ data.FRPOS }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Fruit color at immature stage</div>
+                            <div class="css_td">{{ data.FRCOL_IS }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Fruit color intensity at immature stage</div>
+                            <div class="css_td">{{ data.FRCOLINT_IS }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Fruit color at intermediate stage between immature and mature stage</div>
+                            <div class="css_td">{{ data.FRCOL_ISBET }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Fruit color at mature stage</div>
+                            <div class="css_td">{{ data.FRCOL_MAT }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Fruit color intensity at mature stage</div>
+                            <div class="css_td">{{ data.FRCOLINT_MAT }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Fruit shape</div>
+                            <div class="css_td">{{ data.FRSHP }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Fruit shape at peduncle attachment</div>
+                            <div class="css_td">{{ data.FRSHP_PEDATT }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Neck at base of fruit</div>
+                            <div class="css_td">{{ data.NECK }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Fruit shape at blossom end</div>
+                            <div class="css_td">{{ data.FRSHP_BLEND }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Fruit persistence</div>
+                            <div class="css_td">{{ data.FRPERS }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Fruit pungency</div>
+                            <div class="css_td">{{ data.FRPUNG }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Fruit blossom end appendage</div>
+                            <div class="css_td">{{ data.FRBL_ENDAPP }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Varietal mixture condition</div>
+                            <div class="css_td">{{ data.VARIETAL }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Soluble solids (%) (N=10)</div>
+                            <div class="css_td">{{ data.SSOLIDS }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Fruit pedicel width (mm)<br>(N=10; at second harvest)</div>
+                            <div class="css_td">{{ data.WIDPED }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Duration to fruiting</div>
+                            <div class="css_td">{{ data.DURATION }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Fruit set</div>
+                            <div class="css_td">{{ data.FRSET }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Fruit length (cm)<br>(N=10; at second harvest)</div>
+                            <div class="css_td">{{ data.FRLEN }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Fruit width (cm)<br>(N=10, at second harvest)</div>
+                            <div class="css_td">{{ data.FRWID }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Fruit weight (gm)<br>(N=10; at second harvest)</div>
+                            <div class="css_td">{{ data.FRWT }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Fruit pedicel length (cm)<br>(N=10; at second harvest)</div>
+                            <div class="css_td">{{ data.FRPEDLEN }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Anthocyanin spots in unripe stage</div>
+                            <div class="css_td">{{ data.ANTHOCYANIN }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Fruit cross-sectional corrugation<br>(1/3 from pedicel end)</div>
+                            <div class="css_td">{{ data.FRCROSS }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Number of locules</div>
+                            <div class="css_td">{{ data.NOLOCU }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Fruit wall thickness<br>(mm; to one decimal point) (N=10; at second harvest)</div>
+                            <div class="css_td">{{ data.FRWALL }}</div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <div>
+                <input id="ac-5" name="accordion-1" type="checkbox" />
+                <label for="ac-5">SEED DATA</label>
+                <article>
+                    <div class="css_table">
+                        <div class="css_tr">
+                            <div class="css_td">Seed color</div>
+                            <div class="css_td">{{ data.SDCOL }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Number of seeds per fruit</div>
+                            <div class="css_td">{{ data.NOSDS }}</div>
+                        </div>
+                    </div>
+                </article>
+            </div>            
+        </section>
+    {% endblock %}
+{% endembed %}

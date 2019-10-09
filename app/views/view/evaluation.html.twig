@@ -1,0 +1,275 @@
+{% embed "base.html.twig" %}
+    {% block javascript %}
+        {{ parent() }}
+        <script src="{{ BASE_PATH }}/public/js/search/view/back.js"></script>
+    {% endblock %}
+    {% block css %}
+        {{ parent() }}
+        <link rel="stylesheet" href="{{ BASE_PATH }}/public/css/view/default.css">
+        <link rel="stylesheet" href="{{ BASE_PATH }}/public/css/view/evaluation.css">
+    {% endblock %}
+    {% block content %}
+        {% embed "/view/part/title.html.twig" %}
+        {% endembed %}
+        <table>
+            <colgroup>
+                <col>
+                <col>
+                <col>
+            </colgroup>
+            <tbody>
+                <tr><td>Vegetable introduction number</td><td><a href="{{ BASE_PATH }}/search/view/passport/{{ data.VINO|replace({' ': '0'}) }}">{{ data.VINO }}</a></td></tr>
+                <tr><td>Crop accession number</td><td>{{ data.ACCNO }}</td></tr>
+                <tr><td>Temporary number</td><td>{{ data.TEMPNO }}</td></tr>
+                <tr><td>Variant</td><td>{{ data.VARIANT }}</td></tr>
+                <tr><td>Characterized Year and Season</td><td>{{ data.YRSN }}</td></tr>
+                <tr><td>Family</td><td>{{ data.FAMILY }}</td></tr>
+                <tr><td>Species</td><td>{{ data.SPECIES }}</td></tr>
+                <tr><td>Subtaxa</td><td>{{ data.SUBTAXA }}</td></tr>
+                <tr><td>Pedigree / Cultivar Name</td><td>{{ data.PEDCUL }}</td></tr>
+                <tr><td>Country</td><td>{{ data.COUNTRY }}</td></tr>
+                <tr><td>Remarks</td><td>{{ data.REMARKS }}</td></tr>
+            </tbody>
+        </table>
+        <div id="expand_check"><input type="checkbox" id="expand"><label for="expand">Expand All</label></div>
+        <script>
+            $('#expand').change(function () {
+                if (this.checked) {
+                    $('input[type=checkbox]').prop("checked", true);
+                } else {
+                    $('input[type=checkbox]').prop("checked", false);
+                }
+            });
+        </script>
+        <section class="ac-container">
+            <div>
+                <input id="ac-1" name="accordion-1" type="checkbox" />
+                <label for="ac-1">NUTRITIVE VALUE</label>
+                <article>
+                    <div class="css_table">
+                        <div class="css_tr">
+                            <div class="css_td">Dry matter (%)</div>
+                            <div class="css_td">{{ data.DRYMAT }}</div>
+                        </div>                        
+                        <div class="css_tr">
+                            <div class="css_td">Sugar (%)</div>
+                            <div class="css_td">{{ data.SUGAR }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Color value (*100)</div>
+                            <div class="css_td">{{ data.COLORVAL }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Lipid (%)</div>
+                            <div class="css_td">{{ data.LIPID }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Capsacin (mg/g)</div>
+                            <div class="css_td">{{ data.CAPSAI }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Alkalinity (pH)</div>
+                            <div class="css_td">{{ data.PH }}</div>
+                        </div>                        
+                        <div class="css_tr">
+                            <div class="css_td">Soluble solids (Brix)</div>
+                            <div class="css_td">{{ data.SSOLIDS }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Acidity<br>(% Citric acid)</div>
+                            <div class="css_td">{{ data.ACIDITY }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Total solids</div>
+                            <div class="css_td">{{ data.TSOLIDS }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Beta carotene (mg/100g)</div>
+                            <div class="css_td">{{ data.CAROTENE }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Fiber (%)</div>
+                            <div class="css_td">{{ data.FIBER }}</div>
+                        </div>                        
+                        <div class="css_tr">
+                            <div class="css_td">Vitamin A (mg/100g)</div>
+                            <div class="css_td">{{ data.VITA }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Vitamin C (mg/100g)</div>
+                            <div class="css_td">{{ data.VITC }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Ascorbic acid (mg/100g)</div>
+                            <div class="css_td">{{ data.ASA }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Total phenolic (mg/100g)<br>(by Folin-Denis Method)</div>
+                            <div class="css_td">{{ data.TP }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Anti-oxidant activity (%)<br>(by Modified Thiocyanate Method)</div>
+                            <div class="css_td">{{ data.MT }}</div>
+                        </div>                        
+                        <div class="css_tr">
+                            <div class="css_td">Anti-oxidant activity (%)<br>(by DPPH Method)</div>
+                            <div class="css_td">{{ data.DPPH }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Total oil content (%)</div>
+                            <div class="css_td">{{ data.OIL }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Protein content (%)</div>
+                            <div class="css_td">{{ data.PROTEIN }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Starch content (%)</div>
+                            <div class="css_td">{{ data.STARCH }}</div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <div>
+                <input id="ac-2" name="accordion-1" type="checkbox" />
+                <label for="ac-2">ABIOTIC STRESS TOLERANCE</label>
+                <article>
+                    <div class="css_table">
+                        <div class="css_tr">
+                            <div class="css_td">Heat tolerance</div>
+                            <div class="css_td">{{ data.HEAT }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Cold tolerance</div>
+                            <div class="css_td">{{ data.COLD }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Drought tolerance</div>
+                            <div class="css_td">{{ data.DROUGHT }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Flooding  tolerance</div>
+                            <div class="css_td">{{ data.FLOOD }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Salinity tolerance</div>
+                            <div class="css_td">{{ data.SALINITY }}</div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <div>
+                <input id="ac-3" name="accordion-1" type="checkbox" />
+                <label for="ac-3">INSECT PEST RESISTANCE</label>
+                <article>
+                    <div class="css_table">
+                        <div class="css_tr">
+                            <div class="css_td">Dacus cucurbita (melon fly)</div>
+                            <div class="css_td">{{ data.DACCUR }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Callosobruchus chinensis (bruchid beetle)</div>
+                            <div class="css_td">{{ data.BRUCHID }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Cotton aphid</div>
+                            <div class="css_td">{{ data.RES_COTAPD }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Cotton leaf hopper</div>
+                            <div class="css_td">{{ data.RES_COTLFHPER }}</div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <div>
+                <input id="ac-4" name="accordion-1" type="checkbox" />
+                <label for="ac-4">BACTERIAL RESISTANCE</label>
+                <article>
+                    <div class="css_table">
+                        <div class="css_tr">
+                            <div class="css_td">Curtobacterium flaccumfaciens pv. flaccumfaciens (Tan spot)</div>
+                            <div class="css_td">{{ data.RES_TANSPO }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Pseudomonas savastanoi pv. phaseolicola (Halo blight)</div>
+                            <div class="css_td">{{ data.RES_HALOBL }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Tomato bacterial wilt</div>
+                            <div class="css_td">{{ data.TMBACWT }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Eggplant bacterial wilt</div>
+                            <div class="css_td">{{ data.EGBACWT }}</div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <div>
+                <input id="ac-5" name="accordion-1" type="checkbox" />
+                <label for="ac-5">FUNGAL RESISTANCE</label>
+                <article>
+                    <div class="css_table">
+                        <div class="css_tr">
+                            <div class="css_td">Powdery mildew</div>
+                            <div class="css_td">{{ data.POWMILD }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Tomato late blight</div>
+                            <div class="css_td">{{ data.TMLATEBL }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Pepper anthrancnose</div>
+                            <div class="css_td">{{ data.PPANTHR }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Pepper phytophthora blight</div>
+                            <div class="css_td">{{ data.PPPHYTOBL }}</div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <div>
+                <input id="ac-6" name="accordion-1" type="checkbox" />
+                <label for="ac-6">VIRUS RESISTANCE</label>
+                <article>
+                    <div class="css_table">
+                        <div class="css_tr">
+                            <div class="css_td">Bhendi yellow vein mosaic virus</div>
+                            <div class="css_td">{{ data.BYVMV }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Chilli veinal mottle virus</div>
+                            <div class="css_td">{{ data.CVMV }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Cucumber mosaic virus (5th)</div>
+                            <div class="css_td">{{ data.CMV5 }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Cucumber mosaic virus (COTYL)</div>
+                            <div class="css_td">{{ data.CMVCOT }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Pepper mild mottle virus</div>
+                            <div class="css_td">{{ data.PMMV }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Potato virus Y</div>
+                            <div class="css_td">{{ data.PVY }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Tobacco mosaic virus</div>
+                            <div class="css_td">{{ data.TMV }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Tomato mosaic virus</div>
+                            <div class="css_td">{{ data.TOMV }}</div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+    {% endblock %}
+{% endembed %}

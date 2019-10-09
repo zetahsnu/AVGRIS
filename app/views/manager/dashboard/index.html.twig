@@ -1,0 +1,19 @@
+<section class="dashboard">
+    <h1>Dashboard</h1>
+    <div class="counter">Total Sessions</div><div class="counter">Total Vistors</div>
+    <div class="counter"><span class="sessions">0</span></div><div class="counter"><span class="users">0</span></div>
+    <div class="charts">
+        <div id="chart_month"><img src="{{ BASE_PATH }}/public/images/big-ajax-loader.svg"></div>
+        <div id="chart_month_detail"><img src="{{ BASE_PATH }}/public/images/big-ajax-loader.svg"></div>
+        <div id="chart_day"><img src="{{ BASE_PATH }}/public/images/big-ajax-loader.svg"></div>
+        <div id="chart_day_detail"><img src="{{ BASE_PATH }}/public/images/big-ajax-loader.svg"></div>
+    </div>
+</section>
+{% if part is not defined %}
+    <script src="{{ BASE_PATH }}/public/js/manager/dashboard/analyticsCharts.js"></script>
+{% else %}
+    <script>
+        loadcssfile('https://www.google.com/uds/api/visualization/1.0/5504f76db3d3b530b98671471f05820f/ui+zh_TW,table+zh_TW.css');
+        drawChart();
+    </script>
+{% endif %}

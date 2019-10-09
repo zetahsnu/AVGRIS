@@ -1,0 +1,42 @@
+{% embed "base.html.twig" %}
+    {% block css %}
+        {{ parent() }}
+        <link rel="stylesheet" href="{{ BASE_PATH }}/public/css/contact.css">
+    {% endblock %}
+    {% block content %}        
+        <section>
+            <h2>CONTACT US</h2>
+            <ul>
+                <li>
+                    <p>AVRDC – The World Vegetable Center</p>
+                    <aside>                      
+                        Genetic Resources and Seed Unit (GRSU)<br>
+                        PO Box 42, Shanhua, Tainan 741, Taiwan<br><br>
+                        <label>Tel:&nbsp;+886-6-583-7801</label><br>
+                        <label>Fax:&nbsp;+886-6-583-0009</label><br>
+                        <label>Email:&nbsp;<a href="mailto:seedrequest@worldveg.org" alt="seedrequest@worldveg.org" title="seedrequest@worldveg.org">seedrequest(at)worldveg.org</a></label><br>                
+                        <label>Website:&nbsp;<a href="http://avrdc.org/" target="_blank" alt="avrdc.org" title="avrdc.org">avrdc.org</a></label>
+                    </aside>
+                </li>
+                <li>
+                    <p>AVRDC East and Southeast Asia</p>
+                    <aside>
+                        PO Box 1010 (Kasetsart) Bangkok, Thailand 10903<br><br>
+                        <label>Tel:&nbsp;+66-2-942-8686 / 942-8687</label><br>
+                        <label>Fax:&nbsp;+66-02-942-8688</label><br>
+                        <label>Email:&nbsp;<a href="mailto:info-eastasia@worldveg.org" alt="info-eastasia@worldveg.org" title="info-eastasia@worldveg.org">info-eastasia(at)worldveg.org</a></label><br>
+                    </aside>
+                </li>
+                <li>
+                    <p>AVRDC Eastern and Southern Africa</p>
+                    <aside>
+                        PO Box 10, Duluti, Arusha, Tanzania<br><br>
+                        <label>Tel:&nbsp;+255-27-255-3093 / 255-3102</label><br>
+                        <label>Fax:&nbsp;+255-27-255-3125</label><br>
+                        <label>Email:&nbsp;<a href="mailto:info-africa@worldveg.org" alt="info-africa@worldveg.org" title="info-africa@worldveg.org">info-africa(at)worldveg.org</a></label>
+                    </aside>
+                </li>
+            </ul>
+        </section>
+    {% endblock %}
+{% endembed %}

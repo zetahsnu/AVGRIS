@@ -1,0 +1,11 @@
+<h1>{{ title }}{% if  title == 'phaseolus lunatus'|upper %}
+&nbsp;(LIMA BEAN)
+{% elseif title == 'phaseolus spp'|upper %}
+.
+{% elseif title == 'vigna angularis'|upper %}
+&nbsp;(AZUKI BEAN)
+{% elseif title == 'vigna spp'|upper %}
+.&nbsp;(MUNGBEAN,&nbsp;BLACK&nbsp;GRAM,&nbsp;RICE&nbsp;BEAN)
+{% elseif title == ''|upper %}
+&nbsp;(YARDLONG BEAN, COW PEA)
+{% endif %}<span id="return_back" class="button">BACK</span></h1>

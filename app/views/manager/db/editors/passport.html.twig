@@ -1,0 +1,125 @@
+<div id='editorMain'>
+    <div data-type='SISN'><div>SISN:</div><div><input type="number" step="1" min="0" placeholder="SISN" max="999999" /></div></div>
+    <div data-type='VINO'><div>Vegetable introduction number:</div><div><input class="vino" type="text" placeholder="VINO" disabled /></div></div>
+    <div data-type='VARIANT'><div>Variant:</div><div><input type="text" placeholder="VARIANT" /></div></div>    
+    <div data-type='FAMILY'><div>Family:</div><div><input type="text" class="searchGroup" placeholder="FAMILY" disabled />
+            <select class="related">
+                <option value="">* FAMILY *</option>
+                {% for item in full_family %}
+                    <option value='{{ item.FAMILY  }}'>{{ item.FAMILY }}</option>
+                {% endfor %}
+            </select><button class="button related searchGroup" data-status="selection" title="At least FAMILY"></button></div></div>
+    <div data-type='ACCNO'><div>Crop accession number:</div><div><input type="text" placeholder="ACCNO" /></div></div>
+    <div data-type='GENUS'><div>Genus:</div><div><input type="text" class="searchGroup" placeholder="GENUS" disabled />
+            <select class="related">
+                <option value="">* GENUS *</option>
+            </select><button class="button related searchGroup" data-status="cancel" title="At least GENUS"></button></div></div>
+    <div data-type='DUPLIC'><div>Duplicate note:</div><div><input type="number" step="1" min="0" placeholder="DUPLIC" /></div></div>
+    <div data-type='SPECIES'><div>Species:</div><div><input type="text" class="searchGroup" placeholder="SPECIES" disabled />
+            <select class="related">
+                <option value="">* SPECIES *</option>
+            </select><button class="button related searchGroup" data-status="cancel" title="At least SPECIES"></button></div></div>
+    <div data-type='TEMPNO'><div>Temporary number:</div><div><input type="text" placeholder="TEMPNO" /></div></div>
+    <div data-type='SUBTAXA'><div>Subtaxa:</div><div><input type="text" class="searchGroup" placeholder="SUBTAXA" disabled />
+            <select class="related">
+                <option value="">* SUBTAXA *</option>
+            </select><button class="button related searchGroup" data-status="cancel" title="At least SUBTAXA"></button></div></div>
+</div>
+<div id='editorOther' class="tabs tabs-style-line csh5">
+    <nav>
+        <ul>
+            <li><a href="#section-line-1"><span>general information</span></a></li>
+            <li><a href="#section-line-2"><span>geographical information</span></a></li>
+            <li><a href="#section-line-3"><span>collecting Information</span></a></li>
+        </ul>
+    </nav>
+    <div class="content-wrap">
+        <section id="section-line-1">  
+            <div data-type='SENAME'><div>Sender's name:</div><div><input type="text" placeholder="SENAME" /></div></div>
+            <div data-type='REGNO'><div>Registration number:</div><div><input type="text" placeholder="REGNO" /></div></div>
+            <div data-type='DONO'><div>Donor identification number:</div><div><input type="text" placeholder="DONO" /></div></div>
+            <div data-type='FIRNO'><div>Other number 1:</div><div><input type="text" placeholder="FIRNO" /></div></div>
+            <div data-type='SECNO'><div>Other number 2:</div><div><input type="text" placeholder="SECNO" /></div></div>
+            <div data-type='TRDNO'><div>Other number 3:</div><div><input type="text" placeholder="TRDNO" /></div></div>
+            <div data-type='PINO'><div>PI number:</div><div><input type="text" placeholder="PINO" /></div></div>
+            <div data-type='PEDCUL'><div>Pedigree / Cultivar name</div><div><input type="text" placeholder="PEDCUL" /></div></div>
+            <div data-type='DOINST'><div>Donor institute:</div><div><input type="text" placeholder="DOINST" /></div></div>
+            <div data-type='DOADDR'><div>Donor's address:</div><div><input type="text" placeholder="DOADDR" /></div></div>
+            <div data-type='ACQDAT'><div>Acquisition date:</div><div><input type="date" placeholder="ACQDAT" /></div></div>
+            <div data-type='ACSIZE'><div>Accession size:</div><div><input type="text" placeholder="ACSIZE" /></div></div>
+            <div data-type='DUPLST'><div>Duplicate status:</div><div><input type="text" placeholder="DUPLST" /></div></div>
+            <div data-type='NOTES'><div>Notes:</div><div><input type="text" placeholder="NOTES" /></div></div>
+            <div data-type='ANNOTT'><div>Annotation:</div><div><input type="text" placeholder="ANNOTT" /></div></div>
+            <div data-type='DISSTA'><div>Distribution status:</div><div>
+                    <select>
+                        <option value="">* DISSTA *</option>
+                        {% for item in related.DISSTA %}
+                            <option value="{{ item.REFNO }}">{{ item.DISSTA }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='DUSITE'><div>Duplicate storage site:</div><div><input type="text" placeholder="DUSITE" /></div></div>
+            <div data-type='TRSITE'><div>Transfer site:</div><div><input type="text" placeholder="TRSITE" /></div></div>
+            <div data-type='TRDATE'><div>Transfer date:</div><div><input type="date" placeholder="TRDATE" /></div></div>
+            <div data-type='OLDISN'><div>Old ISN:</div><div><input type="number" step="1" min="0" placeholder="OLDISN" /></div></div>
+            <div data-type='YRREG1'><div>1st regeneration:</div><div><input type="text" placeholder="YRREG1" /></div></div>
+            <div data-type='STREG1'><div>Site of 1st regeneration:</div><div><input type="text" placeholder="STREG1" /></div></div>
+            <div data-type='YRREG2'><div>2nd regeneration:</div><div><input type="text" placeholder="YRREG2" /></div></div>
+            <div data-type='STREG2'><div>Site of 2nd regeneration:</div><div><input type="text" placeholder="STREG2" /></div></div>
+            <div data-type='YRREG3'><div>3rd regeneration:</div><div><input type="text" placeholder="YRREG3" /></div></div>
+            <div data-type='STREG3'><div>Site of 3rd regeneration:</div><div><input type="text" placeholder="STREG3" /></div></div>            
+        </section>
+        <section id="section-line-2">
+            <div data-type='ORIGCTY'><div>Country code:</div><div><input type="text" placeholder="ORIGCTY" disabled /></div></div>
+            <div data-type='REGION'><div>Region:</div><div><input type="text" placeholder="REGION" disabled /></div></div>
+            <div data-type='COUNTRY'><div>Country of collection:</div><div>
+                    <select>
+                        <option value="">* COUNTRY *</option>
+                        {% for item in other_related.COUNTRY_CODE %}
+                            <option value="{{ item.NAME  }}">{{ item.NAME  }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='PROVIN'><div>Province / State:</div><div><input type="text" placeholder="PROVIN" /></div></div>
+            <div data-type='MUNICI'><div>Municipality / County / District:</div><div><input type="text" placeholder="MUNICI" /></div></div>
+            <div data-type='COSITE'><div>Location of collection site</div><div><input type="text" placeholder="COSITE" /></div></div>
+            <div data-type='COLATI'><div>Latitude of collection site:</div><div><input type="text" placeholder="COLATI" /></div></div>
+            <div data-type='COLONG'><div>Longitude of collection site:</div><div><input type="text" placeholder="COLONG" /></div></div>
+            <div data-type='COALTI'><div>Altitude of collection site (Meters):</div><div><input type="text" placeholder="COALTI" /></div></div>
+        </section>
+        <section id="section-line-3">
+            <div data-type='COLLEC'><div>Collector</div><div><input type="text" placeholder="COLLEC" /></div></div>
+            <div data-type='COLLNO'><div>Collector's number:</div><div><input type="text" placeholder="COLLNO" /></div></div>
+            <div data-type='COINST'><div>Collecting institute:</div><div><input type="text" placeholder="COINST" /></div></div>
+            <div data-type='CODATE'><div>Collection date of original sample:</div><div><input type="date" placeholder="CODATE" /></div></div>
+            <div data-type='COPAGE'><div>Collecting form page</div><div><input type="text" placeholder="COPAGE" /></div></div>
+            <div data-type='COLLSO'><div>Collecting source:</div><div>
+                    <select>
+                        <option value="">* COLLSO *</option>
+                        {% for item in related.COLLSO %}
+                            <option value="{{ item.REFNO }}">{{ item.COLLSO }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='SAMSO'><div>Sample source:</div><div>
+                    <select>
+                        <option value="">* SAMSO *</option>
+                        {% for item in related.SAMSO %}
+                            <option value="{{ item.REFNO }}">{{ item.SAMSO }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='STATUS'><div>Status of sample:</div><div>
+                    <select>
+                        <option value="">* STATUS *</option>
+                        {% for item in related.STATUS %}
+                            <option value="{{ item.REFNO }}">{{ item.STATUS }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='COLPRO'><div>Collecting project:</div><div><input type="text" placeholder="COLPRO" /></div></div>
+            <div data-type='CORE'><div>Core collection:</div><div>
+                    <select>
+                        <option value="">* CORE *</option>
+                        {% for item in related.CORE %}
+                            <option value="{{ item.REFNO }}">{{ item.CORE }}</option>
+                        {% endfor %}
+                    </select></div></div>
+        </section>
+    </div><!-- /content -->
+</div><!-- /tabs -->

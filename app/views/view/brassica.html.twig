@@ -1,0 +1,422 @@
+{% embed "base.html.twig" %}
+    {% block javascript %}
+        {{ parent() }}
+        <script src="{{ BASE_PATH }}/public/js/search/view/back.js"></script>
+    {% endblock %}
+    {% block css %}
+        {{ parent() }}
+        <link rel="stylesheet" href="{{ BASE_PATH }}/public/css/view/default.css">
+    {% endblock %}
+    {% block content %}
+        {% embed "/view/part/title.html.twig" %}
+        {% endembed %}
+        {% embed "/view/part/header.html.twig" %}
+        {% endembed %}
+        <section class="ac-container">
+            <div>
+                <input id="ac-1" name="accordion-1" type="checkbox" />
+                <label for="ac-1">SEEDLING DATA</label>
+                <article>
+                    <div class="css_table">
+                        <div class="css_tr">
+                            <div class="css_td">Hypocotyl color</div>
+                            <div class="css_td">{{ data.HYPCOL }}</div>
+                        </div>                        
+                        <div class="css_tr">
+                            <div class="css_td">Seedling leaf color</div>
+                            <div class="css_td">{{ data.SDLFCOL }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Margin of seedling leaf</div>
+                            <div class="css_td">{{ data.MGNSDLF }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Seedling pubescence</div>
+                            <div class="css_td">{{ data.SDPUB }}</div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <div>
+                <input id="ac-2" name="accordion-1" type="checkbox" />
+                <label for="ac-2">VEGETATIVE DATA (Leaf)</label>
+                <article>
+                    <div class="css_table">
+                        <div class="css_tr">
+                            <div class="css_td">Plant growth habit</div>
+                            <div class="css_td">{{ data.PLGHBT }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Plant height (cm) – measure extremity of plant</div>
+                            <div class="css_td">{{ data.PLHT }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Plant diameter (cm) – measure extremity of plant</div>
+                            <div class="css_td">{{ data.PLDTR }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Lodging</div>
+                            <div class="css_td">{{ data.LDG }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Number of leaves (estimated)</div>
+                            <div class="css_td">{{ data.NOLEAVE }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Leaf length (cm)<br>(largest leaf including petiole)</div>
+                            <div class="css_td">{{ data.LFLEN }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Leaf blade width (cm)<br>(widest point of largest leaf)</div>
+                            <div class="css_td">{{ data.LFBLWD }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Leaf angle<br>(angle of petiole with horizontal)</div>
+                            <div class="css_td">{{ data.LFANGLE }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Leaf shape (outline)</div>
+                            <div class="css_td">{{ data.LFSHPE }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Leaf margin</div>
+                            <div class="css_td">{{ data.LFMGN }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Leaf division</div>
+                            <div class="css_td">{{ data.LFDIV }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Leaf apex shape</div>
+                            <div class="css_td">{{ data.LFASHP }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Leaf blade thickness</div>
+                            <div class="css_td">{{ data.LFBLTHK }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Leaf blade blistering</div>
+                            <div class="css_td">{{ data.LFBLBLS }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Leaf tip attitude</div>
+                            <div class="css_td">{{ data.LFTATT }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Leaf color</div>
+                            <div class="css_td">{{ data.LFCOL }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Leaf pubescence</div>
+                            <div class="css_td">{{ data.LFPUB }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Leaf bloom</div>
+                            <div class="css_td">{{ data.LFBLM }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Petiole and/or midvein enlargement</div>
+                            <div class="css_td">{{ data.PETMVE }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Petiole length (cm)</div>
+                            <div class="css_td">{{ data.PETLEN }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Petiole width (cm)</div>
+                            <div class="css_td">{{ data.PETWID }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Petiole section</div>
+                            <div class="css_td">{{ data.PETSEC }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Petiole color</div>
+                            <div class="css_td">{{ data.PETCOL }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Leaf lamina attitude</div>
+                            <div class="css_td">{{ data.LFLATT }}</div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <div>
+                <input id="ac-3" name="accordion-1" type="checkbox" />
+                <label for="ac-3">VEGETATIVE DATA (Heading)</label>
+                <article>
+                    <div class="css_table">
+                        <div class="css_tr">
+                            <div class="css_td">Heading habit</div>
+                            <div class="css_td">{{ data.HDHBT }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Head shape</div>
+                            <div class="css_td">{{ data.HDSHP }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Head-forming leaf overlap at terminal region</div>
+                            <div class="css_td">{{ data.HDFLFO }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Head cover from subtending leaves</div>
+                            <div class="css_td">{{ data.HDCSL }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Primary color of outer head leaves</div>
+                            <div class="css_td">{{ data.PCOLOHL }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Head length (cm)</div>
+                            <div class="css_td">{{ data.HDLEN }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Head diameter (cm)</div>
+                            <div class="css_td">{{ data.HDDTR }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Primary color inside cut</div>
+                            <div class="css_td">{{ data.PCOLIC }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Head solidity</div>
+                            <div class="css_td">{{ data.HDSOL }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Stem length in head</div>
+                            <div class="css_td">{{ data.STLENHD }}</div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <div>
+                <input id="ac-4" name="accordion-1" type="checkbox" />
+                <label for="ac-4">VEGETATIVE DATA (Enlarged stem and bud)</label>
+                <article>
+                    <div class="css_table">
+                        <div class="css_tr">
+                            <div class="css_td">Stem axis elongation and enlargement</div>
+                            <div class="css_td">{{ data.STAXS_ELN }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Vegetative stem length (cm)<br>(from cotyledon to tip)</div>
+                            <div class="css_td">{{ data.VEGSTLEN }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Vegetative stem width (cm)</div>
+                            <div class="css_td">{{ data.VEGSTWID }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Stem color</div>
+                            <div class="css_td">{{ data.STCOL }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Axillary stem and bud growth</div>
+                            <div class="css_td">{{ data.AXSTBG }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Number of shoots or enlarged buds</div>
+                            <div class="css_td">{{ data.NOSHOOTS }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Shape of enlarged vegetative buds</div>
+                            <div class="css_td">{{ data.SHPEVBUD }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Size of enlarged vegetative buds</div>
+                            <div class="css_td">{{ data.SZEVBUD }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Color of enlarged vegetative buds or shoots</div>
+                            <div class="css_td">{{ data.COLEVBUD }}</div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <div>
+                <input id="ac-5" name="accordion-1" type="checkbox" />
+                <label for="ac-5">VEGETATIVE DATA (Flowering head)</label>
+                <article>
+                    <div class="css_table">
+                        <div class="css_tr">
+                            <div class="css_td">Floral apex branch</div>
+                            <div class="css_td">{{ data.FLAB }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Flowering head size</div>
+                            <div class="css_td">{{ data.FLHDSZ }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Flowering head shape</div>
+                            <div class="css_td">{{ data.FLHDSHP }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Flowering head color surface</div>
+                            <div class="css_td">{{ data.FLHCOLS }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Head cover from subtending leaves</div>
+                            <div class="css_td">{{ data.HDCFSL }}</div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <div>
+                <input id="ac-6" name="accordion-1" type="checkbox" />
+                <label for="ac-6">VEGETATIVE DATA (Enlarged root)</label>
+                <article>
+                    <div class="css_table">
+                        <div class="css_tr">
+                            <div class="css_td">Root shape</div>
+                            <div class="css_td">{{ data.RTSHP }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Root length (cm)</div>
+                            <div class="css_td">{{ data.RTLEN }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Root diameter (cm)</div>
+                            <div class="css_td">{{ data.RTDTR }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Root weight (g)</div>
+                            <div class="css_td">{{ data.RTWT }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Root shape of shoulder</div>
+                            <div class="css_td">{{ data.RTSHPS }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Root shape at base</div>
+                            <div class="css_td">{{ data.RTSHPB }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Exterior root color</div>
+                            <div class="css_td">{{ data.EXRTCOL }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Root exterior color pattern</div>
+                            <div class="css_td">{{ data.RTEXCOLPT }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Interior root color</div>
+                            <div class="css_td">{{ data.INTRTCOL }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Flesh color in transverse section</div>
+                            <div class="css_td">{{ data.FCOLTS }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Root pungency</div>
+                            <div class="css_td">{{ data.RTPUNG }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Position of ‘bulb’ in soil</div>
+                            <div class="css_td">{{ data.POSBLD }}</div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <div>
+                <input id="ac-7" name="accordion-1" type="checkbox" />
+                <label for="ac-7">FLOWERING PLANT CHARACTERIZATION</label>
+                <article>
+                    <div class="css_table">
+                        <div class="css_tr">
+                            <div class="css_td">Flowering behavior (without vernalization)</div>
+                            <div class="css_td">{{ data.FLOBEH }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Days to flowering</div>
+                            <div class="css_td">{{ data.DAYSFLO }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Flowering stalk color</div>
+                            <div class="css_td">{{ data.FLOSCOL }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Flower stalk length (cm)</div>
+                            <div class="css_td">{{ data.FLOSLEN }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Flowering stalk internode length</div>
+                            <div class="css_td">{{ data.FLOSINTL }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Flowering stalk branching habit</div>
+                            <div class="css_td">{{ data.FLOSBRHBT }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Petal color</div>
+                            <div class="css_td">{{ data.PETLCOL }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Flower stalk bloom</div>
+                            <div class="css_td">{{ data.FLOSTBLM }}</div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <div>
+                <input id="ac-8" name="accordion-1" type="checkbox" />
+                <label for="ac-8">FRUIT & SEED DATA</label>
+                <article>
+                    <div class="css_table">
+                        <div class="css_tr">
+                            <div class="css_td">Days to maturity</div>
+                            <div class="css_td">{{ data.DAYSMAT }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Silique length (cm)</div>
+                            <div class="css_td">{{ data.SILILEN }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Silique width (cm)</div>
+                            <div class="css_td">{{ data.SILIWID }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Beak length (cm)</div>
+                            <div class="css_td">{{ data.BKLEN }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Silique color before drying</div>
+                            <div class="css_td">{{ data.SILICOLBD }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Silique attitude</div>
+                            <div class="css_td">{{ data.SILIATT }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Silique surface outline</div>
+                            <div class="css_td">{{ data.SILISFOL }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Silique hairiness</div>
+                            <div class="css_td">{{ data.SILIHAIR }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Silique shattering</div>
+                            <div class="css_td">{{ data.SILISHAT }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Primary seed coat color</div>
+                            <div class="css_td">{{ data.PRSDCTCOL }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">1000 seeds weight (gm)</div>
+                            <div class="css_td">{{ data.SDWT }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Number of seeds per silique</div>
+                            <div class="css_td">{{ data.NOSDPSILI }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Silique carination</div>
+                            <div class="css_td">{{ data.SILICARI }}</div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+    {% endblock %}
+{% endembed %}

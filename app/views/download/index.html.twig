@@ -1,0 +1,129 @@
+{% embed "base.html.twig" %}
+    {% block css %}
+        {{ parent() }}
+        <link rel="stylesheet" href="{{ BASE_PATH }}/public/css/download.css">
+    {% endblock %}
+    {% block content %}
+        <section>
+            <h2>Download</h2>
+        </section>
+        <section class="tabs">
+            <input id="tab-1" type="radio" name="radio-set" class="tab-selector-1" checked="checked" />
+            <label for="tab-1" class="tab-label-1">Descriptors</label>
+
+            <input id="tab-2" type="radio" name="radio-set" class="tab-selector-2" />
+            <label for="tab-2" class="tab-label-2">Protocols</label>
+
+            <input id="tab-3" type="radio" name="radio-set" class="tab-selector-3" />
+            <label for="tab-3" class="tab-label-3">Record sheets</label>
+
+            <input id="tab-4" type="radio" name="radio-set" class="tab-selector-4" />
+            <label for="tab-4" class="tab-label-4">Others</label>
+
+            <div class="clear-shadow"></div>
+
+            <div class="content">
+                <div class="content-1">
+                    {% for char in 'a'|upper..'z'|upper %}
+                        {% set header = false %}
+                        {% for item in descriptors if item.name|first|upper == char %}
+                            {{ header ? '' : "<h1>#{char}</h1>"|raw }}
+                            <p><a href="{{BASE_PATH}}/public/download/descriptors/{{ item.name|replace(' ' , '_') }}_{{ item.year }}.{{ item.extention }}" download>{{ item.name }} ({{ item.year }})</a></p>
+                            {% set header = true %}
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+                <div class="content-2">
+                    <ul>
+                        <li>
+                            <h4>Crop regeneration</h4>
+                            {% for item in protocols.crops %}
+                                <p><a href="{{BASE_PATH}}/public/download/protocols/crops/{{ item.name|replace(' ' , '_') }}_{{ item.year }}.{{ item.extention }}" download>{{ item.name }} ({{ item.year }})</a></p>
+                            {% else %}
+                                <p>Not Available</p>
+                            {% endfor %}
+                        </li>
+                        <li><h4>Germination test</h4>
+                            {% for item in protocols.tests %}
+                                <p><a href="{{BASE_PATH}}/public/download/protocols/tests/{{ item.name|replace(' ' , '_') }}_{{ item.year }}.{{ item.extention }}" download>{{ item.name }} ({{ item.year }})</a></p>
+                            {% else %}
+                                <p>Not Available</p>
+                            {% endfor %}
+                        </li>
+                        <li><h4>Measurement of seed moisture content</h4>
+                            {% for item in protocols.contents %}
+                                <p><a href="{{BASE_PATH}}/public/download/protocols/contents/{{ item.name|replace(' ' , '_') }}_{{ item.year }}.{{ item.extention }}" download>{{ item.name }} ({{ item.year }})</a></p>
+                            {% else %}
+                                <p>Not Available</p>
+                            {% endfor %}
+                        </li>
+                    </ul>
+                </div>
+                <div class="content-3">
+                    <ul>
+                        <li>
+                            <h4>Collecting record</h4>
+                            {% for item in record_sheets.records|sort  %}
+                                <p><a href="{{BASE_PATH}}/public/download/record_sheets/records/{{item.name}}.{{ item.extention }}" download>{{item.name|replace('_', ' ')}}</a></p>
+                                {% else %}
+                                <p>Not Available</p>
+                            {% endfor %}
+                        </li>
+                        <li>
+                            <h4>Germination test</h4>
+                            {% for item in record_sheets.tests|sort  %}
+                                <p><a href="{{BASE_PATH}}/public/download/record_sheets/tests/{{item.name}}.{{ item.extention }}" download>{{item.name|replace('_', ' ')}}</a></p>
+                                {% else %}
+                                <p>Not Available</p>
+                            {% endfor %}
+                        </li>
+                    </ul>
+                </div>
+                <div class="content-4">
+                    <ul>
+                        <li>
+                            <h4>Monthly update on AVRDC Genebank holdings</h4>
+                            <section>
+                                {% for key, items in others.maintained %}
+                                    {% set header = false %}
+                                    {% for item in items|sort  %}                                        
+                                        {{ header ? '' : "<h5>#{key}"|raw }}
+                                        <span><a href="{{BASE_PATH}}/public/download/others/maintained/{{ key }}_{{ item.month }}.{{ item.extention }}" download>{{ item.month }}</a></span>&nbsp;&nbsp;
+                                            {% set header = true %}
+                                        {% endfor %}
+                                        {{ "</h5>" }}
+                                    {% else %}
+                                    <p>Not Available</p>
+                                {% endfor %}
+                            </section>
+                        </li>
+                        <li>
+                            <h4>Key to species identification</h4>
+                            {% for item in others.keys|sort  %}
+                                <p><a href="{{BASE_PATH}}/public/download/others/keys/{{item.name}}.{{ item.extention }}" download>{{item.name|replace('_', ' ')}}</a></p>
+                                {% else %}
+                                <p>Not Available</p>
+                            {% endfor %}
+                        </li>
+                        <li>
+                            <h4> Seed treatment for Capsicum germplasm</h4>
+                            {% for item in others.treatments|sort  %}
+                                <p><a href="{{BASE_PATH}}/public/download/others/treatments/{{item.name}}.{{ item.extention }}" download>{{item.name|replace('_', ' ')}}</a></p>
+                                {% else %}
+                                <p>Not Available</p>
+                            {% endfor %}
+                        </li>
+                        <li>
+                            <h4> Morpho </h4>
+                            {% for item in others.morpho|sort  %}
+                                <p><a href="{{BASE_PATH}}/public/download/others/morpho/{{item.name}}.{{ item.extention }}" download>{{item.name|replace('_', ' ')}}</a></p>
+                                {% else %}
+                                <p>Not Available</p>
+                            {% endfor %}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    {% endblock %}
+{% endembed %}

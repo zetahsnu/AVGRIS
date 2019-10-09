@@ -1,0 +1,24 @@
+{% embed "base.html.twig" %}
+    {% block css %}
+        {{ parent() }}
+        <link rel="stylesheet" href="{{ BASE_PATH }}/public/css/home.css">
+    {% endblock %}
+    {% block content %}
+        <section>
+            <h2>WELCOME TO AVGRIS</h2>
+            <p>The AVRDC Vegetable Genetic Resources Information System (AVGRIS) is an information system that manages the data of all vegetable germplasm conserved in the AVRDC genebank. The Genetic Resources and Seed Unit uses this system to efficiently manage genebank operations.  AVGRIS links all germplasm conservation and management operations, from registration, characterization, evaluation and seed inventory to  seed distribution to end-users.</p>
+            <p>AVGRIS provides the user direct access to germplasm data through the internet.</p>
+            <p>Use of the system is FREE but please first read the <a href="{{ BASE_PATH }}/terms" alt="terms of use" title="terms of use">terms of use</a>.</p>
+			<p>Request the seeds please fill up the <a href = http://seed.worldveg.org/orderseed alt = "seed order form" title = "seed order form" target = "_blank">seed order form</a>. </P>
+        </section>
+        <section>
+            <h2>AVGRIS</h2>
+            <ul>
+                <li>Assists GRSU staff in day-to-day activities.</li>
+                <li>Facilitates recording, storage and maintenance of germplasm data.</li>
+                <li>Provides direct access to information pertaining to accessions in the genebank.</li>
+                <li>Allows requests for the desired seeds.</li>
+            </ul>  
+        </section>        
+    {% endblock %}
+{% endembed %}

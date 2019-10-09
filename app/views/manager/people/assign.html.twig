@@ -1,0 +1,25 @@
+<section class="assign">
+    <H1>{{ title|capitalize }}</h1>
+    <div class="toolbar">
+        <a id="reset" href="javascript:" class="button">Reset</a>
+        <a id="update" href="javascript:" class="button">Update</a>
+    </div>
+    <div id="peoples" class="clearfix">
+        <ul id="sidemenu">
+            {% for people in peoples %}
+                <li><a href="#{{ people.USERNAME|split('.')[1] }}" data-name="{{ people.USERNAME}}" data-id="{{ people.ID }}" {% if loop.first %}class="open"{%endif%}><img src="{{ BASE_PATH }}/public/images/manager/people/user.svg">{{ people.USERNAME }}&nbsp;<span id="counter_{{ people.ID }}">{{ people.TABLES|split(',')|length }}</span><span class="ajaxload"><img src="{{ BASE_PATH }}/public/images/ajax-loader.gif"></span></a></li>
+                        {% endfor %}
+        </ul>
+        <div id="content">
+            {% for people in peoples %}
+                {% set tables = people.TABLES|split(',') %}
+                <div id="{{ people.USERNAME|split('.')[1] }}" class="contentblock {% if not loop.first %}hidden{%endif%}">
+                    {%for char in characterization %}
+                        <p><input id="{{char}}_{{people.ID}}" type="checkbox" {% if char in tables %}checked{% endif %} value="{{char}}" /><label for="{{char}}_{{people.ID}}"></label><label for="{{char}}_{{people.ID}}">{{char|capitalize}}</label></p>
+                            {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>  
+</section>
+<script src="{{ BASE_PATH }}/public/js/manager/people/assign.js"></script>

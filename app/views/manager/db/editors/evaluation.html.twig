@@ -1,0 +1,376 @@
+<div id='editorMain'>
+    <div data-type='VINO'><div>Vegetable introduction number:</div><div><input id="disVINO" type="text" placeholder="VINO" disabled /><input id="inputVINO" type="text"><button id="searchVINO" class="button" data-status="search" title="Search VINO From Passport"></button></div></div>
+    <div data-type='VARIANT'><div>Variant:</div><div><input type="text" placeholder="VARIANT" /></div></div>
+    <div data-type='YRSN'><div>Char. Year & Season:</div><div><input type="text" placeholder="YRSN" /></div></div>
+    <div data-type='DATE1'><div>Date evaluated 1 (AVRDC-GRSU):</div><div><input type="text" placeholder="DATE1" /></div></div>
+    <div data-type='DATE2'><div>Date evaluated 2 (other AVRDC units):</div><div><input type="text" placeholder="DATE2" /></div></div>
+    <div data-type='DATE3'><div>Date evaluated 3 (none-AVRDC):</div><div><input type="text" placeholder="DATE3" /></div></div>
+    <div data-type='PROVIDER'><div>Provider of source of information:</div><div><input type="text" placeholder="PROVIDER" /></div></div>
+    <div data-type='INS_PROV'><div>Institute of provider:</div><div><input type="text" placeholder="INS_PROV" /></div></div>
+    <div data-type='CTY_PROV'><div>Country of provider:</div><div><input type="text" placeholder="CTY_PROV" /></div></div>
+    <div data-type='NOTES'><div>Notes:</div><div><input type="text" placeholder="NOTES" /></div></div>
+</div>
+<div id='editorOther' class="tabs tabs-style-line csh5">
+    <nav>
+        <ul>
+            <li><a href="#section-line-1"><span>NUTRITIVE VALUE</span></a></li>
+            <li><a href="#section-line-2"><span>PEST & DISEASE RESISTANCE</span></a></li>
+            <li><a href="#section-line-3"><span>ABIOTIC STRESS TOLERANCE</span></a></li>
+            <li><a href="#section-line-4"><span>other</span></a></li>
+        </ul>
+    </nav>
+    <div class="content-wrap">
+        <section id="section-line-1">
+            <div data-type='DRYMAT'><div>Dry matter (%):</div><div><input type="number" step="0.01" min="0" placeholder="DRYMAT" /></div></div>
+            <div data-type='SUGAR'><div>Sugar (%):</div><div><input type="number" step="0.01" min="0" placeholder="SUGAR" /></div></div>
+            <div data-type='COLORVAL'><div>Color value (*100):</div><div><input type="number" step="0.01" min="0" placeholder="COLORVAL" /></div></div>
+            <div data-type='LIPID'><div>Lipid (%):</div><div><input type="number" step="0.01" min="0" placeholder="LIPID" /></div></div>
+            <div data-type='CAPSAI'><div>Capsacin (mg/g):</div><div><input type="number" step="0.01" min="0" placeholder="CAPSAI" /></div></div>
+            <div data-type='PH'><div>Alkalinity (pH):</div><div><input type="number" step="0.01" min="0" placeholder="PH" /></div></div>
+            <div data-type='SSOLIDS'><div>Soluble solids (Brix):</div><div><input type="number" step="0.01" min="0" placeholder="SSOLIDS" /></div></div>
+            <div data-type='ACIDITY'><div>Acidity (% Citric acid):</div><div><input type="number" step="0.01" min="0" placeholder="ACIDITY" /></div></div>
+            <div data-type='TSOLIDS'><div>Total solids:</div><div><input type="number" step="0.01" min="0" placeholder="TSOLIDS" /></div></div>
+            <div data-type='CAROTENE'><div>Beta carotene (mg/100g):</div><div><input type="number" step="0.01" min="0" placeholder="CAROTENE" /></div></div>
+            <div data-type='FIBER'><div>Fiber (%):</div><div><input type="number" step="0.01" min="0" placeholder="FIBER" /></div></div>
+            <div data-type='VITA'><div>Vitamin A (mg/100g):</div><div><input type="number" step="0.01" min="0" placeholder="VITA" /></div></div>
+            <div data-type='VITC'><div>Vitamin C (mg/100g):</div><div><input type="number" step="0.01" min="0" placeholder="VITC" /></div></div>
+            <div data-type='ASA'><div>Ascorbic acid (mg/100g):</div><div><input type="number" step="0.01" min="0" placeholder="ASA" /></div></div>
+            <div data-type='TP'><div>Total phenolic (mg/100g) (by Folin-Denis Method):</div><div><input type="number" step="0.01" min="0" placeholder="TP" /></div></div>
+            <div data-type='MT'><div>Anti-oxidant activity (%) (by Modified Thiocyanate Method):</div><div><input type="number" step="0.01" min="0" placeholder="MT" /></div></div>
+            <div data-type='DPPH'><div>Anti-oxidant activity (%) (by DPPH Method):</div><div><input type="number" step="0.01" min="0" placeholder="DPPH" /></div></div>
+            <div data-type='OIL'><div>Total oil content (%):</div><div><input type="number" step="0.01" min="0" placeholder="OIL" /></div></div>
+            <div data-type='PROTEIN'><div>Protein content (%):</div><div><input type="number" step="0.01" min="0" placeholder="PROTEIN" /></div></div>
+            <div data-type='STARCH'><div>Starch content (%):</div><div><input type="number" step="0.01" min="0" placeholder="STARCH" /></div></div>
+        </section>
+        <section id="section-line-2">
+            <div data-type='CMV5'><div>Cucumber mosaic virus (5<sup>th</sup>):</div><div>
+                    <select>
+                        <option value="">* CMV5 *</option>
+                        {% for item in related.CMV5 %}
+                            <option value="{{ item.REFNO }}">{{ item.CMV5 }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='CMVCOT'><div>Cucumber mosaic virus (COTYL):</div><div>
+                    <select>
+                        <option value="">* CMVCOT *</option>
+                        {% for item in related.CMVCOT %}
+                            <option value="{{ item.REFNO }}">{{ item.CMVCOT }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='CVMV'><div>Chilli veinal mottle virus:</div><div>
+                    <select>
+                        <option value="">* CVMV *</option>
+                        {% for item in related.CVMV %}
+                            <option value="{{ item.REFNO }}">{{ item.CVMV }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='PMMV'><div>Pepper mild mottle virus:</div><div>
+                    <select>
+                        <option value="">* PMMV *</option>
+                        {% for item in related.PMMV %}
+                            <option value="{{ item.REFNO }}">{{ item.PMMV }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='PVY'><div>Potato virus Y:</div><div>
+                    <select>
+                        <option value="">* PVY *</option>
+                        {% for item in related.PVY %}
+                            <option value="{{ item.REFNO }}">{{ item.PVY }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='TOMV'><div>Tomato mosaic virus:</div><div>
+                    <select>
+                        <option value="">* TOMV *</option>
+                        {% for item in related.TOMV %}
+                            <option value="{{ item.REFNO }}">{{ item.TOMV }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='TMV'><div>Tobacco mosaic virus:</div><div>
+                    <select>
+                        <option value="">* TMV *</option>
+                        {% for item in related.TMV %}
+                            <option value="{{ item.REFNO }}">{{ item.TMV }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='RES_COTAPD'><div>Cotton aphid:</div><div>
+                    <select>
+                        <option value="">* RES_COTAPD *</option>
+                        {% for item in related.RES_COTAPD %}
+                            <option value="{{ item.REFNO }}">{{ item.RES_COTAPD }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='RES_COTLFHPER'><div>Cotton leaf hopper:</div><div>
+                    <select>
+                        <option value="">* RES_COTLFHPER *</option>
+                        {% for item in related.RES_COTLFHPER %}
+                            <option value="{{ item.REFNO }}">{{ item.RES_COTLFHPER }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='POWMILD'><div>Powdery mildew:</div><div>
+                    <select>
+                        <option value="">* POWMILD *</option>
+                        {% for item in related.POWMILD %}
+                            <option value="{{ item.REFNO }}">{{ item.POWMILD }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='DACCUR'><div>Dacus cucurbita (melon fly):</div><div>
+                    <select>
+                        <option value="">* DACCUR *</option>
+                        {% for item in related.DACCUR %}
+                            <option value="{{ item.REFNO }}">{{ item.DACCUR }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='BYVMV'><div>Bhendi yellow vein mosaic virus:</div><div>
+                    <select>
+                        <option value="">* BYVMV *</option>
+                        {% for item in related.BYVMV %}
+                            <option value="{{ item.REFNO }}">{{ item.BYVMV }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='BRUCHID'><div>Callosobruchus chinensis (bruchid beetle):</div><div>
+                    <select>
+                        <option value="">* BRUCHID *</option>
+                        {% for item in related.BRUCHID %}
+                            <option value="{{ item.REFNO }}">{{ item.BRUCHID }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='RES_TANSPO'><div>Curtobacterium flaccumfaciens pv. flaccumfaciens (Tan spot):</div><div>
+                    <select>
+                        <option value="">* RES_TANSPO *</option>
+                        {% for item in related.RES_TANSPO %}
+                            <option value="{{ item.REFNO }}">{{ item.RES_TANSPO }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='RES_HALOBL'><div>Pseudomonas savastanoi pv. phaseolicola (Halo blight):</div><div>
+                    <select>
+                        <option value="">* RES_HALOBL *</option>
+                        {% for item in related.RES_HALOBL %}
+                            <option value="{{ item.REFNO }}">{{ item.RES_HALOBL }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='VIRUS_G1'><div>VIRUS_G1:</div><div>
+                    <select>
+                        <option value="">* VIRUS_G1 *</option>
+                        {% for item in related.VFBP %}
+                            <option value="{{ item.REFNO }}">{{ item.VFBP }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='VIRUS_G2'><div>VIRUS_G2:</div><div>
+                    <select>
+                        <option value="">* VIRUS_G2 *</option>
+                        {% for item in related.VFBP %}
+                            <option value="{{ item.REFNO }}">{{ item.VFBP }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='VIRUS_G3'><div>VIRUS_G3:</div><div>
+                    <select>
+                        <option value="">* VIRUS_G3 *</option>
+                        {% for item in related.VFBP %}
+                            <option value="{{ item.REFNO }}">{{ item.VFBP }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='VIRUS_G4'><div>VIRUS_G4:</div><div>
+                    <select>
+                        <option value="">* VIRUS_G4 *</option>
+                        {% for item in related.VFBP %}
+                            <option value="{{ item.REFNO }}">{{ item.VFBP }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='VIRUS_G5'><div>VIRUS_G5:</div><div>
+                    <select>
+                        <option value="">* VIRUS_G5 *</option>
+                        {% for item in related.VFBP %}
+                            <option value="{{ item.REFNO }}">{{ item.VFBP }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='VIRUS_G6'><div>VIRUS_G6:</div><div>
+                    <select>
+                        <option value="">* VIRUS_G6 *</option>
+                        {% for item in related.VFBP %}
+                            <option value="{{ item.REFNO }}">{{ item.VFBP }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='TMLATEBL'><div>TMLATEBL:</div><div>
+                    <select>
+                        <option value="">* TMLATEBL *</option>
+                        {% for item in related.TMLATEBL %}
+                            <option value="{{ item.REFNO }}">{{ item.TMLATEBL }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='PPANTHR'><div>PPANTHR:</div><div>
+                    <select>
+                        <option value="">* PPANTHR *</option>
+                        {% for item in related.PPANTHR %}
+                            <option value="{{ item.REFNO }}">{{ item.PPANTHR }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='PPPHYTOBL'><div>PPPHYTOBL:</div><div>
+                    <select>
+                        <option value="">* PPPHYTOBL *</option>
+                        {% for item in related.PPPHYTOBL %}
+                            <option value="{{ item.REFNO }}">{{ item.PPPHYTOBL }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='FUNGUS_4'><div>FUNGUS_4:</div><div>
+                    <select>
+                        <option value="">* FUNGUS_4 *</option>
+                        {% for item in related.VFBP %}
+                            <option value="{{ item.REFNO }}">{{ item.VFBP }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='FUNGUS_5'><div>FUNGUS_5:</div><div>
+                    <select>
+                        <option value="">* FUNGUS_5 *</option>
+                        {% for item in related.VFBP %}
+                            <option value="{{ item.REFNO }}">{{ item.VFBP }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='FUNGUS_6'><div>FUNGUS_6:</div><div>
+                    <select>
+                        <option value="">* FUNGUS_6 *</option>
+                        {% for item in related.VFBP %}
+                            <option value="{{ item.REFNO }}">{{ item.VFBP }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='FUNGUS_7'><div>FUNGUS_7:</div><div>
+                    <select>
+                        <option value="">* FUNGUS_7 *</option>
+                        {% for item in related.VFBP %}
+                            <option value="{{ item.REFNO }}">{{ item.VFBP }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='FUNGUS_8'><div>FUNGUS_8:</div><div>
+                    <select>
+                        <option value="">* FUNGUS_8 *</option>
+                        {% for item in related.VFBP %}
+                            <option value="{{ item.REFNO }}">{{ item.VFBP }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='FUNGUS_9'><div>FUNGUS_9:</div><div>
+                    <select>
+                        <option value="">* FUNGUS_9 *</option>
+                        {% for item in related.VFBP %}
+                            <option value="{{ item.REFNO }}">{{ item.VFBP }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='FUNGUS_10'><div>FUNGUS_10:</div><div>
+                    <select>
+                        <option value="">* FUNGUS_10 *</option>
+                        {% for item in related.VFBP %}
+                            <option value="{{ item.REFNO }}">{{ item.VFBP }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='TMBACWT'><div>TMBACWT:</div><div>
+                    <select>
+                        <option value="">* TMBACWT *</option>
+                        {% for item in related.TMBACWT %}
+                            <option value="{{ item.REFNO }}">{{ item.TMBACWT }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='EGBACWT'><div>EGBACWT:</div><div>
+                    <select>
+                        <option value="">* EGBACWT *</option>
+                        {% for item in related.EGBACWT %}
+                            <option value="{{ item.REFNO }}">{{ item.EGBACWT }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='BACTERIA_3'><div>BACTERIA_3:</div><div>
+                    <select>
+                        <option value="">* BACTERIA_3 *</option>
+                        {% for item in related.VFBP %}
+                            <option value="{{ item.REFNO }}">{{ item.VFBP }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='BACTERIA_4'><div>BACTERIA_4:</div><div>
+                    <select>
+                        <option value="">* BACTERIA_4 *</option>
+                        {% for item in related.VFBP %}
+                            <option value="{{ item.REFNO }}">{{ item.VFBP }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='PEST_1'><div>PEST_1:</div><div>
+                    <select>
+                        <option value="">* PEST_1 *</option>
+                        {% for item in related.VFBP %}
+                            <option value="{{ item.REFNO }}">{{ item.VFBP }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='PEST_2'><div>PEST_2:</div><div>
+                    <select>
+                        <option value="">* PEST_2 *</option>
+                        {% for item in related.VFBP %}
+                            <option value="{{ item.REFNO }}">{{ item.VFBP }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='PEST_3'><div>PEST_3:</div><div>
+                    <select>
+                        <option value="">* PEST_3 *</option>
+                        {% for item in related.VFBP %}
+                            <option value="{{ item.REFNO }}">{{ item.VFBP }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='PEST_4'><div>PEST_4:</div><div>
+                    <select>
+                        <option value="">* PEST_4 *</option>
+                        {% for item in related.VFBP %}
+                            <option value="{{ item.REFNO }}">{{ item.VFBP }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='PEST_5'><div>PEST_5:</div><div>
+                    <select>
+                        <option value="">* PEST_5 *</option>
+                        {% for item in related.VFBP %}
+                            <option value="{{ item.REFNO }}">{{ item.VFBP }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='PEST_6'><div>PEST_6:</div><div>
+                    <select>
+                        <option value="">* PEST_6 *</option>
+                        {% for item in related.VFBP %}
+                            <option value="{{ item.REFNO }}">{{ item.VFBP }}</option>
+                        {% endfor %}
+                    </select></div></div>
+        </section>
+        <section id="section-line-3">
+            <div data-type='HEAT'><div>Heat tolerance:</div><div>
+                    <select>
+                        <option value="">* HEAT *</option>
+                        {% for item in related.HEAT %}
+                            <option value="{{ item.REFNO }}">{{ item.HEAT }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='COLD'><div>Cold tolerance:</div><div>
+                    <select>
+                        <option value="">* COLD *</option>
+                        {% for item in related.COLD %}
+                            <option value="{{ item.REFNO }}">{{ item.COLD }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='DROUGHT'><div>Drought tolerance:</div><div>
+                    <select>
+                        <option value="">* DROUGHT *</option>
+                        {% for item in related.DROUGHT %}
+                            <option value="{{ item.REFNO }}">{{ item.DROUGHT }}</option>
+                        {% endfor %}
+                    </select>
+                </div></div>
+            <div data-type='FLOOD'><div>Flooding  tolerance:</div><div>
+                    <select>
+                        <option value="">* FLOOD *</option>
+                        {% for item in related.FLOOD %}
+                            <option value="{{ item.REFNO }}">{{ item.FLOOD }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='SALINITY'><div>Salinity tolerance:</div><div>
+                    <select>
+                        <option value="">* SALINITY *</option>
+                        {% for item in related.SALINITY %}
+                            <option value="{{ item.REFNO }}">{{ item.SALINITY }}</option>
+                        {% endfor %}
+                    </select></div></div>
+        </section>
+        <section id="section-line-4">
+            <div data-type='REMARKS'><div>Remarks:</div><div><input type="text" placeholder="REMARKS" /></div></div>
+        </section>
+    </div><!-- /content -->
+</div><!-- /tabs -->

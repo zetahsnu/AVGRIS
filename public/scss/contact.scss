@@ -1,0 +1,62 @@
+@mixin background-image($value){
+    background-image: -webkit-#{$value};
+    background-image: -moz-#{$value};
+    background-image: -ms-#{$value};
+    background-image: -o-#{$value};
+}
+
+@mixin box-shadow($value){
+    box-shadow: $value;
+    -moz-box-shadow: $value;
+    -webkit-box-shadow: $value;
+}
+
+section{    
+    color:#333;
+
+    ul{
+        vertical-align: top;
+        text-align:center;
+
+        li{
+            vertical-align: middle;
+            display: inline-block;
+            width:318px;
+            height:348px;
+            text-align: left;
+            margin-right: 10px;
+            border-right: 1px solid #ccc;
+            
+            &:last-child{
+                border: none;
+            }
+        }
+    }
+
+    p{
+        font-weight: bolder;
+        padding: 4px 10px;
+        margin:0;
+        height:60px;
+    }
+
+    aside{
+        padding:4px 10px;
+
+        label{
+            display: inline-block;
+            text-align: right;
+            font-weight: bold;
+            border-radius: 10px;
+            background-color: rgba(39, 171, 71, 0.8);
+            color: white;
+            padding: 4px 10px;
+            margin-top: 4px;
+            @include box-shadow(1px 1px 2px rgba(0,0,0,0.2));
+
+            a{
+                color: #333;
+            }
+        }
+    }
+}

@@ -1,0 +1,24 @@
+{% embed "base.html.twig" %}
+    {% block css %}
+        {{ parent() }}
+        <link rel="stylesheet" href="{{ BASE_PATH }}/public/css/search/characterization.css">
+    {% endblock %}
+    {% block content %}
+        <section>
+            <h2>CHARACTERIZATION</h2>
+            <blockquote>
+                refers to the morphological and agronomic descriptions of an accession (i.e. hypocotyl color, plant growth habit, corolla color, fruit length, seed color, etc.). These data were observed and gathered at AVRDC experimental fields by GRSU staff or by NARS partner.
+            </blockquote>
+        </section>
+        <section id="category">
+            {% for char in 'a'|upper..'z'|upper %}
+                {% set header = false %}
+                {% for item in data if item.title|first|upper == char and item.count != 0 %}
+                    {{ header ? '' : "<h1>#{char}</h1>"|raw }}
+                    <p><a href ="{{ BASE_PATH }}/search/characterization/{{ item.name }}" title="{{ item.title }}"> {{ item.title }} ({{ item.count }})</a></p>
+                    {% set header = true %}
+                {% endfor %}
+            {% endfor %}
+        </section>
+    {% endblock %}
+{% endembed %}

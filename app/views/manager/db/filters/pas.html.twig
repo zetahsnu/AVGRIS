@@ -1,0 +1,35 @@
+<div><span class="inputtext"><input id="VINO" type="text" placeholder="e.g. VI000001, VI000002, ..." class="slide-up" /><label for="VINO">VINO</label></span><button name="add_filters" class="button" title="Add">&#43;</button></div>
+<div><span class="inputtext"><input id="ACCNO" type="text" placeholder="e.g. A00001, B00001, ..." class="slide-up" /><label for="ACCNO">ACCNO</label></span><button name="add_filters" class="button" title="Add">&#43;</button></div>
+<div><span class="inputtext"><input id="TEMPNO" type="text" placeholder="e.g. TA00001, TB00001, ..." class="slide-up" /><label for="TEMPNO">TEMPNO</label></span><button name="add_filters" class="button" title="Add">&#43;</button></div>
+<div><span class="inputtext"><input id="PEDCUL" type="text" placeholder="Pedigree / Cultivar Name" class="slide-up" /><label for="PEDCUL">Pedigree / Cultivar Name</label></span><button name="add_filters" class="button" title="Add">&#43;</button></div>
+<div><span><select id="GENUS" title='GENUS'>
+            <option value=''>* Any GENUS *</option>
+            {% for item in genus if item != '' %}
+                <option value="{{item}}">{{item}}</option>
+            {% endfor %}
+        </select></span><button name="add_filters" class="button" title="Add">&#43;</button></div>
+<div><span><select id="SPECIES" title='SPECIES'>
+            <option value=''>* Any SPECIES *</option>
+        </select></span><button name="add_filters" class="button" title="Add" style="display: none;">&#43;</button></div>
+<div><span><select id="SUBTAXA" title='SUBTAXA'>
+            <option value=''>* Any SUBTAXA *</option>
+        </select></span><button name="add_filters" class="button" title="Add" style="display: none;">&#43;</button></div>
+<div><span><select id="COUNTRY" title='COUNTRY'>
+            <option value=''>* Any COUNTRY *</option>
+            {% for item in country if item != '' %}
+                <option value="{{item}}">{{item}}</option>
+            {% endfor %}
+        </select></span><button name="add_filters" class="button" title="Add">&#43;</button></div>
+<div><span><select id="DISSTA" title='DISSTA'>
+            <option value=''>* Any DISSTA *</option>
+            {% for item in related.DISSTA %}
+                <option value="{{ item.REFNO }}">{{ item.DISSTA }}</option>
+            {% endfor %}
+        </select></span><button name="add_filters" class="button" title="Add">&#43;</button></div>
+<div><span><select id="STATUS" title='STATUS'>
+            <option value=''>* Any STATUS *</option>
+            {% for item in related.STATUS %}
+                <option value="{{ item.REFNO }}">{{ item.STATUS }}</option>
+            {% endfor %}
+        </select></span><button name="add_filters" class="button" title="Add">&#43;</button></div>
+<div><span class="inputtext"><input id="TEXT" type="text" placeholder="Text Search" class="slide-up" /><label for="TEXT">Text Search</label></span><button name="add_filters" class="button" title="Add">&#43;</button></div>

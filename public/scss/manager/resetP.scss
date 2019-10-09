@@ -1,0 +1,64 @@
+.resetP{
+
+    .resetP_area{
+        text-align: center;
+        position: relative;
+        margin-top: 20px;
+
+        .ajaxload{
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 10px;
+
+            img{
+                width: 16px;
+                height:16px;
+                top: 4px;
+            }
+        }
+
+        div{
+            display: inline-block;
+            text-align: center;
+            position: relative;
+            padding: 34px;
+            border: 1px solid #dddddd;
+            border-radius: 4px;
+            background: rgba(221, 221, 221, 0.24);
+
+            select{
+                width: 232px;
+            }
+
+            .inputtext{
+                margin: 10px 0px;
+
+                input{
+                    height: 17px;
+                }
+
+                .slide-up:focus + label, .slide-up:active + label {
+                    transform: translateX(-100%);
+                }
+
+                .slide-up:focus + label:after, .slide-up:active + label:after{
+                    transform: translateX(100%);
+                }
+            }
+
+            .inputtext:nth-child(3) .slide-up {
+                text-indent: 133px;
+            }
+
+            #resetP{
+                position: absolute;
+                width: 80%;
+                bottom: -20px;
+                background: #F56E0B;
+                border-color: #f56e0b;
+                left: 10%;
+            }
+        }
+    }
+}

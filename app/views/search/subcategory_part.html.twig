@@ -1,0 +1,5 @@
+{% for item in data if total > 0 %}
+    <tr><td title="{{ item.VINO }}">{{ item.VINO }}</td><td title="{{ item.VARIANT }}">{{ item.VARIANT }}</td><td title="{{ item.ACCNO }}">{{ item.ACCNO }}</td><td title="{{ item.TEMPNO }}">{{ item.TEMPNO }}</td><td title="{{ item.SPECIES }}">{{ item.SPECIES }}</td><td title="{{ item.SUBTAXA }}">{{ item.SUBTAXA }}</td><td title="{{ item.COUNTRY }}">{{ item.COUNTRY }}</td><td><a href="{{ BASE_PATH }}/search/view/characterization/{{ category }}/{{ item.IDNO }}" title="view">VIEW</a></td></tr>
+        {% else %}
+    <tr><td colspan="8">No records returned</td></tr>
+{% endfor %}

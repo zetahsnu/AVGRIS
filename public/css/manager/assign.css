@@ -1,0 +1,22 @@
+.assign .toolbar { text-align: right; margin-bottom: 10px; }
+.assign .toolbar .button { margin-left: 20px; }
+.assign #peoples { display: block; margin: 0 auto; background: none; }
+.assign #peoples #sidemenu { margin: 0; padding: 0; width: 240px; float: left; }
+.assign #peoples #sidemenu li { height: 50px; display: block; font-size: 1.1em; line-height: 50px; background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #f6f6f6)); background: -moz-linear-gradient(top, #ffffff 5%, #f6f6f6 100%); background: -webkit-linear-gradient(top, #ffffff 5%, #f6f6f6 100%); background: -o-linear-gradient(top, #ffffff 5%, #f6f6f6 100%); background: -ms-linear-gradient(top, #ffffff 5%, #f6f6f6 100%); background: linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%); filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f6f6f6',GradientType=0); background-color: #ffffff; margin-top: 5px; border-left: 5px solid rgba(51, 51, 51, 0.5); box-shadow: -2px 2px 6px rgba(204, 204, 204, 0.5); }
+.assign #peoples #sidemenu li a { display: block; color: #555; height: 100%; position: relative; padding-left: 10px; border-top: 1px solid rgba(204, 204, 204, 0.2); border-bottom: 1px solid rgba(204, 204, 204, 0.5); }
+.assign #peoples #sidemenu li a:hover { background: #f2f2f2; }
+.assign #peoples #sidemenu li a.open { width: 101%; background: #fff; border: 1px solid rgba(204, 204, 204, 0.6); position: relative; left: -12px; border-right: none; font-weight: 600; }
+.assign #peoples #sidemenu li a img { height: 36px; width: 36px; vertical-align: middle; }
+.assign #peoples #sidemenu li a span[id*='counter_'] { color: #66a4de; position: absolute; border-radius: 23px; border: 3px solid #66a4de; padding: 0px 8px; line-height: 26px; top: 12px; right: 6px; }
+.assign #peoples #sidemenu li a .ajaxload img { width: 16px; height: 16px; }
+.assign #peoples #sidemenu li:first-child { margin-top: 0; }
+.assign #peoples #content { display: block; background: #fff; padding: 0px 15px; margin-left: 240px; min-height: 300px; border: 1px solid rgba(204, 204, 204, 0.5); }
+.assign #peoples #content .contentblock { display: block; padding: 15px 20px; }
+.assign #peoples #content .contentblock.hidden { display: none; }
+.assign #peoples #content .contentblock p { position: relative; font-size: 1em; display: inline-block; min-width: 280px; margin: 0px; padding: 2px 10px; margin-top: 10px; }
+.assign #peoples #content .contentblock p input, .assign #peoples #content .contentblock p label { cursor: pointer; }
+.assign #peoples #content .contentblock p label:nth-child(3) { position: absolute; color: #666; font-weight: 700; -webkit-box-shadow: 1px 1px 5px -1px rgba(0, 0, 0, 0.3); -moz-box-shadow: 1px 1px 5px -1px rgba(0, 0, 0, 0.3); box-shadow: 1px 1px 5px -1px rgba(0, 0, 0, 0.3); padding: 4px 10px; border-radius: 10px; }
+.assign #peoples.clearfix { display: inline-block; }
+.assign #peoples.clearfix:after { content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0; }
+
+/*# sourceMappingURL=assign.css.map */

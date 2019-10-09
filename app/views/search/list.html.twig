@@ -1,0 +1,8 @@
+{% if data|length > 0 %}
+    <option value=''>* Any *</option>
+{% endif %}
+{% for item in data if item != '' %}
+    <option value="{{item}}">{{item}}</option>
+{% else %}
+    <option value=''>* None *</option>
+{% endfor %}

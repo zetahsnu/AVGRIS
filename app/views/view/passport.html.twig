@@ -1,0 +1,184 @@
+{% embed "base.html.twig" %}
+    {% block javascript %}
+        {{ parent() }}
+        <script src="{{ BASE_PATH }}/public/js/search/view/back.js"></script>
+    {% endblock %}
+    {% block css %}
+        {{ parent() }}
+        <link rel="stylesheet" href="{{ BASE_PATH }}/public/css/view/default.css">
+    {% endblock %}
+    {% block content %}
+        {% embed "/view/part/title.html.twig" %}
+        {% endembed %}
+        <section class="ac-container">
+            <div>
+                <input id="ac-1" name="accordion-1" type="checkbox" checked />
+                <label for="ac-1">PASSPORT DATA</label>
+                <article>
+                    <div class="css_table">
+                        <div class="css_tr">
+                            <div class="css_td">Vegetable introduction number</div>
+                            <div class="css_td">{{ data.VINO }}</div>
+                        </div>                        
+                        <div class="css_tr">
+                            <div class="css_td">Crop accession number</div>
+                            <div class="css_td">{{ data.ACCNO }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Duplicate note</div>
+                            <div class="css_td">{{ data.DUPLIC }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Temporary number</div>
+                            <div class="css_td">{{ data.TEMPNO }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Variant</div>
+                            <div class="css_td">{{ data.VARIANT }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Distribution status</div>
+                            <div class="css_td">{{ data.DISSTA }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Family</div>
+                            <div class="css_td">{{ data.FAMILY }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Genus</div>
+                            <div class="css_td">{{ data.GENUS }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Species</div>
+                            <div class="css_td">{{ data.SPECIES }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Subtaxa</div>
+                            <div class="css_td">{{ data.SUBTAXA }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Sender's name</div>
+                            <div class="css_td">{{ data.SENAME }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Donor identification number</div>
+                            <div class="css_td">{{ data.DONO }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Other number 1</div>
+                            <div class="css_td">{{ data.FIRNO }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Other number 2</div>
+                            <div class="css_td">{{ data.SECNO }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Other number 3</div>
+                            <div class="css_td">{{ data.TRDNO }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">PI number</div>
+                            <div class="css_td">{{ data.PINO }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Pedigree / Cultivar name</div>
+                            <div class="css_td">{{ data.PEDCUL }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Donor institute</div>
+                            <div class="css_td">{{ data.DOINST }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Donor's address</div>
+                            <div class="css_td">{{ data.DOADDR }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Acquisition date</div>
+                            <div class="css_td">{{ data.ACQDAT }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Duplicate status</div>
+                            <div class="css_td">{{ data.DUPLST }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Collector</div>
+                            <div class="css_td">{{ data.COLLEC }}</div>
+                        </div>                        
+                        <div class="css_tr">
+                            <div class="css_td">Collector's number</div>
+                            <div class="css_td">{{ data.COLLNO }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Collecting institute</div>
+                            <div class="css_td">{{ data.COINST }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Collection date of original sample</div>
+                            <div class="css_td">{{ data.CODATE }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Country of collection</div>
+                            <div class="css_td">{{ data.COUNTRY }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Province / State</div>
+                            <div class="css_td">{{ data.PROVIN }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Municipality / County / District</div>
+                            <div class="css_td">{{ data.MUNICI }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Location of collection site</div>
+                            <div class="css_td">{{ data.COSITE }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Latitude of collection site</div>
+                            <div class="css_td">{{ data.COLATI }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Longitude of collection site</div>
+                            <div class="css_td">{{ data.COLONG }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Altitude of collection site (Meters)</div>
+                            <div class="css_td">{{ data.COALTI }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Collecting source</div>
+                            <div class="css_td">{{ data.COLLSO }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Sample source</div>
+                            <div class="css_td">{{ data.SAMSO }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Status of sample</div>
+                            <div class="css_td">{{ data.STATUS }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Collecting project</div>
+                            <div class="css_td">{{ data.COLPRO }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Core collection</div>
+                            <div class="css_td">{{ data.CORE }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Notes</div>
+                            <div class="css_td">{{ data.NOTES }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Annotation</div>
+                            <div class="css_td">{{ data.ANNOTT }}</div>
+                        </div>            
+                        <div class="css_tr">
+                            <div class="css_td">Duplicate storage site</div>
+                            <div class="css_td">{{ data.DUSITE }}</div>
+                        </div>                        
+                    </div>
+                </article>
+            </div>   
+        </section>
+    {% endblock %}
+{% endembed %}

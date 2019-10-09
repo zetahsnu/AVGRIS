@@ -1,0 +1,9 @@
+section blockquote { border-left: 5px solid red; padding-left: 20px; }
+section h1 { color: #FF7C00; background-color: #FFE8E8; padding: 0 4px; }
+section a { margin: -5px 0; padding: 4px 4px; display: block; color: #1772BE; }
+section a:hover { color: white; padding: 4px 10px; background-color: #123; }
+section a:visited { color: #DEB187; }
+section#category { column-count: 4; -webkit-column-count: 4; -moz-column-count: 4; }
+section#category p { font-size: 1em; padding: 0; }
+
+/*# sourceMappingURL=characterization.css.map */

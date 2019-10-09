@@ -1,0 +1,33 @@
+{
+    "CROP": {
+        "title": "Crop"
+    },
+    "GENUS":{
+        "title": "Genus",
+        "type": "text"
+    },
+    "SPECIES":{
+        "title": "Species",
+        "type": "text"
+    },
+    "SUBTAXA":{
+        "title": "Subtaxa",
+        "type": "text"
+    },
+    "SHIP_NO": {
+        "title": "Crop ship. No.",
+        "type": "text"
+    },
+    "SAMPLE": {
+        "title": "No. of seed packets sent",
+        "type": "number"
+    },
+    "VARI_OTHERS": {
+        "title": "No. of Acc. provided by other units of AVRDC-HQ",
+        "type": "number"
+    },
+    "VARI_GRSU": {
+        "title": "No. of Acc. provided by GRSU",
+        "type": "number"
+    }
+}

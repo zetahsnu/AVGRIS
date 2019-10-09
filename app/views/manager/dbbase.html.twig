@@ -1,0 +1,191 @@
+<section class="db">
+    <h1 id="page" data-page="{{ title }}">{{ title|capitalize }}<img id="refresh" src="{{ BASE_PATH }}/public/images/manager/db/refresh.svg" title="Refresh" alt="Refresh"><span id="pageReset" class="button" title="Reset Filters, Orders And Rows Show">Reset All</span></h1>
+    <div id="dataContainer">
+        <table id="dataTable">
+            <thead id="datahead">
+                {% block datahead %}
+                {% endblock %}
+            </thead>
+            <tbody id="databody">
+                {% block databody %}
+                {% endblock %}
+            </tbody>
+        </table>
+    </div>
+    <div id="dataToolbar">
+        {% if SESSION.user.JURISDICTION == 0 or SESSION.user.JURISDICTION == 2 %}
+            <img id="add" src="{{ BASE_PATH }}/public/images/manager/db/add.svg" title="Add" alt="Add">
+        {% endif %}
+        {% if SESSION.user.JURISDICTION != 3 %}
+            <img id="edit" src="{{ BASE_PATH }}/public/images/manager/db/edit.svg" title="Edit" alt="Edit">
+        {% endif %}
+        {% if SESSION.user.JURISDICTION == 0 or SESSION.user.JURISDICTION == 2 %}
+            <img id="delete" src="{{ BASE_PATH }}/public/images/manager/db/delete.svg" title="Delete" alt="Delete">
+        {% endif %}
+        <img id="search" src="{{ BASE_PATH }}/public/images/manager/db/search.svg" title="Search" alt="Search">
+        {% if title == 'seedinventory' %}            
+            <img id="barcode" src="{{ BASE_PATH }}/public/images/manager/db/barcode.svg" title="Scan Barcode" alt="Scan Barcode">
+        {% endif %}
+        {% if related is defined and (SESSION.user.JURISDICTION == 0 or SESSION.user.JURISDICTION == 2) %}
+            <img id="related" src="{{ BASE_PATH }}/public/images/manager/db/related.svg" title="Related" alt="Related">
+        {% endif %}
+        {% if SESSION.user.JURISDICTION == 0 or SESSION.user.JURISDICTION == 2 %}
+            <img id="import" src="{{ BASE_PATH }}/public/images/manager/db/import.svg" title="Import" alt="Import">
+            <img id="export" src="{{ BASE_PATH }}/public/images/manager/db/export.svg" title="Export" alt="Export">
+        {% endif %}
+        <div id="pager">
+            <div class="pagination">
+                <a href="#" class="first" data-action="first">&laquo;</a>
+                <a href="#" class="previous" data-action="previous">&lsaquo;</a>
+                <input type="text" readonly="readonly" data-max-page="{{ (total / limitRow)|round(0, 'ceil') == 0 ? 1 : (total / limitRow)|round(0, 'ceil') }}" />
+                <a href="#" class="next" data-action="next">&rsaquo;</a>
+                <a href="#" class="last" data-action="last">&raquo;</a>
+            </div>
+            &nbsp;
+            <select id="perShow">
+                {% for i in 20..100 if (i % 20) == 0 %}
+                    {{ limitRow == i ? "<option value='#{i}' selected='selected'>#{i}</option>"|raw  : "<option value='#{i}'>#{i}</option>"|raw }}
+                {% endfor %}
+            </select>
+        </div>
+        <div id="db_counter">
+            View&nbsp;<span id="min">{{ (offset - 1) * limitRow + 1 }}</span>&nbsp;&#8722;&nbsp;<span id="max">{{ ((offset - 1) * limitRow + data|length) }}</span>&nbsp;of&nbsp;<span id="total">{{ total }}</span>
+        </div>
+    </div>
+</section>
+<section class="dbaside">
+    <h2>Filters<span id="asideclose">&#215;</span></h2>
+    {% block filters %}
+    {% endblock %}
+</section>
+{% if SESSION.user.JURISDICTION != 3 %}
+    <section class="dbeditor">    
+        <h2 id="model" data-model="edit">Editor<span id="editorclose">&#215;</span></h2>
+        <div id="editorContainer">
+            {% block editors %}
+            {% endblock %}
+        </div>
+        <div id="editorConfirm">
+            <a href="javascript:" class="confirm">Confirm</a><a href="javascript:" class="cancel">Cancel</a>
+        </div>
+    </section>
+{% endif %}
+{% if related is defined and (SESSION.user.JURISDICTION == 0 or SESSION.user.JURISDICTION == 2) %}
+    <section class="relatededitor">
+        <h2 id="related_column" data-related="none">Related<span id="relatedclose">&#215;</span></h2>
+        <div id="relatedselect"><select>
+                <option value="">* Select one to load *</option>
+                <optgroup label="--- ORIGINAL ---" data-group="ori">
+                    {% for key in related|keys %}
+                        <option value="{{ key|lower }}">{{ key }}</option>
+                    {% endfor %}
+                </optgroup>
+                {% if subtable_related is defined %}
+                    <optgroup label="--- {{ related_subtable|upper }} ---" data-group="sub">
+                        {% for skey in subtable_related %}
+                            <option value="{{ skey|lower }}">{{ skey }}</option>
+                        {%endfor%}
+                    </optgroup>
+                {% endif %}
+                {% if other_related is defined and SESSION.user.JURISDICTION == 0 %}
+                    <optgroup label="--- OTHER RELATED ---" data-group="ore">
+                        {% for okey in other_related|keys %}
+                            <option value="{{ okey|lower }}">{{ okey }}</option>
+                        {% endfor %}
+                    </optgroup>
+                {% endif %}
+                {% if list is defined and SESSION.user.JURISDICTION == 0 %}
+                    <optgroup label="--- LIST ---" data-group="li">
+                        {% for lkey in list|keys %}
+                            <option value="{{ lkey|lower }}">{{ lkey }}</option>
+                        {% endfor %}
+                    </optgroup>
+                {% endif %}
+            </select><button id="relatedLoad" class="button">Load</button>
+        </div>
+        <div id="relatedContainer">
+            <table>
+                <thead id="relatedHead">
+                    <tr><th>Operation</th><th>REFNO</th><th id="relatedColumn">DEFAULT</th></tr>
+                </thead>
+                <tbody id="relatedBody">
+                </tbody>
+            </table>
+            <div id="relatedOperation"><button id="opAdd" class="button operation">Add</button><button id="opDelete" class="button operation">Delete</button></div>
+            <div id="relatedConfirm"><button id="opConfirm" class="button confirm">Confirm</button><button id="opCancel" class="button cancel">Cancel</button></div>
+        </div>
+    </section>
+{% endif %}
+{% if SESSION.user.JURISDICTION == 0 or SESSION.user.JURISDICTION == 2 %}
+    <section class="export">
+        <h2>Export<span id="exportclose">&#215;</span></h2>
+        <div class='title'>Export columns<div><input type='checkbox' id='export_selector' checked><label for='export_selector'></label><label for='export_selector'>Select ALL</label></div></div>
+        <div class='columns'>
+            {% for column in columns %}
+                <div><input type='checkbox' id='{{title}}_{{column}}' checked><label for='{{title}}_{{column}}'></label><label for="{{title}}_{{column}}">{{column}}</label></div>
+                    {% endfor %}
+        </div>
+        <div id="exportConfirm">
+            <a href="javascript:" class="confirm">Confirm</a><a href="javascript:" class="cancel">Cancel</a>
+        </div>
+    </section>
+    <section class="import">
+        <h2>Import<span id="importclose">&#215;</span></h2>
+        <div class='title'>Import method</div>
+        <div class='method'>
+            <div><input id='method_add' type='radio' name='method' value='add' checked><label for="method_add">Add</label></div><div><input id='method_update' type='radio' name='method' value='update'><label for="method_update">Update</label></div>
+        </div>
+        <div class='title'>Upload file</div>
+        <div class='file'>
+            <form action="{{ BASE_PATH }}/manager/excelUploader/" method="post" enctype="multipart/form-data" id="importuploader">
+                <input name="impot_file" id="importInput" type="file" class="custom-file-input" />
+                <input type="submit"  id="submit-btn-import" value="Upload" class="button" />
+                <progress id="loading-progress-import" min="0" max="100" value="0"></progress>
+            </form>
+        </div>
+        <div id="importConfirm">
+            <a href="javascript:" class="confirm">Confirm</a><a href="javascript:" class="cancel">Cancel</a>
+        </div>
+    </section>
+{% endif %}
+
+{% if title == 'seedinventory' %}
+    <section class="barcode">
+        <h2>Barcode(MT)<span id="barcodeclose">&#215;</span></h2>
+        <div id="barcodeContainer">
+            <div class="barcode_block"><span>Scan Log</span></div>
+            <div class="barcode_block"><span>Counter</span></div>
+            <div class="barcode_block"><span id="scan_log"></span></div>
+            <div class="barcode_block"><span id="barcode_counter"></span></div>
+        </div>
+        <div id="barcodeConfirm">
+            <a href="javascript:" class="confirm">Confirm</a><a href="javascript:" class="cancel">Cancel</a>
+        </div>
+    </section>
+{% endif %}
+<script src="{{ BASE_PATH }}/public/js/lib/jquery.jqpagination.min.js"></script>
+<script src="{{ BASE_PATH }}/public/js/lib/any-resize-event.min.js"></script>
+<script src="{{ BASE_PATH }}/public/js/lib/cbpFWTabs.js"></script>
+<script src="{{ BASE_PATH }}/public/js/manager/db/db.js"></script>
+{% if title not in ['seedinventory', 'seeddist', 'passport', 'evaluation'] %}
+    <script src="{{ BASE_PATH }}/public/js/lib/loading-overlay.min.js"></script>
+{% endif %}
+{% if SESSION.user.JURISDICTION != 3 %}
+    <script src="{{ BASE_PATH }}/public/js/lib/jquery.autocomplete.min.js"></script>
+    <script src="{{ BASE_PATH }}/public/js/manager/db/edit.js"></script>
+{% endif %}
+{% if SESSION.user.JURISDICTION == 0 or SESSION.user.JURISDICTION == 2 %}
+    <script src="{{ BASE_PATH }}/public/js/manager/db/delete.js"></script>
+{% endif %}
+{% if related_subtable is defined and (SESSION.user.JURISDICTION == 0 or SESSION.user.JURISDICTION == 2)  %}
+    <script src="{{ BASE_PATH }}/public/js/manager/db/edit_subtable.js"></script>
+{% endif %}
+{% if SESSION.user.JURISDICTION == 0 or SESSION.user.JURISDICTION == 2 %}
+    <script src="{{ BASE_PATH }}/public/js/manager/db/related.js"></script>
+    <script src="{{ BASE_PATH }}/public/js/manager/db/import.js"></script>
+    <script src="{{ BASE_PATH }}/public/js/manager/db/export.js"></script>
+{% endif %}
+{% if title == 'seedinventory' %}
+    <script src="{{ BASE_PATH }}/public/js/lib/ScannerDetection/jquery.scannerdetection.js"></script>
+    <script src="{{ BASE_PATH }}/public/js/manager/db/barcode.js"></script>
+{% endif %}

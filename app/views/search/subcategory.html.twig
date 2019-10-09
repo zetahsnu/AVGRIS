@@ -1,0 +1,83 @@
+{% embed "base.html.twig" %}
+    {% block javascript %}
+        {{ parent() }}
+        <script src="{{ BASE_PATH }}/public/js/lib/jquery.noty.packaged.min.js"></script>
+    {% endblock %}
+    {% block css %}
+        {{ parent() }}
+        <link rel="stylesheet" href="{{ BASE_PATH }}/public/css/search/list.css">
+    {% endblock %}
+    {% block content %}
+        <h1 id="title">{{ title }} (Results <span id="min">{{ (offset - 1) * limitRow + 1 }}</span> - <span id="max">{{ ((offset - 1) * limitRow + data|length) }}</span> of about <span id="total">{{ total }}</span> records)<img id="guide" src="{{ BASE_PATH }}/public/images/guide.png" alt="a guide to the search" title="a guide to the search" style="display: none;"></h1>
+        <div id="target" >
+            <div id="filters_area">
+                <b>Show:</b>
+                <select id="perLow">
+                    {% for i in 20..100 if (i % 20) == 0 %}
+                        {{ limitRow == i ? "<option value='#{i}' selected='selected'>#{i}</option>"|raw  : "<option value='#{i}'>#{i}</option>"|raw }}
+                    {% endfor %}
+                </select>
+                <div id="filters">
+                    <b id="add_area">Filters:<a id="add_filters" title="search" class="button">SEARCH</a><a id="reset_filters" title="reset all" class="button">RESET ALL</a></b>
+                </div>
+            </div>
+            <div id="options">
+                <table>
+                    <thead>
+                        <tr>
+                            <th colspan="6">Filter Options</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>AVRDC Code (VINO)</td><td><input name="VINO" type="text" placeholder="e.g. VI000001, VI000002, ..."><td><a name="add_filters" title="add">ADD</a></td><td>Crop Accession Number (ACCNO)</td><td><input name="ACCNO" type="text" placeholder="e.g. A00001, B00001, ..."></td><td><a name="add_filters" title="add filters">ADD</a></td></tr>
+                        <tr><td>Temporary Number (TEMPNO)</td><td><input name="TEMPNO" type="text" placeholder="e.g. TA00001, TB00001, ..."></td><td><a name="add_filters" title="add">ADD</a></td><td>Pedigree / Cultivar Name</td><td><input name="PEDCUL" type="text"></td><td><a name="add_filters" title="add">ADD</a></td></tr>
+                        <tr><td>Donor identification number (DONO)</td><td><input name="DONO" type="text"></td><td><a name="add_filters" title="add">ADD</a></td><td>PI number (PINO)</td><td><input name="PINO" type="text"></td><td><a name="add_filters" title="add">ADD</a></td></tr>
+                        <tr><td>Species</td><td>
+                                <select name="SPECIES">
+                                    <option value=''>* Any *</option>
+                                    {% for item in species if item != '' %}
+                                        <option value="{{item}}">{{item}}</option>
+                                    {% endfor %}
+                                </select>
+                            </td><td><a name="add_filters" title="add">ADD</a></td><td>Subtaxa</td><td>
+                                <select name="SUBTAXA">
+                                </select>
+                            </td><td><a name="add_filters" title="add" style="display: none;">ADD</a></td></tr>
+                        <tr><td>Country</td><td>
+                                <select name="COUNTRY">
+                                    <option value=''>* Any *</option>
+                                    {% for item in country if item != '' %}
+                                        <option value="{{item}}">{{item}}</option>
+                                    {% endfor %}
+                                </select>
+                            </td><td><a name="add_filters" title="add">ADD</a></td><td></td><td></td><td></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <table id="dataView">
+                <caption class="pageList">
+                    <div id="stick">
+                        <div class="pagination">
+                            <a href="#" class="first" data-action="first">&laquo;</a>
+                            <a href="#" class="previous" data-action="previous">&lsaquo;</a>
+                            <input type="text" readonly="readonly" data-max-page="{{ (total / limitRow)|round(0, 'ceil') == 0 ? 1 : (total / limitRow)|round(0, 'ceil') }}" />
+                            <a href="#" class="next" data-action="next">&rsaquo;</a>
+                            <a href="#" class="last" data-action="last">&raquo;</a>
+                        </div>
+                    </div>
+                </caption>
+                <thead id="dataorder">
+                    <tr><th title="AVRDC Code" data-type="VINO">VINO</th><th title="Variant" data-type="VARIANT">VARIANT</th><th title="Crop Accession Number" data-type="ACCNO">ACCNO</th><th title="Temporary Number" data-type="TEMPNO">TEMPNO</th><th title="Species" data-type="SPECIES">Species</th><th title="Subtaxa" data-type="SUBTAXA">Subtaxa</th><th title="Country" data-type="COUNTRY">Country</th><th title="Operation">Operation</th></tr>
+                </thead>
+                <tbody id="databody">
+                    {% embed "search/subcategory_part.html.twig" %}
+                    {% endembed %}
+                </tbody>
+            </table>
+        </div>
+        <script src="{{ BASE_PATH }}/public/js/lib/jquery.jqpagination.min.js"></script>
+        <script src="{{ BASE_PATH }}/public/js/lib/loading-overlay.min.js"></script>
+        <script src="{{ BASE_PATH }}/public/js/lib/jquery.floatThead.min.js"></script>
+        <script src="{{ BASE_PATH }}/public/js/search/list.js"></script>
+    {% endblock %}
+{% endembed %}

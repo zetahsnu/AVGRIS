@@ -1,0 +1,14 @@
+{% if data is defined %}
+{% for item in data if data|length > 0 %}
+<tr data-pk="{{item[pk]}}">
+<td><input type="checkbox" /></td>
+{% for column in rcolumns %}
+<td title="{{ item[column]|raw }}" style="width: calc((90% - {{ (rcolumns|length + 1) * 10 }}px) / {{rcolumns|length}})">
+<input type="text" value="{{ item[column]|raw }}" placeholder="{{ column }}" />
+</td>
+{% endfor %}
+</tr>
+{% else %}
+<div>No records returned</div>
+{% endfor %}
+{% endif %}

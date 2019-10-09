@@ -1,0 +1,44 @@
+<div id='editorMain'>
+    <div data-type='VINO'><div>Vegetable introduction number:</div><div><input id="disVINO" type="text" placeholder="VINO" disabled /><input id="inputVINO" type="text"><button id="searchVINO" class="button" data-status="search" title="Search VINO From Passport"></button></div></div>
+    <div data-type='VARIANT'><div>Variant:</div><div><input type="text" placeholder="VARIANT" /></div></div>
+    <div data-type='ACCNO'><div>Crop accession number:</div><div><input type="text" placeholder="ACCNO" disabled /></div></div>
+    <div data-type='GENUS'><div>Genus:</div><div><input type="text" placeholder="GENUS" disabled /></div></div>
+    <div data-type='DUPLIC'><div>Duplicate note:</div><div><input type="text" placeholder="DUPLIC" disabled /></div></div>
+    <div data-type='SPECIES'><div>Species:</div><div><input type="text" placeholder="SPECIES" disabled /></div></div>
+    <div data-type='TEMPNO'><div>Temporary number:</div><div><input type="text" placeholder="TEMPNO" disabled /></div></div>
+    <div data-type='SUBTAXA'><div>Subtaxa:</div><div><input type="text" placeholder="SUBTAXA" disabled /></div></div>
+    <div data-type='YRSN'><div>Year & season regeneration:</div><div><input type="text" placeholder="YRSN" /></div></div>
+    <div data-type='YRPACK'><div>Year package:</div><div><input type="text" placeholder="YRPACK" /></div></div>
+</div>
+<div id='editorOther' class="tabs tabs-style-line csh5">
+    <nav>
+        <ul>
+            <li><a href="#section-line-1"><span>SEED STOCK INFORMATION</span></a></li>
+            <li><a href="#section-line-2"><span>SAFETY DUPLICATION INFORMATION</span></a></li>
+        </ul>
+    </nav>
+    <div class="content-wrap">
+        <section id="section-line-1">
+            <div data-type='SDSOURCE'><div>Seed source:</div><div><input type="text" placeholder="SDSOURCE" /></div></div>
+            <div data-type='SITE'><div>Site regenerated:</div><div>
+                    <select>
+                        <option value="">* SITE *</option>
+                        {% for item in related.SITE %}
+                            <option value="{{ item.REFNO }}">{{ item.SITE }}</option>
+                        {% endfor %}
+                    </select></div></div>
+            <div data-type='LT'><div>L-term storage-standard (gm):</div><div><input type="number" step="0.01" min="0" placeholder="LT" /></div></div>
+            <div data-type='LOCATION_LT'><div>Location of L-term storage-standard:</div><div><input type="text" placeholder="LOCATION_LT" /></div></div>
+            <div data-type='MT'><div>M-term storage (pack):</div><div><input type="number" step="1" min="0" placeholder="MT" /></div></div>
+            <div data-type='LOCATION_MT'><div>Location of M-term storage:</div><div><input type="text" placeholder="LOCATION_MT" /></div></div>
+            <div data-type='LT_EXTRA'><div>L-term storage-extra (gm):</div><div><input type="number" step="0.01" min="0" placeholder="LT_EXTRA" /></div></div>
+            <div data-type='LOCATION_LT_EXTRA'><div>Location of L-term storage-extra:</div><div><input type="text" placeholder="LOCATION_LT_EXTRA" /></div></div>
+            <div data-type='REMARKS'><div>Remarks:</div><div><input type="text" placeholder="REMARKS" /></div></div>
+        </section>
+        <section id="section-line-2">
+            <div data-type='YRMNST'><div>Year & month sent to NPGRC:</div><div><input type="date" placeholder="YRMNST" /></div></div>
+            <div data-type='YRDUP_SGSV'><div>Year & month duplicated in SGSV:</div><div><input type="date" placeholder="YRDUP_SGSV" /></div></div>
+            <div data-type='YRDUP_RDASV'><div>Year & month duplicated in RDASV:</div><div><input type="date" placeholder="YRDUP_RDASV" /></div></div>
+        </section>
+    </div><!-- /content -->
+</div><!-- /tabs -->

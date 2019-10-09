@@ -1,0 +1,15 @@
+{
+    "related": [
+        "classification",
+        "mat_attach"
+    ],
+    "other_related": [
+        "country_code"
+    ],
+    "related_subtable": [
+        "detail"
+    ],
+    "subtable_related": [
+        "crop"
+    ]
+}

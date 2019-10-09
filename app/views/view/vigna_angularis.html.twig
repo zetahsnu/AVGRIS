@@ -1,0 +1,158 @@
+{% embed "base.html.twig" %}
+    {% block javascript %}
+        {{ parent() }}
+        <script src="{{ BASE_PATH }}/public/js/search/view/back.js"></script>
+    {% endblock %}
+    {% block css %}
+        {{ parent() }}
+        <link rel="stylesheet" href="{{ BASE_PATH }}/public/css/view/default.css">
+    {% endblock %}
+    {% block content %}
+        {% embed "/view/part/title.html.twig" %}
+        {% endembed %}
+        {% embed "/view/part/header.html.twig" %}
+        {% endembed %}
+        <section class="ac-container">
+            <div>
+                <input id="ac-1" name="accordion-1" type="checkbox" />
+                <label for="ac-1">VEGETATIVE DATA</label>
+                <article>
+                    <div class="css_table">
+                        <div class="css_tr">
+                            <div class="css_td">Growth habit</div>
+                            <div class="css_td">{{ data.GRHBT }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Growth pattern</div>
+                            <div class="css_td">{{ data.GRPATT }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Hypocotyl color</div>
+                            <div class="css_td">{{ data.HYPCOL }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Primary leaf shape</div>
+                            <div class="css_td">{{ data.PRLFSHP }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Terminal leaflet shape</div>
+                            <div class="css_td">{{ data.TLFLSHP }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Terminal leaflet length<br>(record for the leaf at fourth node)</div>
+                            <div class="css_td">{{ data.TLFLLEN }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Pubescence density</div>
+                            <div class="css_td">{{ data.PUBDEN }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Leaf pubescence length</div>
+                            <div class="css_td">{{ data.LFPUBLEN }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Leaf color<br>(record at 50% flowering)</div>
+                            <div class="css_td">{{ data.LFCOL }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Petiole color</div>
+                            <div class="css_td">{{ data.PETCOL }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Color of basal petioles</div>
+                            <div class="css_td">{{ data.COLBPET }}</div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <div>
+                <input id="ac-2" name="accordion-1" type="checkbox" />
+                <label for="ac-2">INFLORESCENCE DATA</label>
+                <article>
+                    <div class="css_table">
+                        <div class="css_tr">
+                            <div class="css_td">Raceme position<br>(record when the first pod changes color)</div>
+                            <div class="css_td">{{ data.RACPOS }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Calyx color</div>
+                            <div class="css_td">{{ data.CALCOL }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Standard petal color</div>
+                            <div class="css_td">{{ data.SPETLCOL }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Wings petal color</div>
+                            <div class="css_td">{{ data.WPETLCOL }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Days to 50% flowering</div>
+                            <div class="css_td">{{ data.DAYSFLO }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Plant height at flowering (cm)</div>
+                            <div class="css_td">{{ data.PLHTFLO }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Plant height at maturation (cm)</div>
+                            <div class="css_td">{{ data.PLHTMAT }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Seeds per pods<br>(means of 10 pods)</div>
+                            <div class="css_td">{{ data.SDSPPOD }}</div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <div>
+                <input id="ac-3" name="accordion-1" type="checkbox" />
+                <label for="ac-3">POD DATA</label>
+                <article>
+                    <div class="css_table">
+                        <div class="css_tr">
+                            <div class="css_td">Pod color at immature stage</div>
+                            <div class="css_td">{{ data.PDCOLIMS }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Pod color at mature stage</div>
+                            <div class="css_td">{{ data.PDCOLMS }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Pod length (cm)<br>(means of 10 random pods)</div>
+                            <div class="css_td">{{ data.PDLEN }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Days to 50% pod mature<br>(no. of days from planting to 50% of plants with mature pod)</div>
+                            <div class="css_td">{{ data.DAYSPMAT }}</div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <div>
+                <input id="ac-4" name="accordion-1" type="checkbox" />
+                <label for="ac-4">SEED DATA</label>
+                <article>
+                    <div class="css_table">
+                        <div class="css_tr">
+                            <div class="css_td">Mottling on seed</div>
+                            <div class="css_td">{{ data.MOTSD }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Lustre on seed surface</div>
+                            <div class="css_td">{{ data.LUSDSUR }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">Seed coat color</div>
+                            <div class="css_td">{{ data.SDCTCOL }}</div>
+                        </div>
+                        <div class="css_tr">
+                            <div class="css_td">100 seeds weight (gm)<br>(seed weight of 100 seeds at 13- 15% moisture content)</div>
+                            <div class="css_td">{{ data.SDWT }}</div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+    {% endblock %}
+{% endembed %}

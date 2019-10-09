@@ -1,0 +1,23 @@
+<form action="{{ BASE_PATH }}/manager/imageUploader/" method="post" enctype="multipart/form-data" id="uploader">
+    <input name="image_file" id="imageInput" type="file" class="custom-file-input" />
+    <input type="submit"  id="submit-btn" value="Upload" class="button" />
+    <progress id="loading-progress" min="0" max="100" value="0"></progress>
+</form>
+<div class='photo'>
+    <div class='before'>
+        <figure>
+            <figcaption>Before</figcaption>
+            <div id="target_before">
+                <canvas id="before" width="400" height="300"></canvas>
+            </div>
+        </figure>
+    </div>
+    <div class='after'>
+        <figure>
+            <figcaption>After</figcaption>
+            <div id="target_after">
+                <canvas id="after" width="400" height="300"></canvas>
+            </div>
+        </figure>
+    </div>
+</div>

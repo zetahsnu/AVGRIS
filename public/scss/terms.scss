@@ -1,0 +1,34 @@
+section{
+
+    p{
+
+        &.point{
+            font-weight: bolder;
+        }
+
+        &.warn{
+            color:red;
+            font-weight: bolder;
+
+            &::first-letter{
+                font-size: 100%;
+                color: red;
+            }
+        }
+    }
+
+    aside{
+        font-weight: bolder;
+        color: blue;
+    }
+
+    ul{
+        list-style: circle;
+        margin-left: 40px;
+
+        li{
+            font-size: 1em;
+            line-height: 22px;
+        }
+    }
+}

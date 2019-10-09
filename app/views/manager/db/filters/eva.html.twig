@@ -1,0 +1,25 @@
+<div><span class="inputtext"><input id="IDNO" type="text" placeholder="e.g. 1, 2, ..." class="slide-up" /><label for="IDNO">IDNO</label></span><button name="add_filters" class="button" title="Add">&#43;</button></div>
+<div><span class="inputtext"><input id="VINO" type="text" placeholder="e.g. VI000001, VI000002, ..." class="slide-up" /><label for="VINO">VINO</label></span><button name="add_filters" class="button" title="Add">&#43;</button></div>
+<div><span class="inputtext"><input id="ACCNO" type="text" placeholder="e.g. A00001, B00001, ..." class="slide-up" /><label for="ACCNO">ACCNO</label></span><button name="add_filters" class="button" title="Add">&#43;</button></div>
+<div><span class="inputtext"><input id="TEMPNO" type="text" placeholder="e.g. TA00001, TB00001, ..." class="slide-up" /><label for="TEMPNO">TEMPNO</label></span><button name="add_filters" class="button" title="Add">&#43;</button></div>
+<div><span class="inputtext"><input id="PEDCUL" type="text" placeholder="Pedigree / Cultivar Name" class="slide-up" /><label for="PEDCUL">Pedigree / Cultivar Name</label></span><button name="add_filters" class="button" title="Add">&#43;</button></div>
+<div><span><select id="GENUS" title='GENUS'>
+            <option value=''>* Any GENUS *</option>
+            {% for item in genus if item != '' %}
+                <option value="{{item}}">{{item}}</option>
+            {% endfor %}
+        </select></span><button name="add_filters" class="button" title="Add">&#43;</button></div>
+<div><span><select id="SPECIES" title='SPECIES'>
+            <option value=''>* Any SPECIES *</option>
+        </select></span><button name="add_filters" class="button" title="Add" style="display: none;">&#43;</button></div>
+<div><span><select id="SUBTAXA" title='SUBTAXA'>
+            <option value=''>* Any SUBTAXA *</option>
+        </select></span><button name="add_filters" class="button" title="Add" style="display: none;">&#43;</button></div>
+<div><span><select id="COUNTRY" title='COUNTRY'>
+            <option value=''>* Any COUNTRY *</option>
+            {% for item in country if item != '' %}
+                <option value="{{item}}">{{item}}</option>
+            {% endfor %}
+        </select></span><button name="add_filters" class="button" title="Add">&#43;</button></div>
+<div><span class="inputtext"><input id="PROVIDER" type="text" placeholder="Provider of source of information" class="slide-up" /><label for="PROVIDER">Provider</label></span><button name="add_filters" class="button" title="Add">&#43;</button></div>
+<div><span class="inputtext"><input id="CTY_PROV" type="text" placeholder="Country of provider" class="slide-up" /><label for="CTY_PROV">Country of provider</label></span><button name="add_filters" class="button" title="Add">&#43;</button></div>

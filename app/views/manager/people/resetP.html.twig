@@ -1,0 +1,17 @@
+<section class="resetP">
+    <h1>{{ title }}</h1>
+    <div class="resetP_area">
+        <span class="ajaxload"><img src="{{ BASE_PATH }}/public/images/ajax-loader.gif"></span>
+        <div>
+            <select id="peopleselection">
+                <option value="">--&nbsp;Select&nbsp;Person&nbsp;--</option>
+                {% for people in peoples %}
+                    <option value="{{ people.ID }}">{{ people.USERNAME }}</option>
+                {% endfor %}
+            </select><br>
+            <span class="inputtext"><input id="password" type="password" placeholder="Enter New Password" class="slide-up" /><label for="password">New Password</label></span>
+            <button id="resetP" class="button">Reset</button>
+        </div>
+    </div>
+</section>
+<script src="{{ BASE_PATH }}/public/js/manager/people/resetP.js"></script>

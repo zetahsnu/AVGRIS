@@ -1,0 +1,43 @@
+<table>
+    <colgroup>
+        <col>
+        <col>
+        <col>
+    </colgroup>
+    <tbody>
+        <tr><td rowspan="10">
+                {% if pic_path != null %}
+                    <img src="{{ BASE_PATH }}{{ pic_path }}">
+                {% else %} 
+                    <canvas id="noImage" width="400" height="300">Your browser does not support the HTML5 canvas tag.</canvas>
+                    <script>
+                        var c = document.getElementById("noImage");
+                        var ctx = c.getContext("2d");
+
+                        ctx.font = "60px Georgia";
+                        ctx.fillText("NO", 150, 140);
+                        ctx.font = "60px Georgia";
+                        ctx.fillText("IMAGE", 100, 210);
+                    </script>
+                {% endif %}</td></tr>
+        <tr><td>Vegetable introduction number</td><td><a href="{{ BASE_PATH }}/search/view/passport/{{ data.VINO }}">{{ data.VINO }}</a></td></tr>
+        <tr><td>Crop accession number</td><td>{{ data.ACCNO }}</td></tr>
+        <tr><td>Temporary number</td><td>{{ data.TEMPNO }}</td></tr>
+        <tr><td>Variant</td><td>{{ data.VARIANT }}</td></tr>
+        <tr><td>Characterized Year and Season</td><td>{{ data.YRSN }}</td></tr>
+        <tr><td>Species</td><td>{{ data.SPECIES }}</td></tr>
+        <tr><td>Subtaxa</td><td>{{ data.SUBTAXA }}</td></tr>
+        <tr><td>Pedigree / Cultivar Name</td><td>{{ data.PEDCUL }}</td></tr>
+        <tr><td>Country</td><td>{{ data.COUNTRY }}</td></tr>
+    </tbody>
+</table>
+<div id="expand_check"><input type="checkbox" id="expand"><label for="expand">Expand All</label></div>
+<script>
+    $('#expand').change(function () {
+        if (this.checked) {
+            $('input[type=checkbox]').prop("checked", true);
+        } else {
+            $('input[type=checkbox]').prop("checked", false);
+        }
+    });
+</script>
